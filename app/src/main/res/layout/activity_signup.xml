@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="back"
+            type="org.cazait.cazait_android.ui.view.signup.SignupActivity" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/beige"
+        tools:context=".view.SignupActivity">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:background="@color/wood"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv10"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="67dp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow_back" />
+
+        <TextView
+            android:id="@+id/tv10"
+            android:layout_width="80dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="160dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/tv7"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="45dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="41dp"
+            android:text="@string/tv11"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <EditText
+            android:id="@+id/tv12"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_white_rectangle"
+            android:hint="@string/tv12"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="17dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="116dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/tv13"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/round_wood_rectangle"
+            android:paddingStart="19dp"
+            android:paddingTop="13dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="12dp"
+            android:text="@string/tv13"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv12"
+            app:layout_constraintTop_toTopOf="@+id/tv12" />
+
+        <TextView
+            android:id="@+id/tv14"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/tv14"
+            android:textColor="#795548"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv12" />
+
+        <TextView
+            android:id="@+id/tv15"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="27dp"
+            android:text="@string/tv15"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv14" />
+
+        <EditText
+            android:id="@+id/tv16"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_white_rectangle"
+            android:hint="@string/tv16"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="17dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="156dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#757575"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv15" />
+
+        <TextView
+            android:id="@+id/tv17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="27dp"
+            android:text="@string/tv17"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv16" />
+
+        <EditText
+            android:id="@+id/tv19"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_white_rectangle"
+            android:hint="@string/tv19"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="17dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="98dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#757575"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv17" />
+
+        <TextView
+            android:id="@+id/tv20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="27dp"
+            android:text="@string/tv20"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv19" />
+
+        <EditText
+            android:id="@+id/tv21"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_white_rectangle"
+            android:hint="@string/tv21"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="17dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="23dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#757575"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv20" />
+
+        <TextView
+            android:id="@+id/tv22"
+            android:layout_width="100dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/round_wood_rectangle"
+            android:paddingStart="19dp"
+            android:paddingTop="13dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="12dp"
+            android:text="@string/tv13"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv21"
+            app:layout_constraintTop_toBottomOf="@+id/tv19" />
+
+        <TextView
+            android:id="@+id/tv23"
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="67dp"
+            android:background="@drawable/round_wood_rectangle"
+            android:paddingLeft="25dp"
+            android:paddingTop="11dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="11dp"
+            android:text="@string/tv23"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv21" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

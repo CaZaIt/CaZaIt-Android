@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import org.cazait.cazait_android.R
+import org.cazait.cazait_android.ui.view.signup.SignupActivity
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
 import org.cazait.cazait_android.ui.view.MainActivity
 
@@ -21,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.textView7.setOnClickListener {
-            val next = Intent(this, MainActivity::class.java)
+            val next = Intent(this, SignupActivity::class.java)
             startActivity(next)
         }
     }
