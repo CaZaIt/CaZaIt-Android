@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">카자잇</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title">카페리스트</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="cong_normal">보통</string>
+    <string name="cong_empty">여유</string>
+    <string name="cong_hard">혼잡</string>
+
+    <string name="cafelist1_name">롬곡</string>
+    <string name="cafelist1_dis">220m</string>
+    <string name="cafelist1_add">서울특별시 광진구 광나루로 375-1 2층(군자동)</string>
+
+    <string name="cafelist2_name">제주몰빵</string>
+    <string name="cafelist2_dis">1500m</string>
+    <string name="cafelist2_add">서울특별시 광진구 광나루로 375-1 2층(군자동)</string>
+
+    <string name="cafelist3_name">팬도로시</string>
+    <string name="cafelist3_dis">2000m</string>
+    <string name="cafelist3_add">서울특별시 광진구 광나루로 375-1 2층(군자동)</string>
 </resources>
