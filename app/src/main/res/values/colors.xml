@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--login activity-->
+    <color name="beige">#FAF0DD</color>
+    <color name="brown">#8A5F5F</color>
+    <color name="gray">#B5B5B5</color>
+    <color name="wood">#8D6060</color>
 </resources>

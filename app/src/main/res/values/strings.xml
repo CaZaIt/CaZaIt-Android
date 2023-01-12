@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">카자잇</string>
+
+    <!--login activity-->
+    <string name="tv2">LOGIN</string>
+    <string name="tv3">Username</string>
+    <string name="tv4">Password</string>
+    <string name="tv5">아이디 찾기</string>
+    <string name="tv6">비밀번호 찾기</string>
+    <string name="tv7">회원가입</string>
+    <string name="tv8">로그인 하기</string>
 </resources>
