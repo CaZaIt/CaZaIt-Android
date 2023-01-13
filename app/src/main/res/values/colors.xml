@@ -13,4 +13,10 @@
     <color name="cong_normal">#61FF00</color>
     <color name="cong_empty">#00E1FF</color>
     <color name="cong_hard">#FF0000</color>
+
+    <!--login activity-->
+    <color name="beige">#FAF0DD</color>
+    <color name="brown">#8A5F5F</color>
+    <color name="gray">#B5B5B5</color>
+    <color name="wood">#8D6060</color>
 </resources>
