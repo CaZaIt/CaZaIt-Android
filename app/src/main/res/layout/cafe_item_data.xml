@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="17dp"
+    android:background="@drawable/roundcorner">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/img_CardView"
+        android:layout_width="match_parent"
+        android:layout_height="236dp"
+
+        app:cardCornerRadius="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgv_cafe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/imgcafe2"
+            tools:ignore="ContentDescription"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_cafe_name"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:text="CafeName"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_CardView" />
+
+    <TextView
+        android:id="@+id/tv_cafe_dis"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="거리"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_cafe_name"
+        app:layout_constraintTop_toBottomOf="@+id/img_CardView" />
+
+    <TextView
+        android:id="@+id/tv_cafe_add"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="18dp"
+        android:text="카페 주소"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cafe_name" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_favor"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16.21dp"
+        android:layout_marginEnd="20.17dp"
+        android:src="@drawable/favorite"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_CardView"
+        tools:ignore="ContentDescription"/>
+
+    <TextView
+        android:id="@+id/tv_cafe_cong"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="313dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/outline"
+        android:gravity="center"
+        android:text="혼잡도"
+        android:textColor="@color/cong_normal"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
