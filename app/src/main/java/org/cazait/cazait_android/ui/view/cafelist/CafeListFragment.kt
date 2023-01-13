@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.FragmentCafeListBinding
+import org.cazait.cazait_android.ui.viewmodel.CafeData
+import org.cazait.cazait_android.ui.viewmodel.ViewModel
 
 class CafeListFragment : Fragment() {
     private lateinit var viewBinding: FragmentCafeListBinding

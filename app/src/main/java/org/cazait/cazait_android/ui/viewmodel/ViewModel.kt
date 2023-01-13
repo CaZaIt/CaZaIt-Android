@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.ui.view.cafelist
+package org.cazait.cazait_android.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 class CafeData(
