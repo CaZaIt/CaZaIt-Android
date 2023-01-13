@@ -1,17 +1,27 @@
 <resources>
     <string name="app_name">카자잇</string>
+
+    <!--cafe information activity-->
+    <string name="cafe_info_landscape">카페 이미지</string>
+    <string name="cafe_info_name">카페명</string>
+    <string name="cafe_info_address">카페 주소</string>
+    <string name="menu_cafe_info_cafe_info">카페정보</string>
+    <string name="menu_cafe_info_location_transport">위치/교통</string>
+    <string name="menu_cafe_info_rating_review">평점 및 후기</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     
     <!--Cafe List Fragment-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="title">카페리스트</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="cafe_list_frag_title">카페리스트</string>
+    <string name="cafe_list_frag_title_home">Home</string>
+    <string name="cafe_list_frag_title_dashboard">Dashboard</string>
+    <string name="cafe_list_frag_title_notifications">Notifications</string>
 
-    <string name="cong_normal">보통</string>
-    <string name="cong_empty">여유</string>
-    <string name="cong_hard">혼잡</string>
+    <string name="cafe_list_frag_cong_normal">보통</string>
+    <string name="cafe_list_frag_cong_empty">여유</string>
+    <string name="cafe_list_frag_cong_hard">혼잡</string>
 
     <string name="cafelist1_name">롬곡</string>
     <string name="cafelist1_dis">220m</string>
