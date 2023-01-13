@@ -24,7 +24,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CafeInformationActivity"
+            android:name=".ui.view.cafelist.info.CafeInformationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

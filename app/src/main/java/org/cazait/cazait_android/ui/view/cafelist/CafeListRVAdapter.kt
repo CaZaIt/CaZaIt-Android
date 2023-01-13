@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.R
+import org.cazait.cazait_android.ui.viewmodel.CafeData
 
 class CafeListRVAdapter(private val list: MutableList<CafeData>):RecyclerView.Adapter<CafeListRVAdapter.ListItemViewHolder>() {
 
