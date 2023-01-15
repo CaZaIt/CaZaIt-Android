@@ -52,4 +52,7 @@
     <string name="tv21">예: kazait12@naver.com</string>
     <string name="tv23">가입하기</string>
     <string name="tv24">서울특별시 광진구 광나루로 375-1 2층(군자동)</string>
+
+    <!--Main Activity-->
+    <string name="search_bar">search</string>
 </resources>
