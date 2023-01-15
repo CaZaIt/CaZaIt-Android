@@ -72,6 +72,7 @@
         android:layout_marginTop="16.21dp"
         android:layout_marginEnd="20.17dp"
         android:src="@drawable/favorite"
+        android:backgroundTint="@color/white"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_CardView"
         tools:ignore="ContentDescription"/>
