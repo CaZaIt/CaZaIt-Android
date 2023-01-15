@@ -1,16 +1,15 @@
 package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
-import androidx.fragment.app.viewModels
-import org.cazait.cazait_android.R
-import org.cazait.cazait_android.databinding.FragmentCafeMenuBinding
+import org.cazait.cazait_android.databinding.FragmentCafeLocTransBinding
 import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
 
-class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoViewModel>() {
+class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.fragment_cafe_menu
+        get() = TODO("Not yet implemented")
 
-    override val viewModel: CafeInfoViewModel by viewModels()
+    override val viewModel: CafeInfoViewModel
+        get() = TODO("Not yet implemented")
 
     override fun initAfterBinding() {
         TODO("Not yet implemented")
@@ -23,4 +22,5 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoViewModel
     override fun initView() {
         TODO("Not yet implemented")
     }
+
 }
