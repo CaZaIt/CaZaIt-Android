@@ -2,7 +2,7 @@ package org.cazait.cazait_android.ui.viewmodel
 
 import org.cazait.cazait_android.ui.base.BaseViewModel
 
-class CafeData(
+class CafeData2(
 //    private var cafeImg: View? = null,
     private val cafeName: String,
     private val dis: String,
@@ -29,7 +29,7 @@ class CafeData(
     }
 }
 
-class CafeInfoViewModel:BaseViewModel() {
+class MainViewModel:BaseViewModel() {
     var dataList: ArrayList<CafeData> = arrayListOf(
         CafeData(
 //            "${R.drawable.cafeimg1}",

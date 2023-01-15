@@ -24,9 +24,5 @@ class LoginActivity : AppCompatActivity() {
             val next = Intent(this, SignupActivity::class.java)
             startActivity(next)
         }
-        binding.textView8.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
     }
 }
