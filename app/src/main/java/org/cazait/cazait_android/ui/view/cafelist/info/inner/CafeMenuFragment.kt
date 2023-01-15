@@ -13,14 +13,11 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoViewModel
     override val viewModel: CafeInfoViewModel by viewModels()
 
     override fun initAfterBinding() {
-        TODO("Not yet implemented")
     }
 
     override fun initBeforeBinding() {
-        TODO("Not yet implemented")
     }
 
     override fun initView() {
-        TODO("Not yet implemented")
     }
 }
