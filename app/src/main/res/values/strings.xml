@@ -9,7 +9,7 @@
     <string name="menu_cafe_info_location_transport">위치/교통</string>
     <string name="menu_cafe_info_rating_review">평점 및 후기</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
     <!--Cafe List Fragment-->
     <string name="cafe_list_frag_title">카페리스트</string>
     <string name="cafe_list_frag_title_home">Home</string>
