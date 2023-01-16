@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val backgroundImg : ImageView = binding.splashLogo
+        val backgroundImg : ImageView = binding.ivSplashLogo
         val sideAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_iv)
         backgroundImg.startAnimation(sideAnimation)
 
@@ -35,6 +35,6 @@ class SplashActivity : AppCompatActivity() {
 
             finish()
 
-        }, 2000)
+        }, 1000)
     }
 }

@@ -19,7 +19,7 @@ class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        binding.signupJoin.setOnClickListener {
+        binding.tvSignupJoin.setOnClickListener {
             val back = Intent(this, LoginActivity::class.java)
             startActivity(back)
         }

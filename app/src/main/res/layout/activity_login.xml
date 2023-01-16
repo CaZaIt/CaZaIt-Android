@@ -18,7 +18,7 @@
         tools:context=".view.MainActivity">
 
         <ImageView
-            android:id="@+id/login_logo"
+            android:id="@+id/iv_login_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="124dp"
@@ -28,7 +28,7 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/login_login"
+            android:id="@+id/tv_login_input"
             android:layout_width="50dp"
             android:layout_height="19dp"
             android:layout_marginStart="61dp"
@@ -40,10 +40,10 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_logo" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_login_logo" />
 
         <EditText
-            android:id="@+id/login_username"
+            android:id="@+id/et_login_user_name"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:layout_marginTop="10dp"
@@ -56,15 +56,15 @@
             android:paddingRight="17dp"
             android:paddingBottom="18dp"
             android:textColor="@color/gray"
-            android:textColorHint="#757575"
+            android:textColorHint="@color/darkgray"
             android:textSize="15sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_login" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_input" />
 
         <EditText
-            android:id="@+id/login_password"
+            android:id="@+id/et_login_password"
             android:layout_width="300dp"
             android:layout_height="55dp"
             android:layout_marginTop="6dp"
@@ -77,14 +77,14 @@
             android:paddingRight="17dp"
             android:paddingBottom="18dp"
             android:textColor="@color/gray"
-            android:textColorHint="#757575"
+            android:textColorHint="@color/darkgray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_username" />
+            app:layout_constraintTop_toBottomOf="@+id/et_login_user_name" />
 
         <TextView
-            android:id="@+id/login_id_find"
+            android:id="@+id/tv_login_find_id"
             android:layout_width="70dp"
             android:layout_height="17dp"
             android:layout_marginStart="69dp"
@@ -93,13 +93,13 @@
             android:textColor="@color/brown"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/login_password_find"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_login_find_password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_password" />
+            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
 
         <TextView
-            android:id="@+id/login_password_find"
+            android:id="@+id/tv_login_find_password"
             android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_marginStart="20dp"
@@ -109,13 +109,13 @@
             android:textColor="@color/brown"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/login_signup"
+            app:layout_constraintEnd_toStartOf="@+id/tv_login_signup"
             app:layout_constraintHorizontal_bias="0.608"
-            app:layout_constraintStart_toEndOf="@+id/login_id_find"
-            app:layout_constraintTop_toBottomOf="@+id/login_password" />
+            app:layout_constraintStart_toEndOf="@+id/tv_login_find_id"
+            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
         <TextView
-            android:id="@+id/login_signup"
+            android:id="@+id/tv_login_signup"
             android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_marginStart="5dp"
@@ -125,13 +125,13 @@
             android:textColor="@color/brown"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/login_password_find"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_login_find_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/login_password_find"
-            app:layout_constraintTop_toBottomOf="@+id/login_password" />
+            app:layout_constraintStart_toEndOf="@+id/tv_login_find_password"
+            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
         <TextView
-            android:id="@+id/login_login_doing"
+            android:id="@+id/tv_login_doing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="39dp"
@@ -147,6 +147,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_password_find" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_find_password" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
