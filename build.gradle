@@ -19,9 +19,9 @@ ext {
     okHttp_version = '5.0.0-alpha.11'
 
     // koin
-    koin_version= "3.2.2"
-    koin_android_version= "3.2.3"
-    koin_android_compose_version= "3.2.2"
+    koin_version= '3.3.2'
+    koin_android_version= '3.3.2'
+    koin_android_compose_version= '3.4.1'
     koin_ktor= "3.2.2"
 
     //room
