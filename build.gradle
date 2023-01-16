@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '7.3.1' apply false
-    id 'com.android.library' version '7.3.1' apply false
+    id 'com.android.application' version '7.4.0' apply false
+    id 'com.android.library' version '7.4.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
 }
 
@@ -19,9 +19,9 @@ ext {
     okHttp_version = '5.0.0-alpha.11'
 
     // koin
-    koin_version= "3.2.2"
-    koin_android_version= "3.2.3"
-    koin_android_compose_version= "3.2.2"
+    koin_version= '3.3.2'
+    koin_android_version= '3.3.2'
+    koin_android_compose_version= '3.4.1'
     koin_ktor= "3.2.2"
 
     //room
