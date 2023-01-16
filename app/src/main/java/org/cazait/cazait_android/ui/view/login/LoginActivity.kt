@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.textView7.setOnClickListener {
+        binding.loginSignup.setOnClickListener {
             val next = Intent(this, SignupActivity::class.java)
             startActivity(next)
         }

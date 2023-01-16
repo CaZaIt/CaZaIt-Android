@@ -23,10 +23,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/signup_arrow_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv10"
+            android:layout_alignBottom="@+id/signup_signup"
             android:layout_marginStart="30dp"
             android:layout_marginTop="67dp"
             android:layout_marginBottom="2dp"
@@ -35,29 +35,29 @@
             app:srcCompat="@drawable/arrow_back" />
 
         <TextView
-            android:id="@+id/tv10"
+            android:id="@+id/signup_signup"
             android:layout_width="80dp"
             android:layout_height="24dp"
             android:layout_marginStart="120dp"
             android:layout_marginTop="65dp"
             android:layout_marginEnd="160dp"
             android:fontFamily="sans-serif"
-            android:text="@string/tv7"
+            android:text="@string/signup_signup"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/view2"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintStart_toEndOf="@+id/signup_arrow_back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/signup_id"
             android:layout_width="45dp"
             android:layout_height="19dp"
             android:layout_marginStart="29dp"
-            android:layout_marginTop="41dp"
-            android:text="@string/tv11"
+            android:layout_marginTop="30dp"
+            android:text="@string/signup_id"
             android:textColor="@color/brown"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -65,137 +65,146 @@
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
         <EditText
-            android:id="@+id/tv12"
-            android:layout_width="wrap_content"
+            android:id="@+id/signup_id_example"
+            android:layout_width="220dp"
             android:layout_height="48dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="100dp"
             android:background="@drawable/round_white_rectangle"
-            android:hint="@string/tv12"
+            android:hint="@string/signup_id_example"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:paddingStart="17dp"
+            android:paddingLeft="17dp"
             android:paddingTop="12dp"
-            android:paddingEnd="116dp"
+            android:paddingRight="17dp"
             android:paddingBottom="12dp"
             android:textColorHint="#757575"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_id" />
 
         <TextView
-            android:id="@+id/tv13"
+            android:id="@+id/signup_double_check"
             android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_marginStart="10dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/round_wood_rectangle"
             android:paddingStart="19dp"
             android:paddingTop="13dp"
             android:paddingEnd="18dp"
             android:paddingBottom="12dp"
-            android:text="@string/tv13"
+            android:text="@string/signup_double_check"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tv12"
-            app:layout_constraintTop_toTopOf="@+id/tv12" />
+            app:layout_constraintStart_toEndOf="@+id/signup_id_example"
+            app:layout_constraintTop_toBottomOf="@+id/signup_id" />
 
         <TextView
-            android:id="@+id/tv14"
+            android:id="@+id/signup_id_below"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
-            android:layout_marginStart="39dp"
+            android:layout_marginStart="29dp"
             android:layout_marginTop="8dp"
-            android:text="@string/tv14"
+            android:text="@string/signup_id_below"
             android:textColor="#795548"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv12" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_id_example" />
 
         <TextView
-            android:id="@+id/tv15"
+            android:id="@+id/signup_password"
             android:layout_width="wrap_content"
             android:layout_height="19dp"
             android:layout_marginStart="29dp"
             android:layout_marginTop="27dp"
-            android:text="@string/tv15"
+            android:text="@string/signup_password"
             android:textColor="@color/brown"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv14" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_id_below" />
 
         <EditText
-            android:id="@+id/tv16"
-            android:layout_width="wrap_content"
+            android:id="@+id/signup_password_insert"
+            android:layout_width="290dp"
             android:layout_height="48dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/round_white_rectangle"
-            android:hint="@string/tv16"
+            android:hint="@string/signup_password_insert"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="17dp"
             android:paddingTop="12dp"
-            android:paddingEnd="156dp"
+            android:paddingEnd="17dp"
             android:paddingBottom="12dp"
             android:textColorHint="#757575"
             android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv15" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_password" />
 
         <TextView
-            android:id="@+id/tv17"
+            android:id="@+id/signup_password_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
             android:layout_marginTop="27dp"
-            android:text="@string/tv17"
+            android:text="@string/signup_password_check"
             android:textColor="@color/brown"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv16" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_password_insert" />
 
         <EditText
-            android:id="@+id/tv19"
-            android:layout_width="wrap_content"
+            android:id="@+id/signup_password_insert_more"
+            android:layout_width="290dp"
             android:layout_height="48dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/round_white_rectangle"
-            android:hint="@string/tv19"
+            android:hint="@string/signup_password_insert_more"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="17dp"
             android:paddingTop="12dp"
-            android:paddingEnd="98dp"
+            android:paddingEnd="17dp"
             android:paddingBottom="12dp"
             android:textColorHint="#757575"
             android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv17" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_password_check" />
 
         <TextView
-            android:id="@+id/tv20"
+            android:id="@+id/signup_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
             android:layout_marginTop="27dp"
-            android:text="@string/tv20"
+            android:text="@string/signup_email"
             android:textColor="@color/brown"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv19" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_password_insert_more" />
 
         <EditText
-            android:id="@+id/tv21"
-            android:layout_width="wrap_content"
+            android:id="@+id/signup_email_example"
+            android:layout_width="220dp"
             android:layout_height="48dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="100dp"
             android:background="@drawable/round_white_rectangle"
-            android:hint="@string/tv21"
+            android:hint="@string/signup_email_example"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:paddingStart="17dp"
@@ -204,45 +213,46 @@
             android:paddingBottom="12dp"
             android:textColorHint="#757575"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv20" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_email" />
 
         <TextView
-            android:id="@+id/tv22"
-            android:layout_width="100dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="60dp"
+            android:id="@+id/signup_email_double_check"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/round_wood_rectangle"
             android:paddingStart="19dp"
             android:paddingTop="13dp"
             android:paddingEnd="18dp"
             android:paddingBottom="12dp"
-            android:text="@string/tv13"
+            android:text="@string/signup_email_double_check"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tv21"
-            app:layout_constraintTop_toBottomOf="@+id/tv19" />
+            app:layout_constraintStart_toEndOf="@+id/signup_email_example"
+            app:layout_constraintTop_toBottomOf="@+id/signup_email" />
 
         <TextView
-            android:id="@+id/tv23"
+            android:id="@+id/signup_join"
             android:layout_width="150dp"
             android:layout_height="46dp"
-            android:layout_marginStart="110dp"
-            android:layout_marginTop="67dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/round_wood_rectangle"
             android:paddingLeft="25dp"
             android:paddingTop="11dp"
             android:paddingRight="25dp"
             android:paddingBottom="11dp"
-            android:text="@string/tv23"
+            android:text="@string/signup_join"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv21" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_email_example" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
