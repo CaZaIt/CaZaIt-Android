@@ -55,4 +55,7 @@
     <string name="signup_email_example">예: kazait12@naver.com</string>
     <string name="signup_email_double_check">중복확인</string>
     <string name="signup_join">가입하기</string>
+
+    <!--Main Activity-->
+    <string name="search_bar">search</string>
 </resources>

@@ -27,7 +27,7 @@ class CafeListRVAdapter(private val list: MutableList<CafeData>):RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.cafe_item_data, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cafe_main, parent, false)
         return ListItemViewHolder(view)
     }
 
