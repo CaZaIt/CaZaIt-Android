@@ -135,7 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="39dp"
-            android:background="@drawable/round_wood_rectangle"
+            android:background="@drawable/round_coffee_rectangle"
             android:paddingLeft="78dp"
             android:paddingTop="11dp"
             android:paddingRight="78dp"

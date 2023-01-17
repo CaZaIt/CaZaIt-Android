@@ -41,7 +41,7 @@
                     android:layout_height="46dp"
                     android:layout_marginLeft="13dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/round_wood_rectangle"
+                    android:background="@drawable/round_coffee_rectangle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/iv_app_logo"
                     app:layout_constraintRight_toLeftOf="@+id/img_btn_menu"
