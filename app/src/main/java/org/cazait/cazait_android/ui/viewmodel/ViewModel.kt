@@ -1,8 +1,5 @@
 package org.cazait.cazait_android.ui.viewmodel
 
-import androidx.lifecycle.ViewModel
+import org.cazait.cazait_android.ui.base.BaseViewModel
 
-
-class ViewModel:ViewModel() {
-
-}
+class ViewModel : BaseViewModel() {}
