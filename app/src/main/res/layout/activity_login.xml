@@ -97,7 +97,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
-
         <TextView
             android:id="@+id/tv_login_find_password"
             android:layout_width="wrap_content"
@@ -141,7 +140,7 @@
             android:paddingRight="78dp"
             android:paddingBottom="11dp"
             android:text="@string/login_login_doing"
-            android:textColor="@color/white"
+            android:textColor="@color/cazait_white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

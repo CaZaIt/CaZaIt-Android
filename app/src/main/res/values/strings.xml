@@ -58,4 +58,8 @@
 
     <!--Main Activity-->
     <string name="search_bar">search</string>
+
+    <!--Filters-->
+    <string name="filter_congestion_order">혼잡도순</string>
+    <string name="filter_distance_order">거리순</string>
 </resources>

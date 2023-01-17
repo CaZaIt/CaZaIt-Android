@@ -20,11 +20,6 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeInfoViewModel
     override fun initView() {
         val list: ArrayList<CafeData> = viewModel.dataList
         Log.e("FirstFragment", "Data List:$list")
-
-        dataRVAdapter = CafeListRVAdapter(list)
-        binding.listView.layoutManager =
-            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        binding.listView.adapter = dataRVAdapter
     }
 
     override fun initAfterBinding() {
@@ -32,27 +27,4 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeInfoViewModel
 
     override fun initBeforeBinding() {
     }
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())
-//            .get(ViewModel::class.java)
-//
-//        viewBinding = FragmentCafeListBinding.inflate(inflater, container, false)
-//        return viewBinding.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        val list: ArrayList<CafeData> = viewModel.dataList
-//        Log.e("FirstFragment", "Data List:$list")
-//
-//        dataRVAdapter = CafeListRVAdapter(list)
-//        viewBinding.listView.layoutManager =
-//            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-//        viewBinding.listView.adapter = dataRVAdapter
-//    }
 }
