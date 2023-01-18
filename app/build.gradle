@@ -59,6 +59,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.databinding:databinding-runtime:7.4.0'
+    implementation 'com.android.car.ui:car-ui-lib:2.0.0'
     androidTestImplementation "androidx.arch.core:core-testing:$arch_version"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
     implementation 'androidx.fragment:fragment-ktx:1.5.5'

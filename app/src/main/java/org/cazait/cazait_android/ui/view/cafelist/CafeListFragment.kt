@@ -1,8 +1,6 @@
 package org.cazait.cazait_android.ui.view.cafelist
 
 import MarginItemDecoration
-import android.content.Context
-import android.util.DisplayMetrics
 import android.util.Log
 import androidx.fragment.app.viewModels
 import org.cazait.cazait_android.R
