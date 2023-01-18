@@ -73,7 +73,7 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
 
-    //viewpager2
+    // viewpager2
     implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
 
     // koin
