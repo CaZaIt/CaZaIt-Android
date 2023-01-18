@@ -10,29 +10,31 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.model.domain.Affirmation
+import org.cazait.cazait_android.data.model.domain.CafeState
+import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 
 class CafeListItemAdapter(
     private val context: Context,
-    private val dataset: List<Affirmation>
+    private val dataset: List<CafeState>
 ) : RecyclerView.Adapter<CafeListItemAdapter.ItemViewHolder>() {
 
-    inner class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.tv_cafe_name)
-        val imageView: ImageView = view.findViewById(R.id.iv_cafe_landscape)
+    inner class ItemViewHolder(val binding: ItemCafeMainBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: CafeState) {
+            binding.cafeState = item
+        }
     }
 
     override fun getItemCount() = dataset.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_cafe_main, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val listItemBinding = ItemCafeMainBinding
+            .inflate(inflater, parent, false)
 
-        return ItemViewHolder(adapterLayout)
+        return ItemViewHolder(listItemBinding)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = dataset[position]
-        holder.textView.text = context.resources.getString(item.stringResourceId)
-        holder.imageView.setImageResource(item.imageResourceId)
+        holder.bind(dataset[position])
     }
 }

@@ -18,17 +18,21 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeInfoViewModel
         get() = R.layout.fragment_cafe_list
 
     override fun initView() {
-        val dataset = Datasource().loadAffirmations()
-        val spaceDecoration = MarginItemDecoration(resources.getDimension(R.dimen.cafe_item_space).roundToInt())
-        val recyclerView = binding.rvCafeList
-        recyclerView.addItemDecoration(spaceDecoration)
-        recyclerView.adapter = CafeListItemAdapter(requireContext(), dataset)
-        Log.e("FirstFragment", "Data List:$dataset")
+        initRecyclerView()
     }
 
     override fun initAfterBinding() {
     }
 
     override fun initBeforeBinding() {
+    }
+
+    private fun initRecyclerView() {
+        val dataset = Datasource().loadAffirmations()
+        val spaceDecoration = MarginItemDecoration(resources.getDimension(R.dimen.cafe_item_space).roundToInt())
+        val recyclerView = binding.rvCafeList
+
+        recyclerView.addItemDecoration(spaceDecoration)
+        recyclerView.adapter = CafeListItemAdapter(requireContext(), dataset)
     }
 }
