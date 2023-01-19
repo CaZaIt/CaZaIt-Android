@@ -7,6 +7,7 @@ import org.cazait.cazait_android.databinding.ActivityMainBinding
 import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.util.extension.replace
 import org.cazait.cazait_android.ui.view.cafelist.CafeListFragment
+import org.cazait.cazait_android.ui.view.mypage.MyPageFragment
 import org.cazait.cazait_android.ui.viewmodel.MainViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
@@ -15,6 +16,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val viewModel: MainViewModel by viewModels()
 
     private val cafeListFragment: CafeListFragment by lazy { CafeListFragment() }
+    private val myPageFragment: MyPageFragment by lazy { MyPageFragment() }
+//    private val moreFragment: PlusFragment by lazy { PlusFragment() }
 
     override fun initAfterBinding() {
     }
@@ -33,6 +36,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     replaceCafeListFragment()
                     return@setOnItemSelectedListener true
                 }
+                R.id.menu_my_page -> {
+                    replaceMyPageFragment()
+                    return@setOnItemSelectedListener true
+                }
+//                R.id.menu_plus -> {
+//                    replacePlusFragment()
+//                    return@setOnItemSelectedListener true
+//                }
                 else -> return@setOnItemSelectedListener false
             }
         }
@@ -41,5 +52,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private fun replaceCafeListFragment() {
         supportFragmentManager.popBackStack()
         replace(R.id.container_main, cafeListFragment)
+    }
+
+    private fun replaceMyPageFragment() {
+        supportFragmentManager.popBackStack()
+        replace(R.id.container_main, myPageFragment)
     }
 }

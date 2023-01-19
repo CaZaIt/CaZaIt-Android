@@ -31,7 +31,8 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_guid_login"
             app:layout_constraintStart_toEndOf="@id/tv_guid_login"
             app:layout_constraintTop_toTopOf="@id/tv_guid_login"
-            app:srcCompat="@drawable/image_my_page_login" />
+            app:srcCompat="@drawable/image_my_page_login"
+            android:contentDescription="@null" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_pay"
@@ -119,7 +120,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/tv_payment_history"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_credit_card" />
+                    app:srcCompat="@drawable/ic_credit_card"
+                    android:contentDescription="@null" />
 
                 <TextView
                     android:id="@+id/tv_payment_history"
@@ -140,7 +142,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front" />
+                    app:srcCompat="@drawable/arrow_front"
+                    android:contentDescription="@null" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -163,7 +166,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/tv_interest_store"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_interest_store" />
+                    app:srcCompat="@drawable/ic_interest_store"
+                    android:contentDescription="@null" />
 
                 <TextView
                     android:id="@+id/tv_interest_store"
@@ -184,7 +188,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front" />
+                    app:srcCompat="@drawable/arrow_front"
+                    android:contentDescription="@null" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -207,7 +212,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/tv_recent_view_store"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_credit_card" />
+                    app:srcCompat="@drawable/ic_credit_card"
+                    android:contentDescription="@null" />
 
                 <TextView
                     android:id="@+id/tv_recent_view_store"
@@ -228,7 +234,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front" />
+                    app:srcCompat="@drawable/arrow_front"
+                    android:contentDescription="@null" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -251,7 +258,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/tv_coupon"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_credit_card" />
+                    app:srcCompat="@drawable/ic_credit_card"
+                    android:contentDescription="@null" />
 
                 <TextView
                     android:id="@+id/tv_coupon"
@@ -272,7 +280,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front" />
+                    app:srcCompat="@drawable/arrow_front"
+                    android:contentDescription="@null" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View

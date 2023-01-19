@@ -62,4 +62,9 @@
     <!--Filters-->
     <string name="filter_congestion_order">혼잡도순</string>
     <string name="filter_distance_order">거리순</string>
+
+    <!--Test Message-->
+    <string name="test_msg1">it is test message 1</string>
+    <string name="test_msg2">it is test message 2</string>
+
 </resources>

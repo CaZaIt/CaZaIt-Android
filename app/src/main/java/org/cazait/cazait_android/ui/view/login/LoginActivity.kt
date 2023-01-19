@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.ui.view.signup.SignupActivity
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
-import org.cazait.cazait_android.ui.view.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     private val binding: ActivityLoginBinding by lazy {
