@@ -1,15 +1,9 @@
 package org.cazait.cazait_android.ui.adapter
 
 import android.content.Context
-import android.graphics.Rect
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.cazait.cazait_android.R
-import org.cazait.cazait_android.data.model.domain.Affirmation
 import org.cazait.cazait_android.data.model.domain.CafeState
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 

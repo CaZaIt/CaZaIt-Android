@@ -32,7 +32,8 @@
             android:layout_marginBottom="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arrow_back" />
+            app:srcCompat="@drawable/arrow_back"
+            android:contentDescription="@null" />
 
         <TextView
             android:id="@+id/tv_signup_enrollment"
