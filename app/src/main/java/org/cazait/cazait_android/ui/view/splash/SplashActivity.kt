@@ -1,18 +1,18 @@
-package org.cazait.cazait_android
+package org.cazait.cazait_android.ui.view.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
-import org.cazait.cazait_android.databinding.ActivityLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
+import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.ActivitySplashBinding
-import org.cazait.cazait_android.ui.view.MainActivity
 import org.cazait.cazait_android.ui.view.login.LoginActivity
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private val binding: ActivitySplashBinding by lazy {
         DataBindingUtil.setContentView(

@@ -29,7 +29,7 @@ class CafeData2(
     }
 }
 
-class MainViewModel:BaseViewModel() {
+class MainViewModel : BaseViewModel() {
     var dataList: ArrayList<CafeData> = arrayListOf(
         CafeData(
 //            "${R.drawable.cafeimg1}",

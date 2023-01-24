@@ -67,4 +67,10 @@
     <string name="test_msg1">it is test message 1</string>
     <string name="test_msg2">it is test message 2</string>
 
+    <!--Error Message-->
+    <string name="no_internet">인터넷 연결을 확인해 주세요</string>
+    <string name="network_error">네트워크 에러, 다시 시도해 주세요</string>
+    <string name="invalid_user_name">적절하지 않은 이름입니다</string>
+    <string name="invalid_password">적절하지 않은 암호입니다</string>
+    <string name="invalid_user_name_and_password">이름 또는 암호를 다시 확인해 주세요</string>
 </resources>

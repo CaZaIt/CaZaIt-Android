@@ -1,11 +1,13 @@
 package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.FragmentCafeLocTransBinding
 import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
 
+@AndroidEntryPoint
 class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_loc_trans

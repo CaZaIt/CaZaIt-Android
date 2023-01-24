@@ -3,6 +3,7 @@ package org.cazait.cazait_android.ui.view.cafelist
 import MarginItemDecoration
 import android.util.Log
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Datasource
 import org.cazait.cazait_android.databinding.FragmentCafeListBinding
@@ -11,6 +12,7 @@ import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
 import kotlin.math.roundToInt
 
+@AndroidEntryPoint
 class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeInfoViewModel>() {
     override val viewModel: CafeInfoViewModel by viewModels()
 

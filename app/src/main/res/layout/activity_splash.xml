@@ -7,7 +7,7 @@
 
         <variable
             name="start"
-            type="org.cazait.cazait_android.SplashActivity" />
+            type="org.cazait.cazait_android.ui.view.splash.SplashActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/beige"
         android:orientation="vertical"
-        tools:context=".SplashActivity">
+        tools:context=".ui.view.splash.SplashActivity">
 
         <ImageView
             android:id="@+id/iv_splash_logo"

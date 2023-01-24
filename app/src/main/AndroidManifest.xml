@@ -49,7 +49,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.view.splash.SplashActivity"
             android:exported="false">
 
 

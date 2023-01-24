@@ -1,36 +1,53 @@
+buildscript {
+    ext {
+        //kotlin version
+        kotlin_version = '1.8.0'
+
+        //material
+        material_version = '1.8.0-rc01'
+
+        //retrofit
+        retrofit_version = '2.9.0'
+
+        //okhttp
+        okHttp_version = '5.0.0-alpha.11'
+
+        // koin
+        koin_version = '3.3.2'
+        koin_android_version = '3.3.2'
+        koin_android_compose_version = '3.4.1'
+        koin_ktor = "3.2.2"
+
+        //room
+        room_version = '2.5.0'
+
+        //viewpager2
+        viewpager2_version = "1.0.0"
+
+        //lifecycle version
+        lifecycle_version = '2.5.1'
+        arch_version = "2.1.0"
+
+        // hilt version
+        hiltVersion = '2.44.2'
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
+    }
+}
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '7.4.0' apply false
-    id 'com.android.library' version '7.4.0' apply false
-    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+    id("com.android.application") version '7.4.0' apply false
+    id("com.android.library") version '7.4.0' apply false
+    id("org.jetbrains.kotlin.android") version '1.7.20' apply false
+    id("com.google.dagger.hilt.android") version "2.44" apply false
+
 }
 
-ext {
-    //kotlin version
-    kotlin_version = '1.8.0'
 
-    //material
-    material_version = '1.8.0-rc01'
 
-    //retrofit
-    retrofit_version = '2.9.0'
-
-    //okhttp
-    okHttp_version = '5.0.0-alpha.11'
-
-    // koin
-    koin_version= '3.3.2'
-    koin_android_version= '3.3.2'
-    koin_android_compose_version= '3.4.1'
-    koin_ktor= "3.2.2"
-
-    //room
-    room_version = '2.5.0'
-
-    //viewpager2
-    viewpager2_version = "1.0.0"
-
-    //lifecycle version
-    lifecycle_version = '2.5.1'
-    arch_version = "2.1.0"
-}

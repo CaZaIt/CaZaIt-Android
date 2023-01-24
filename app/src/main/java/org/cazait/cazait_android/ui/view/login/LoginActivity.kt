@@ -4,10 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.ui.view.signup.SignupActivity
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private val binding: ActivityLoginBinding by lazy {
         DataBindingUtil.setContentView(
