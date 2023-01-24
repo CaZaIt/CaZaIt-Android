@@ -117,6 +117,11 @@ dependencies {
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
+    //naver maps
+    implementation "com.naver.maps:map-sdk:$naver_map_version"
+    //location request
+    implementation "com.google.android.gms:play-services-location:$fused_location_provider_client_version"
+
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.9.0-alpha01'

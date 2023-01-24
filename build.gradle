@@ -30,6 +30,11 @@ buildscript {
 
         // hilt version
         hiltVersion = '2.44.2'
+
+        //naver-map version
+        naver_map_version = '3.14.0'
+        //location request
+        fused_location_provider_client_version = '17.0.0'
     }
     repositories {
         google()
