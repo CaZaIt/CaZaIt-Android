@@ -77,7 +77,7 @@
                         android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@color/cazait_white"
+                        android:background="@color/cazait_coffee"
                         android:baselineAligned="false"
                         android:gravity="center"
                         android:orientation="horizontal"
