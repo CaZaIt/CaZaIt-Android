@@ -160,7 +160,9 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                        android:name="org.cazait.cazait_android.ui.view.cafelist.info.inner.CafeMenuFragment"
+                        tools:layout="@layout/fragment_cafe_menu" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
