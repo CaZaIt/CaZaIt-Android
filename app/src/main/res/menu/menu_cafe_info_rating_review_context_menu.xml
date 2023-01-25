@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/filter_recent"
+        android:title="@string/cafe_info_rating_review_filter1" />
+    <item
+        android:id="@+id/filter_high_star"
+        android:title="@string/cafe_info_rating_review_filter2" />
+
+</menu>
