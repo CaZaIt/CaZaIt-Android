@@ -77,11 +77,13 @@
                         android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@color/cazait_coffee"
+                        android:background="@color/cazait_white"
                         android:baselineAligned="false"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:weightSum="3"
+                        android:paddingStart="18.32dp"
+                        android:paddingEnd="18.32dp"
                         app:layout_constraintBottom_toTopOf="@id/cafe_info_frag_con"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -94,9 +96,8 @@
 
                             <Button
                                 android:id="@+id/btn_cafe_menu"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="40dp"
-                                android:layout_marginStart="18.32dp"
                                 android:background="@drawable/selector_btn_click"
                                 android:stateListAnimator="@null"
                                 android:text="@string/menu_cafe_info_cafe_info"
@@ -105,7 +106,8 @@
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,7 +117,7 @@
 
                             <Button
                                 android:id="@+id/btn_cafe_loc_trans"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="40dp"
                                 android:background="@drawable/selector_btn_click"
                                 android:stateListAnimator="@null"
@@ -126,7 +128,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -136,9 +138,8 @@
 
                             <Button
                                 android:id="@+id/btn_cafe_rating_review"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="40dp"
-                                android:layout_marginEnd="18.32dp"
                                 android:background="@drawable/selector_btn_click"
                                 android:stateListAnimator="@null"
                                 android:text="@string/menu_cafe_info_rating_review"
@@ -148,9 +149,8 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
-
                     </LinearLayout>
 
                     <androidx.fragment.app.FragmentContainerView
@@ -175,7 +175,8 @@
             android:backgroundTint="@color/rating_review_edit"
             android:src="@drawable/cafe_info_rating_review_edit"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@null" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -37,6 +37,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         if (supportActionBar != null) {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
+
         binding.fabReviewWrite.hide()
 
         binding.btnCafeMenu.setSelected(true)
