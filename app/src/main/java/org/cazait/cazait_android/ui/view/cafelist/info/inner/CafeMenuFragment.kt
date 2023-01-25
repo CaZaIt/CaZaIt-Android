@@ -1,18 +1,21 @@
 package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
 import androidx.fragment.app.viewModels
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.FragmentCafeMenuBinding
+import org.cazait.cazait_android.ui.adapter.CafeInfoMenuRVAdapter
 import org.cazait.cazait_android.ui.base.BaseFragment
-import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
+import org.cazait.cazait_android.ui.viewmodel.CafeInfoMenuViewModel
+import org.cazait.cazait_android.ui.viewmodel.MenuData
 
-@AndroidEntryPoint
-class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoViewModel>() {
+class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_menu
 
-    override val viewModel: CafeInfoViewModel by viewModels()
+    override val viewModel: CafeInfoMenuViewModel by viewModels()
+    private lateinit var menuRVAdapter: CafeInfoMenuRVAdapter
 
     override fun initAfterBinding() {
     }
@@ -21,5 +24,9 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoViewModel
     }
 
     override fun initView() {
+        val list: ArrayList<MenuData> = viewModel.menuList
+        menuRVAdapter = CafeInfoMenuRVAdapter(list)
+        binding.cafeInfoListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.cafeInfoListView.adapter = menuRVAdapter
     }
 }
