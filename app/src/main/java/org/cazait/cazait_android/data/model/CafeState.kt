@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.data.model.domain
+package org.cazait.cazait_android.data.model
 
 data class CafeState(
     val name: String,

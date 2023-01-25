@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.cazait.cazait_android.data.model.domain.CafeState
+import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 
 class CafeListItemAdapter(
