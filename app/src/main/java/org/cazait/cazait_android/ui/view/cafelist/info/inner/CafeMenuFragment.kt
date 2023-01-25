@@ -28,7 +28,8 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewM
     override fun initView() {
         val list: ArrayList<MenuData> = viewModel.menuList
         menuRVAdapter = CafeInfoMenuRVAdapter(list)
-        binding.cafeInfoListView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.cafeInfoListView.layoutManager =
+            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         binding.cafeInfoListView.adapter = menuRVAdapter
     }
 }

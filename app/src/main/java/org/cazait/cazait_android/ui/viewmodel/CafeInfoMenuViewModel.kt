@@ -18,6 +18,7 @@ class MenuData(
         return menuPrice
     }
 }
+
 class CafeInfoMenuViewModel : BaseViewModel() {
     var menuList: ArrayList<MenuData> = arrayListOf(
         MenuData(

@@ -16,7 +16,8 @@ import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
 
 @AndroidEntryPoint
-class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoViewModel>(), OnMapReadyCallback {
+class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoViewModel>(),
+    OnMapReadyCallback {
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_loc_trans
 
@@ -39,7 +40,7 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
     override fun initView() {
         // MapFragment 객체 초기화, fragment 객체 열기
         val mapFragment = childFragmentManager.findFragmentById(R.id.naver_map) as MapFragment?
-            ?: MapFragment.newInstance().also{
+            ?: MapFragment.newInstance().also {
                 childFragmentManager.beginTransaction().add(R.id.naver_map, it).commit()
             }
         // 인터페이스 역할을 하는 NaverMap 객체 얻기
