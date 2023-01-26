@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="111dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/review_star_1"
+            android:layout_width="25.62dp"
+            android:layout_height="25.62dp"
+            android:layout_marginStart="15.81dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/cafe_info_rating_review_star_empty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/review_star_2"
+            android:layout_width="25.62dp"
+            android:layout_height="25.62dp"
+            android:layout_marginStart="2.27dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/cafe_info_rating_review_star_empty"
+            app:layout_constraintStart_toEndOf="@+id/review_star_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/review_star_3"
+            android:layout_width="25.62dp"
+            android:layout_height="25.62dp"
+            android:layout_marginStart="2.27dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/cafe_info_rating_review_star_empty"
+            app:layout_constraintStart_toEndOf="@+id/review_star_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/review_star_4"
+            android:layout_width="25.62dp"
+            android:layout_height="25.62dp"
+            android:layout_marginStart="2.27dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/cafe_info_rating_review_star_empty"
+            app:layout_constraintStart_toEndOf="@+id/review_star_3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/review_star_5"
+            android:layout_width="25.62dp"
+            android:layout_height="25.62dp"
+            android:layout_marginStart="2.27dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/cafe_info_rating_review_star_empty"
+            app:layout_constraintStart_toEndOf="@+id/review_star_4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_town"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18.45dp"
+            android:layout_marginTop="41dp"
+            android:text="@string/cafe_info_review_town"
+            android:textColor="@color/cazait_black"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="41dp"
+            android:text="@string/cafe_info_review_nickname"
+            android:textColor="@color/cazait_black"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tv_town"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_devide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="41dp"
+            android:text="|"
+            android:textColor="@color/cazait_black"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv_nickname"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="41dp"
+            android:text="@string/cafe_info_review_time"
+            android:textColor="@color/cazait_black"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv_devide"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_main_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="70dp"
+            android:text="@string/cafe_info_review_main"
+            android:textColor="@color/cazait_black"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

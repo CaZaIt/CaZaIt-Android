@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- naver maps -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".CaZaItApplication"
@@ -15,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CaZaItAndroid"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.view.cafelist.info.inner.CafeRatingReviewEdit"
+            android:exported="false" />
         <activity
             android:name=".ui.view.login.LoginActivity"
             android:exported="false">
@@ -46,7 +51,7 @@
         </activity>
         <activity
             android:name=".ui.view.splash.SplashActivity"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +60,10 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
+        </activity> <!-- naver maps -->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="in3py506i4" />
     </application>
 
 </manifest>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="cazait_coffee">#8D6060</color>
+    <color name="cazait_coffee">#7D5B51</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
@@ -24,4 +24,11 @@
     <color name="gray">#B5B5B5</color>
     <color name="wood">#8D6060</color>
     <color name="darkgray">#757575</color>
+
+    <!-- cafe information activity-->
+    <color name="rating_review_edit">#5D2424</color>
+    <color name="rating_review_filter">#8D6060</color>
+    <color name="cafe_information_menu">#F1F1EF</color>
+    <color name="base_cafe_info_color">#F5F5F5</color>
+    <color name="cafe_price">#FF0000</color>
 </resources>

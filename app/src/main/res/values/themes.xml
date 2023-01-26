@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CaZaItAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.CaZaItAndroid" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/cazait_coffee</item>
         <item name="colorPrimaryVariant">@color/cazait_beige</item>
