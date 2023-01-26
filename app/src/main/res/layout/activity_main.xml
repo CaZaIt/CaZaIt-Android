@@ -23,7 +23,7 @@
             android:id="@+id/bnv_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/cazait_white"
+            android:background="@color/cazait_coffee"
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
