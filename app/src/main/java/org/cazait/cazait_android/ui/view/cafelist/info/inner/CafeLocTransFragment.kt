@@ -74,7 +74,6 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
     override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap
 
-
         naverMap.locationSource = locationSource
         naverMap.uiSettings.isLocationButtonEnabled = true
 
