@@ -5,7 +5,7 @@
     <data>
         <variable
             name="back"
-            type="org.cazait.cazait_android.ui.view.signup.SignupActivity" />
+            type="org.cazait.cazait_android.ui.view.signup.SignUpActivity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

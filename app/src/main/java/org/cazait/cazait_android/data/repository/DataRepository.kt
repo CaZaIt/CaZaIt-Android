@@ -4,8 +4,8 @@ import kotlinx.coroutines.flow.Flow
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.dto.login.LoginRequest
 import org.cazait.cazait_android.data.dto.login.LoginResponse
-import org.cazait.cazait_android.data.model.domain.local.LocalData
-import org.cazait.cazait_android.data.model.domain.remote.RemoteData
+import org.cazait.cazait_android.data.model.local.LocalData
+import org.cazait.cazait_android.data.model.remote.RemoteData
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
