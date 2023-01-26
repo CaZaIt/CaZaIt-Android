@@ -8,7 +8,7 @@
 
         <variable
             name="cafeState"
-            type="org.cazait.cazait_android.data.model.domain.CafeState" />
+            type="org.cazait.cazait_android.data.model.CafeState" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

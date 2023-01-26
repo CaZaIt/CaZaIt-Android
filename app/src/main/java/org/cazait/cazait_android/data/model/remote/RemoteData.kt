@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.data.model.domain.remote
+package org.cazait.cazait_android.data.model.remote
 
 import org.cazait.cazait_android.network.NetworkConnectivity
 import javax.inject.Inject

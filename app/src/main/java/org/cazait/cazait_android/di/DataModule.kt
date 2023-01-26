@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.di.module
+package org.cazait.cazait_android.di
 
 import dagger.Binds
 import dagger.Module

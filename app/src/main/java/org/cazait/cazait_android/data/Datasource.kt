@@ -1,8 +1,6 @@
 package org.cazait.cazait_android.data
 
-import org.cazait.cazait_android.R
-import org.cazait.cazait_android.data.model.domain.Affirmation
-import org.cazait.cazait_android.data.model.domain.CafeState
+import org.cazait.cazait_android.data.model.CafeState
 
 class Datasource {
     fun loadAffirmations(): List<CafeState> {

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
@@ -29,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
         val sideAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_iv)
         backgroundImg.startAnimation(sideAnimation)
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val start = Intent(this, LoginActivity::class.java)
             startActivity(start)
 

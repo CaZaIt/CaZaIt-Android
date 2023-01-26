@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.data.model.domain.local
+package org.cazait.cazait_android.data.model.local
 
 import android.content.Context
 import org.cazait.cazait_android.data.Resource
