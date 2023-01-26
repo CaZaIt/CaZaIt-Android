@@ -6,8 +6,9 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
-import org.cazait.cazait_android.ui.view.signup.SignupActivity
+import org.cazait.cazait_android.ui.view.signup.SignUpActivity
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
+import org.cazait.cazait_android.ui.view.MainActivity
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -22,8 +23,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding.tvLoginSignup.setOnClickListener {
-            val next = Intent(this, SignupActivity::class.java)
+            val next = Intent(this, SignUpActivity::class.java)
             startActivity(next)
+        }
+
+        binding.tvLoginDoing.setOnClickListener {
+            val next = Intent(this, MainActivity::class.java)
+            startActivity(next)
+            finish()
         }
     }
 }
