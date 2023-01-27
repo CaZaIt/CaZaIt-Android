@@ -1,6 +1,8 @@
 package org.cazait.cazait_android.ui.view.cafelist.info
 
 import android.content.Intent
+import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -67,7 +69,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         )
 
         binding.fabReviewWrite.setOnClickListener {
-            val intent=Intent(this,CafeRatingReviewEdit::class.java)
+            val intent = Intent(this, CafeRatingReviewEdit::class.java)
             startActivity(intent)
         }
     }
@@ -112,5 +114,16 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     override fun onTouch() {
         binding.cafeInfoFragCon.requestDisallowInterceptTouchEvent(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                Log.d("Toolbar_item", "뒤로가기 클릭")
+                finish()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 }
