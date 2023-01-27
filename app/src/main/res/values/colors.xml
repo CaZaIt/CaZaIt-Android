@@ -8,7 +8,10 @@
     <color name="cazait_black">#FF000000</color>
     <color name="cazait_white">#FFFFFFFF</color>
     <color name="cazait_beige">#FAF0DD</color>
-
+    <color name="cazait_choco">#5D2424</color>
+    <color name="cazait_latte_beige">#E5D3CB</color>
+    <color name="cazait_foam_white">#F1F1EF</color>
+    <color name="cazait_base_color_f5">#F5F5F5</color>
 
     <!--    cazait color-->
     <color name="cafeInfoTabBack">#8D6060</color>
@@ -25,6 +28,11 @@
     <color name="wood">#8D6060</color>
     <color name="darkgray">#757575</color>
 
+    <!-- cafe list fragment-->
+    <color name="cafe_list_item_normal">#533329</color>
+    <color name="cafe_list_item_great_congestion">#EF1C1C</color>
+    <color name="cafe_list_item_free">#34A3F2</color>
+    
     <!-- cafe information activity-->
     <color name="rating_review_edit">#5D2424</color>
     <color name="rating_review_filter">#8D6060</color>
