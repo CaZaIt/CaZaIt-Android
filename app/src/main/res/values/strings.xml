@@ -110,7 +110,7 @@
     <string name="my_page_coupon">쿠폰</string>
 
     <!--View More-->
-    <string name="view_more_title">더 보기</string>
+    <string name="view_more_title">더보기</string>
     <string name="view_more_notification">공지사항</string>
     <string name="view_more_app_settings">앱 설정</string>
     <string name="view_more_customer_service">고객센터</string>
