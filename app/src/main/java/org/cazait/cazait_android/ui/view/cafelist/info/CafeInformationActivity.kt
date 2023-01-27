@@ -69,7 +69,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         )
 
         binding.fabReviewWrite.setOnClickListener {
-            val intent = Intent(this, CafeRatingReviewEdit::class.java)
+            val intent = Intent(this, CafeRatingReviewEditActivity::class.java)
             startActivity(intent)
         }
     }

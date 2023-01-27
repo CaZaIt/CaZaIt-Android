@@ -9,7 +9,7 @@ import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.view.cafelist.info.CafeInformationActivity
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoReviewViewModel
 
-class CafeRatingReviewEdit :
+class CafeRatingReviewEditActivity :
     BaseActivity<ActivityCafeRatingReviewEditBinding, CafeInfoReviewViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_cafe_rating_review_edit
