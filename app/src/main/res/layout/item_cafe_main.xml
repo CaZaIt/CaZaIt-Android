@@ -52,7 +52,7 @@
                     android:text="@{cafeState.name, default=카페}"
                     android:textColor="@color/cazait_black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,6 +64,7 @@
                     android:text="@{cafeState.distance + 'm', default=1024}"
                     android:textColor="@color/cazait_black"
                     android:textSize="12sp"
+                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
                     app:layout_constraintStart_toEndOf="@+id/tv_cafe_name" />
 
@@ -75,7 +76,7 @@
                     android:text="@{cafeState.address, default=addressaddressaddress}"
                     android:textColor="@color/cazait_black"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintStart_toStartOf="@+id/tv_cafe_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_cafe_name" />
 
@@ -92,6 +93,8 @@
                     android:gravity="center"
                     android:minHeight="38dp"
                     android:text="@{cafeState.state, default=보통}"
+                    android:textColor="@color/cafe_list_item_normal"
+                    android:fontFamily="@font/roboto_bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
