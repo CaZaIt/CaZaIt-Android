@@ -6,42 +6,43 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cazait_beige"
+        android:background="@color/cazait_base_color_f5"
         tools:context=".ui.view.mypage.MyPageFragment">
 
         <TextView
             android:id="@+id/tv_guid_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="39dp"
-            android:layout_marginTop="105dp"
-            android:text="로그인 하세요"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/my_page_do_login"
+            android:textColor="@color/cazait_choco"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/wood"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:contentDescription="@null"
             app:layout_constraintBottom_toBottomOf="@id/tv_guid_login"
             app:layout_constraintStart_toEndOf="@id/tv_guid_login"
             app:layout_constraintTop_toTopOf="@id/tv_guid_login"
-            app:srcCompat="@drawable/image_my_page_login"
-            android:contentDescription="@null" />
+            app:srcCompat="@drawable/arrow_circle_right" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_pay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="9dp"
             android:layout_marginEnd="28dp"
-            android:background="@drawable/round_coffee_rectangle"
+            android:background="@drawable/round_latte_beige_rectangle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_guid_login">
@@ -50,12 +51,12 @@
                 android:id="@+id/tv_cazait_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="17dp"
                 android:layout_marginTop="14dp"
-                android:text="카자잇 페이"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/my_page_cazait_pay"
+                android:textColor="@color/cazait_choco"
                 android:textSize="16sp"
-                android:textColor="@color/cazait_white"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,12 +64,12 @@
                 android:id="@+id/tv_total_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="19dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/roboto_black"
                 android:text="1,111"
+                android:textColor="@color/cazait_choco"
                 android:textSize="35sp"
-                android:textColor="@color/cazait_white"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tv_pay_unit" />
 
@@ -76,221 +77,195 @@
                 android:id="@+id/tv_pay_unit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="67dp"
-                android:layout_marginEnd="26dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="13dp"
+                android:fontFamily="@font/roboto_bold"
                 android:text="원"
+                android:textColor="@color/cazait_choco"
                 android:textSize="16sp"
-                android:textColor="@color/cazait_white"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/cl_item_list"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/iv_payment_details"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="28dp"
-            android:orientation="vertical"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="9dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toTopOf="@+id/divider2"
+            app:layout_constraintEnd_toStartOf="@+id/tv_payment_details"
+            app:layout_constraintStart_toStartOf="@+id/divider1"
+            app:layout_constraintTop_toBottomOf="@+id/divider1"
+            app:srcCompat="@drawable/ic_credit_card" />
+
+        <TextView
+            android:id="@+id/tv_payment_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/my_page_payment_details"
+            android:textColor="@color/cazait_black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/divider2"
+            app:layout_constraintStart_toStartOf="@+id/divider1"
+            app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+        <ImageView
+            android:id="@+id/my_page_arrow_front1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="11dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toTopOf="@+id/divider2"
+            app:layout_constraintEnd_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toBottomOf="@+id/divider1"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/arrow_front" />
+
+        <ImageView
+            android:id="@+id/my_page_arrow_front2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="11dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toTopOf="@+id/divider3"
+            app:layout_constraintEnd_toEndOf="@+id/divider2"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/arrow_front" />
+
+        <TextView
+            android:id="@+id/tv_recent_view_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/my_page_recent_view"
+            android:textColor="@color/cazait_black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/divider3"
+            app:layout_constraintStart_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+        <ImageView
+            android:id="@+id/iv_recent_view_store"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="9dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toTopOf="@+id/divider3"
+            app:layout_constraintEnd_toStartOf="@+id/tv_recent_view_store"
+            app:layout_constraintStart_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/ic_interest_store" />
+
+        <ImageView
+            android:id="@+id/iv_coupon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="9dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintEnd_toStartOf="@+id/tv_coupon"
+            app:layout_constraintStart_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/divider3"
+            app:srcCompat="@drawable/ic_coupon" />
+
+        <ImageView
+            android:id="@+id/my_page_arrow_front3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="11dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintEnd_toEndOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/divider3"
+            app:srcCompat="@drawable/arrow_front" />
+
+        <TextView
+            android:id="@+id/tv_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/my_page_coupon"
+            android:textColor="@color/cazait_black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintStart_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="23dp"
+            android:background="@color/cazait_coffee"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_pay">
+            app:layout_constraintTop_toBottomOf="@+id/cl_pay" />
 
-            <View
-                android:id="@+id/divider1"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/cazait_coffee" />
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="23dp"
+            android:background="@color/cazait_coffee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider1" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="23dp"
+            android:background="@color/cazait_coffee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-                <ImageView
-                    android:id="@+id/iv_payment_history"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="19dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_payment_history"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_credit_card"
-                    android:contentDescription="@null" />
-
-                <TextView
-                    android:id="@+id/tv_payment_history"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:text="결제 내역"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="2dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front"
-                    android:contentDescription="@null" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/cazait_coffee" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/iv_interest_store"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="19dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_interest_store"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_interest_store"
-                    android:contentDescription="@null" />
-
-                <TextView
-                    android:id="@+id/tv_interest_store"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:text="관심 매장"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="2dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front"
-                    android:contentDescription="@null" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/divider3"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/cazait_coffee" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/iv_recent_view_store"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="19dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_recent_view_store"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_credit_card"
-                    android:contentDescription="@null" />
-
-                <TextView
-                    android:id="@+id/tv_recent_view_store"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:text="최근 본 매장"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="2dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front"
-                    android:contentDescription="@null" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/divider4"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/cazait_coffee" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/iv_coupon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="19dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_coupon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_credit_card"
-                    android:contentDescription="@null" />
-
-                <TextView
-                    android:id="@+id/tv_coupon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:text="쿠폰"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="2dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/arrow_front"
-                    android:contentDescription="@null" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/divider5"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/cazait_coffee" />
-
-        </LinearLayout>
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="23dp"
+            android:background="@color/cazait_coffee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

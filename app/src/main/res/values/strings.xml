@@ -101,4 +101,11 @@
     <string name="reivew_edit_toolbar_title">리뷰쓰기</string>
     <string name="review_edit_star_request">카페는 어떠셨나요? 별점을 남겨주세요.</string>
     <string name="review_edit_text_request">다른 이용자를 위해 카페 리뷰를 남겨주세요.</string>
+
+    <!--My Page-->
+    <string name="my_page_do_login">로그인 하세요</string>
+    <string name="my_page_cazait_pay">카자잇 페이</string>
+    <string name="my_page_payment_details">결제 내역</string>
+    <string name="my_page_recent_view">최근 본 매장</string>
+    <string name="my_page_coupon">쿠폰</string>
 </resources>
