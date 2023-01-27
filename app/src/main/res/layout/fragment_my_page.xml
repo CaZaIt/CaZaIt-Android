@@ -98,10 +98,10 @@
             android:layout_marginEnd="21dp"
             android:layout_marginBottom="9dp"
             android:contentDescription="@null"
-            app:layout_constraintBottom_toTopOf="@+id/divider2"
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider2"
             app:layout_constraintEnd_toStartOf="@+id/tv_payment_details"
-            app:layout_constraintStart_toStartOf="@+id/divider1"
-            app:layout_constraintTop_toBottomOf="@+id/divider1"
+            app:layout_constraintStart_toStartOf="@+id/my_page_divider1"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider1"
             app:srcCompat="@drawable/ic_credit_card" />
 
         <TextView
@@ -115,9 +115,9 @@
             android:text="@string/my_page_payment_details"
             android:textColor="@color/cazait_black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/divider2"
-            app:layout_constraintStart_toStartOf="@+id/divider1"
-            app:layout_constraintTop_toBottomOf="@+id/divider1" />
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider2"
+            app:layout_constraintStart_toStartOf="@+id/my_page_divider1"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider1" />
 
         <ImageView
             android:id="@+id/my_page_arrow_front1"
@@ -127,9 +127,9 @@
             android:layout_marginEnd="11dp"
             android:layout_marginBottom="11dp"
             android:contentDescription="@null"
-            app:layout_constraintBottom_toTopOf="@+id/divider2"
-            app:layout_constraintEnd_toEndOf="@+id/divider1"
-            app:layout_constraintTop_toBottomOf="@+id/divider1"
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider2"
+            app:layout_constraintEnd_toEndOf="@+id/my_page_divider1"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider1"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/arrow_front" />
 
@@ -141,9 +141,9 @@
             android:layout_marginEnd="11dp"
             android:layout_marginBottom="11dp"
             android:contentDescription="@null"
-            app:layout_constraintBottom_toTopOf="@+id/divider3"
-            app:layout_constraintEnd_toEndOf="@+id/divider2"
-            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider3"
+            app:layout_constraintEnd_toEndOf="@+id/my_page_divider2"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider2"
             app:srcCompat="@drawable/arrow_front" />
 
         <TextView
@@ -157,9 +157,9 @@
             android:text="@string/my_page_recent_view"
             android:textColor="@color/cazait_black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/divider3"
-            app:layout_constraintStart_toStartOf="@+id/divider2"
-            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider3"
+            app:layout_constraintStart_toStartOf="@+id/my_page_divider2"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider2" />
 
         <ImageView
             android:id="@+id/iv_recent_view_store"
@@ -170,10 +170,10 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="9dp"
             android:contentDescription="@null"
-            app:layout_constraintBottom_toTopOf="@+id/divider3"
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider3"
             app:layout_constraintEnd_toStartOf="@+id/tv_recent_view_store"
-            app:layout_constraintStart_toStartOf="@+id/divider2"
-            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:layout_constraintStart_toStartOf="@+id/my_page_divider2"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider2"
             app:srcCompat="@drawable/ic_interest_store" />
 
         <ImageView
@@ -185,10 +185,10 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="9dp"
             android:contentDescription="@null"
-            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider4"
             app:layout_constraintEnd_toStartOf="@+id/tv_coupon"
-            app:layout_constraintStart_toStartOf="@+id/divider3"
-            app:layout_constraintTop_toBottomOf="@+id/divider3"
+            app:layout_constraintStart_toStartOf="@+id/my_page_divider3"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider3"
             app:srcCompat="@drawable/ic_coupon" />
 
         <ImageView
@@ -199,9 +199,9 @@
             android:layout_marginEnd="11dp"
             android:layout_marginBottom="11dp"
             android:contentDescription="@null"
-            app:layout_constraintBottom_toTopOf="@+id/divider4"
-            app:layout_constraintEnd_toEndOf="@+id/divider3"
-            app:layout_constraintTop_toBottomOf="@+id/divider3"
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider4"
+            app:layout_constraintEnd_toEndOf="@+id/my_page_divider3"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider3"
             app:srcCompat="@drawable/arrow_front" />
 
         <TextView
@@ -215,57 +215,57 @@
             android:text="@string/my_page_coupon"
             android:textColor="@color/cazait_black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/divider4"
-            app:layout_constraintStart_toStartOf="@+id/divider3"
-            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+            app:layout_constraintBottom_toTopOf="@+id/my_page_divider4"
+            app:layout_constraintStart_toStartOf="@+id/my_page_divider3"
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider3" />
 
         <View
-            android:id="@+id/divider1"
+            android:id="@+id/my_page_divider1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="23dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="23dp"
-            android:background="@color/cazait_coffee"
+            android:background="@color/cazait_choco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_pay" />
 
         <View
-            android:id="@+id/divider2"
+            android:id="@+id/my_page_divider2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="23dp"
-            android:layout_marginTop="49dp"
+            android:layout_marginTop="47dp"
             android:layout_marginEnd="23dp"
-            android:background="@color/cazait_coffee"
+            android:background="@color/cazait_choco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider1" />
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider1" />
 
         <View
-            android:id="@+id/divider3"
+            android:id="@+id/my_page_divider3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="23dp"
-            android:layout_marginTop="49dp"
+            android:layout_marginTop="47dp"
             android:layout_marginEnd="23dp"
-            android:background="@color/cazait_coffee"
+            android:background="@color/cazait_choco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider2" />
 
         <View
-            android:id="@+id/divider4"
+            android:id="@+id/my_page_divider4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="23dp"
-            android:layout_marginTop="49dp"
+            android:layout_marginTop="47dp"
             android:layout_marginEnd="23dp"
-            android:background="@color/cazait_coffee"
+            android:background="@color/cazait_choco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
