@@ -101,6 +101,8 @@
     <string name="reivew_edit_toolbar_title">리뷰쓰기</string>
     <string name="review_edit_star_request">카페는 어떠셨나요? 별점을 남겨주세요.</string>
     <string name="review_edit_text_request">다른 이용자를 위해 카페 리뷰를 남겨주세요.</string>
+    <string name="review_edit_hint">공백 포함 최대 50자 이내로 작성해주세요.</string>
+    <string name="review_edit_ok">작성하기</string>
 
     <!--My Page-->
     <string name="my_page_do_login">로그인 하세요</string>
