@@ -12,7 +12,8 @@ import org.cazait.cazait_android.ui.viewmodel.CafeInfoReviewViewModel
 import org.cazait.cazait_android.ui.viewmodel.ReviewData
 
 @AndroidEntryPoint
-class CafeRatingReviewFragment : BaseFragment<FragmentCafeRatingReviewBinding, CafeInfoReviewViewModel>() {
+class CafeRatingReviewFragment :
+    BaseFragment<FragmentCafeRatingReviewBinding, CafeInfoReviewViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_rating_review
 
