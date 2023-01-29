@@ -3,12 +3,14 @@ package org.cazait.cazait_android.ui.view.cafelist.info.inner
 import android.content.Intent
 import android.util.Log
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.ActivityCafeRatingReviewEditBinding
 import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.view.cafelist.info.CafeInformationActivity
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoReviewViewModel
 
+@AndroidEntryPoint
 class CafeRatingReviewEditActivity :
     BaseActivity<ActivityCafeRatingReviewEditBinding, CafeInfoReviewViewModel>() {
     override val layoutResourceId: Int

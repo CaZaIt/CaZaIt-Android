@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.FragmentCafeRatingReviewBinding
-import org.cazait.cazait_android.ui.adapter.CafeInfoReviewRVAdapter
+import org.cazait.cazait_android.ui.adapter.CafeInfoReviewAdapter
 import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoReviewViewModel
-import org.cazait.cazait_android.ui.viewmodel.ReviewData
 
 @AndroidEntryPoint
 class CafeRatingReviewFragment :
@@ -20,21 +19,18 @@ class CafeRatingReviewFragment :
         get() = R.layout.fragment_cafe_rating_review
 
     override val viewModel: CafeInfoReviewViewModel by viewModels()
-    private lateinit var reviewRVAdapter: CafeInfoReviewRVAdapter
+    private lateinit var reviewAdapter: CafeInfoReviewAdapter
 
     override fun initAfterBinding() {
+        observeReviewListData()
     }
 
     override fun initBeforeBinding() {
+        binding.lifecycleOwner = this
     }
 
     override fun initView() {
-        val list: ArrayList<ReviewData> = viewModel.reviewList
-
-        reviewRVAdapter = CafeInfoReviewRVAdapter(list)
-        binding.cafeInfoReviewListView.layoutManager =
-            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        binding.cafeInfoReviewListView.adapter = reviewRVAdapter
+        initRecyclerView()
 
         binding.tvFilter.setOnClickListener {
             showDialog()
@@ -54,5 +50,18 @@ class CafeRatingReviewFragment :
         }
         val alertDialog:AlertDialog = builder.create()
         alertDialog.show()
+    }
+
+    private fun initRecyclerView() {
+        reviewAdapter = CafeInfoReviewAdapter()
+        binding.cafeInfoReviewListView.layoutManager =
+            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.cafeInfoReviewListView.adapter = reviewAdapter
+    }
+
+    private fun observeReviewListData() {
+        viewModel.reviewList.observe(this){
+            reviewAdapter.data = it
+        }
     }
 }
