@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="top"
+        android:height="115dp">
+        <shape>
+            <solid android:color="@color/cazait_base_color_f5"/>
+        </shape>
+    </item>
+
+    <item
+        android:top="115dp"
+        android:gravity="bottom">
+        <shape>
+            <solid android:color="@color/cazait_latte_beige"/>
+        </shape>
+    </item>
+</layer-list>

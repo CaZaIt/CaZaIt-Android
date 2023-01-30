@@ -9,7 +9,7 @@ class TouchableWrapper(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-    private val onTouchListener: OnMapTouchListener?
+    private val onTouchListener: OnMapTouchListener? = null
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {

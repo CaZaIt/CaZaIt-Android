@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cazait_beige"
+        android:background="@drawable/cafe_list_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,23 +27,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="29dp"
+            android:layout_marginTop="113dp"
             android:layout_marginEnd="20dp"
             android:contentDescription="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sv_search"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/image_dot_line" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/sv_search"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
             android:layout_marginStart="13dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/round_coffee_rectangle"
+            android:background="@drawable/round_latte_beige_rectangle"
             app:layout_constraintEnd_toStartOf="@+id/img_btn_menu"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iv_app_logo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,7 +80,9 @@
             android:layout_marginStart="11dp"
             android:gravity="center"
             android:text="@string/filter_distance_order"
-            android:textColor="@color/cazait_black"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="17sp"
+            android:textColor="@color/cazait_choco"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/img_btn_filter"
             app:layout_constraintStart_toEndOf="@+id/img_btn_filter"

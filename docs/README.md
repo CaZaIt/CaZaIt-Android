@@ -14,13 +14,12 @@ UMC 3th Team Cazait
 cazait_android
     ├─ data
     │  ├─ api
-    │  ├─ dto
-    │  │  └─ login
     │  ├─ error
     │  │  └─ mapper
     │  ├─ model
     │  │  ├─ local
     │  │  └─ remote
+    │  │      └─ login
     │  └─ repository
     ├─ di
     ├─ network
@@ -36,7 +35,8 @@ cazait_android
     │  │  ├─ login
     │  │  ├─ mypage
     │  │  ├─ signup
-    │  │  └─ splash
+    │  │  ├─ splash
+    │  │  └─ viewmore
     │  └─ viewmodel
     └─ usecase
         └─ errors

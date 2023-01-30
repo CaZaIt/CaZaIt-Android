@@ -18,8 +18,8 @@
         android:theme="@style/Theme.CaZaItAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".ui.view.cafelist.info.inner.CafeRatingReviewEdit"
-            android:exported="false" />
+            android:name=".ui.view.cafelist.info.inner.CafeRatingReviewEditActivity"
+            android:exported="false"/>
         <activity
             android:name=".ui.view.login.LoginActivity"
             android:exported="false">
@@ -44,7 +44,6 @@
         <activity
             android:name=".ui.view.MainActivity"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

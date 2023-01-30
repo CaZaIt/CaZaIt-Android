@@ -1,5 +1,8 @@
 package org.cazait.cazait_android.ui.view.cafelist.info
 
+import android.content.Intent
+import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -8,10 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.ActivityCafeInformationBinding
 import org.cazait.cazait_android.ui.base.BaseActivity
-import org.cazait.cazait_android.ui.view.cafelist.info.inner.CafeLocTransFragment
-import org.cazait.cazait_android.ui.view.cafelist.info.inner.CafeMenuFragment
-import org.cazait.cazait_android.ui.view.cafelist.info.inner.CafeRatingReviewFragment
-import org.cazait.cazait_android.ui.view.cafelist.info.inner.OnMapTouchListener
+import org.cazait.cazait_android.ui.view.cafelist.info.inner.*
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
 
 @AndroidEntryPoint
@@ -67,6 +67,11 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
             CafeRatingReviewFragment(),
             binding.fabReviewWrite
         )
+
+        binding.fabReviewWrite.setOnClickListener {
+            val intent = Intent(this, CafeRatingReviewEditActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setFragment1(
@@ -109,5 +114,16 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     override fun onTouch() {
         binding.cafeInfoFragCon.requestDisallowInterceptTouchEvent(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                Log.d("Toolbar_item", "뒤로가기 클릭")
+                finish()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 }

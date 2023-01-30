@@ -102,6 +102,22 @@
     <string name="review_edit_star_request">카페는 어떠셨나요? 별점을 남겨주세요.</string>
     <string name="review_edit_text_request">다른 이용자를 위해 카페 리뷰를 남겨주세요.</string>
 
-    <!--Cafe Like Fragment-->
+    <!--Cafe Interest Fragment-->
     <string name="tv_cafe_like_fragment_shop">관심 매장</string>
+    <string name="review_edit_hint">공백 포함 최대 50자 이내로 작성해주세요.</string>
+    <string name="review_edit_ok">작성하기</string>
+
+    <!--My Page-->
+    <string name="my_page_do_login">로그인 하세요</string>
+    <string name="my_page_cazait_pay">카자잇 페이</string>
+    <string name="my_page_payment_details">결제 내역</string>
+    <string name="my_page_recent_view">최근 본 매장</string>
+    <string name="my_page_coupon">쿠폰</string>
+
+    <!--View More-->
+    <string name="view_more_title">더보기</string>
+    <string name="view_more_notification">공지사항</string>
+    <string name="view_more_app_settings">앱 설정</string>
+    <string name="view_more_customer_service">고객센터</string>
+    <string name="view_more_terms_polices">약관 및 정책</string>
 </resources>
