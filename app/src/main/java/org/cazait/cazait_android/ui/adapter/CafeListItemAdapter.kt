@@ -1,6 +1,5 @@
 package org.cazait.cazait_android.ui.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,19 +10,26 @@ import kotlinx.coroutines.launch
 import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 
-class CafeListItemAdapter(
-    private val context: Context,
-    private val dataset: List<CafeState>
-) : RecyclerView.Adapter<CafeListItemAdapter.ItemViewHolder>() {
+class CafeListItemAdapter : RecyclerView.Adapter<CafeListItemAdapter.ItemViewHolder>() {
 
-    inner class ItemViewHolder(val binding: ItemCafeMainBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CafeState) {
-            binding.cafeState = item
+    private val _data = mutableListOf<CafeState>()
+    var data: List<CafeState> = _data
+        set(value) {
+            _data.clear()
+            _data.addAll(value)
+            notifyDataSetChanged()
         }
 
+<<<<<<< HEAD
+=======
+    private var clickListener: ((id: Int) -> Unit)? = null
+
+    fun setClickListener(listener: ((id: Int) -> Unit)) {
+        this.clickListener = listener
+>>>>>>> 8c42482 ([Feat] #33 - LiveData + DataBinding + RecyclerView)
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount() = _data.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -34,6 +40,13 @@ class CafeListItemAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(dataset[position])
+        holder.bind(_data[position])
+    }
+
+    inner class ItemViewHolder(val binding: ItemCafeMainBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: CafeState) {
+            binding.cafeState = item
+        }
     }
 }

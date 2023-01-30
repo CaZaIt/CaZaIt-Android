@@ -1,10 +1,14 @@
 package org.cazait.cazait_android.ui.viewmodel
 
+<<<<<<< HEAD
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.cazait.cazait_android.data.model.ReviewData
 import org.cazait.cazait_android.data.repository.DataRepositorySource
+=======
+import dagger.hilt.android.lifecycle.HiltViewModel
+>>>>>>> 8c42482 ([Feat] #33 - LiveData + DataBinding + RecyclerView)
 import org.cazait.cazait_android.ui.base.BaseViewModel
 import javax.inject.Inject
 
