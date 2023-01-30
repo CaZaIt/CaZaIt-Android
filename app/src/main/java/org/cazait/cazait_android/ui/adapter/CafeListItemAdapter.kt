@@ -4,6 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 
@@ -16,6 +20,7 @@ class CafeListItemAdapter(
         fun bind(item: CafeState) {
             binding.cafeState = item
         }
+
     }
 
     override fun getItemCount() = dataset.size

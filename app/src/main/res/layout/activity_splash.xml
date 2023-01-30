@@ -13,15 +13,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/beige"
+        android:background="#F5F5F5"
         android:orientation="vertical"
-        tools:context=".ui.view.splash.SplashActivity">
+        tools:context=".SplashActivity">
 
         <ImageView
             android:id="@+id/iv_splash_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/beige"
+            android:layout_width="200dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="279dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="370dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

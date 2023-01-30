@@ -14,14 +14,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/beige"
+        android:background="@color/background_white"
         tools:context=".view.MainActivity">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/brown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></View>
 
         <ImageView
             android:id="@+id/iv_login_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="124dp"
+            android:layout_width="200dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="97dp"
+            android:layout_marginEnd="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +65,7 @@
             android:paddingTop="18dp"
             android:paddingRight="17dp"
             android:paddingBottom="18dp"
-            android:textColor="@color/gray"
+            android:textColor="@color/cazait_black"
             android:textColorHint="@color/darkgray"
             android:textSize="15sp"
             android:textStyle="normal"
@@ -76,64 +86,32 @@
             android:paddingTop="18dp"
             android:paddingRight="17dp"
             android:paddingBottom="18dp"
-            android:textColor="@color/gray"
+            android:textColor="@color/cazait_black"
             android:textColorHint="@color/darkgray"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_login_user_name" />
 
-        <TextView
-            android:id="@+id/tv_login_find_id"
-            android:layout_width="70dp"
-            android:layout_height="17dp"
-            android:layout_marginStart="69dp"
-            android:layout_marginTop="17dp"
-            android:text="@string/login_id_find"
-            android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_login_find_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
-
-        <TextView
-            android:id="@+id/tv_login_find_password"
-            android:layout_width="wrap_content"
-            android:layout_height="17dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/login_password_find"
-            android:textColor="@color/brown"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tv_login_signup"
-            app:layout_constraintHorizontal_bias="0.608"
-            app:layout_constraintStart_toEndOf="@+id/tv_login_find_id"
-            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
         <TextView
             android:id="@+id/tv_login_signup"
             android:layout_width="wrap_content"
             android:layout_height="17dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="68dp"
+            android:layout_marginTop="25dp"
             android:text="@string/login_signup"
             android:textColor="@color/brown"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_login_find_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_login_find_password"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
         <TextView
             android:id="@+id/tv_login_doing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/round_coffee_rectangle"
             android:paddingLeft="78dp"
             android:paddingTop="11dp"
@@ -146,6 +124,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login_find_password" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_signup" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -101,4 +101,7 @@
     <string name="reivew_edit_toolbar_title">리뷰쓰기</string>
     <string name="review_edit_star_request">카페는 어떠셨나요? 별점을 남겨주세요.</string>
     <string name="review_edit_text_request">다른 이용자를 위해 카페 리뷰를 남겨주세요.</string>
+
+    <!--Cafe Like Fragment-->
+    <string name="tv_cafe_like_fragment_shop">관심 매장</string>
 </resources>
