@@ -111,7 +111,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_cafe_name"
-                    app:srcCompat="@drawable/favorite" />
+                    app:srcCompat="@drawable/iv_interest_unclick" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

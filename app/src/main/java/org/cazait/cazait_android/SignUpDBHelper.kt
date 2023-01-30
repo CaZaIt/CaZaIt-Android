@@ -16,28 +16,28 @@ class SignUpDBHelper(context: Context?) :
     }
 
     fun insertData(username: String?, password: String?): Boolean {
-        val MyDB = this.writableDatabase
+        val myDB = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("username", username)
         contentValues.put("password", password)
-        val result = MyDB.insert("users", null, contentValues)
-        return if (result == -1L) false else true
+        val result = myDB.insert("users", null, contentValues)
+        return result != -1L
     }
 
-    fun checkUsername(username: String): Boolean {
-        val MyDB = this.writableDatabase
+    fun checkUserName(userName: String): Boolean {
+        val myDB = this.writableDatabase
         var res = true
-        val cursor = MyDB.rawQuery("Select * from users where username = ?", arrayOf(username))
+        val cursor = myDB.rawQuery("Select * from users where username = ?", arrayOf(userName))
         if (cursor.count <= 0) res = false
         return res
     }
 
-    fun checkUserpass(username: String, password: String): Boolean {
-        val MyDB = this.writableDatabase
+    fun checkUserPass(userName: String, password: String): Boolean {
+        val myDB = this.writableDatabase
         var res = true
-        val cursor = MyDB.rawQuery(
+        val cursor = myDB.rawQuery(
             "Select * from users where username = ? and password = ?",
-            arrayOf(username, password)
+            arrayOf(userName, password)
         )
         if (cursor.count <= 0) res = false
         return res
