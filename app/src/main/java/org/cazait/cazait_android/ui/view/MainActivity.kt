@@ -3,6 +3,7 @@ package org.cazait.cazait_android.ui.view
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentTransaction
 import dagger.hilt.android.AndroidEntryPoint
+import org.cazait.cazait_android.CafeInterestFragment
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.ActivityMainBinding
 import org.cazait.cazait_android.ui.base.BaseActivity
@@ -18,6 +19,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val viewModel: MainViewModel by viewModels()
 
     private val cafeListFragment: CafeListFragment by lazy { CafeListFragment() }
+    private val cafeInterestFragment: CafeInterestFragment by lazy { CafeInterestFragment() }
     private val myPageFragment: MyPageFragment by lazy { MyPageFragment() }
 //    private val moreFragment: PlusFragment by lazy { PlusFragment() }
 
@@ -38,6 +40,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     replaceCafeListFragment()
                     return@setOnItemSelectedListener true
                 }
+
+                R.id.menu_cafe_interest -> {
+                    replaceCafeInterestFragment()
+                    return@setOnItemSelectedListener true
+                }
+
                 R.id.menu_my_page -> {
                     replaceMyPageFragment()
                     return@setOnItemSelectedListener true
@@ -46,6 +54,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 //                    replacePlusFragment()
 //                    return@setOnItemSelectedListener true
 //                }
+
+
                 else -> return@setOnItemSelectedListener false
             }
         }
@@ -56,8 +66,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         replace(R.id.container_main, cafeListFragment)
     }
 
+    private fun replaceCafeInterestFragment() {
+        supportFragmentManager.popBackStack()
+        replace(R.id.container_main, cafeInterestFragment)
+    }
+
     private fun replaceMyPageFragment() {
         supportFragmentManager.popBackStack()
         replace(R.id.container_main, myPageFragment)
     }
+
 }

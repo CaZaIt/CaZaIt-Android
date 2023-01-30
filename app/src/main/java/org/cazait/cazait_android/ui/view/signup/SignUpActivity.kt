@@ -19,7 +19,7 @@ class SignUpActivity : AppCompatActivity() {
     private var passwordFlag = false
     private var passwordCheckFlag = false
     private var emailFlag = false
-    private var DB: SignUpDBHelper? = null
+    private var db: SignUpDBHelper? = null
 
 
     private val binding: ActivitySignupBinding by lazy {
@@ -32,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DB = SignUpDBHelper(this)
+        db = SignUpDBHelper(this)
 
         binding.btnSignupJoin.setOnClickListener {
             val id = binding.etSignupIdExample.editText?.text.toString()
@@ -42,14 +42,14 @@ class SignUpActivity : AppCompatActivity() {
             if (id == "" || pw == "" || repw == "" || email == "")
                 Toast.makeText(
                     this@SignUpActivity,
-                    "회원정보를 전부 입력하세요",
+                    "회원 정보를 전부 입력 하세요",
                     Toast.LENGTH_SHORT
                 ).show()
             else {
                 if (pw == repw) {
-                    val checkUsername = DB!!.checkUsername(id)
+                    val checkUsername = db!!.checkUsername(id)
                     if (checkUsername == false) {
-                        val insert = DB!!.insertData(id, pw)
+                        val insert = db!!.insertData(id, pw)
                         if (insert == true) {
                             Toast.makeText(
                                 this@SignUpActivity,
@@ -113,16 +113,16 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     fun passwordRegex(password: String): Boolean {
-        return password.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$".toRegex())
+        return password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@!%*#?&.])[A-Za-z\\d$@!%*#?&.]{8,16}$".toRegex())
     }
 
     fun passwordCheckRegex(passwordCheck: String): Boolean {
-        return passwordCheck.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$".toRegex())
+        return passwordCheck.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@!%*#?&.])[A-Za-z\\d$@!%*#?&.]{8,16}$".toRegex())
     }
 
     fun emailRegex(email: String): Boolean {
         val regexEmail =
-            """^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})${'$'}""".toRegex()
+            """^([a-zA-Z\d_\-|.]+)@([a-zA-Z\d_\-|.]+)\.([a-zA-Z]{2,5})${'$'}""".toRegex()
         return regexEmail.matches(email)
     }
 

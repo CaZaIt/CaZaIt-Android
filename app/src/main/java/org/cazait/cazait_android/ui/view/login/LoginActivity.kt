@@ -14,7 +14,7 @@ import org.cazait.cazait_android.ui.view.MainActivity
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
-    var DB: SignUpDBHelper? = null
+    var db: SignUpDBHelper? = null
     private val binding: ActivityLoginBinding by lazy {
         DataBindingUtil.setContentView(
             this,
@@ -24,16 +24,16 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DB = SignUpDBHelper(this)
+        db = SignUpDBHelper(this)
 
         binding.tvLoginSignup.setOnClickListener {
             val next = Intent(this, SignUpActivity::class.java)
             startActivity(next)
         }
 
-        binding.tvLoginDoing!!.setOnClickListener {
-            val loginid = binding.etLoginUserName!!.text.toString()
-            val loginpw = binding.etLoginPassword!!.text.toString()
+        binding.tvLoginDoing.setOnClickListener {
+            val loginid = binding.etLoginUserName.text.toString()
+            val loginpw = binding.etLoginPassword.text.toString()
             if (loginid == "" || loginpw == "")
                 Toast.makeText(
                     this@LoginActivity,
@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             else {
-                val checkUserpass = DB!!.checkUserpass(loginid, loginpw)
+                val checkUserpass = db!!.checkUserpass(loginid, loginpw)
                 if (checkUserpass == true) {
                     Toast.makeText(
                         this@LoginActivity,
