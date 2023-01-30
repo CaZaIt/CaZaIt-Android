@@ -51,7 +51,7 @@
                     android:text="@{cafeState.name, default=카페}"
                     android:textColor="@color/cazait_black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,6 +63,7 @@
                     android:text="@{cafeState.distance + 'm', default=1024}"
                     android:textColor="@color/cazait_black"
                     android:textSize="12sp"
+                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
                     app:layout_constraintStart_toEndOf="@+id/tv_cafe_name" />
 
@@ -74,26 +75,27 @@
                     android:text="@{cafeState.address, default=addressaddressaddress}"
                     android:textColor="@color/cazait_black"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintStart_toStartOf="@+id/tv_cafe_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_cafe_name" />
 
                 <TextView
                     android:id="@+id/tv_state"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="19dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="19dp"
+                    android:layout_marginEnd="26dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@drawable/cafe_item_round_white_rectangle"
+                    android:background="@drawable/round_latte_beige_rectangle"
                     android:contentDescription="@null"
                     android:gravity="center"
+                    android:minHeight="38dp"
                     android:text="@{cafeState.state, default=보통}"
+                    android:textColor="@color/cafe_list_item_normal"
+                    android:fontFamily="@font/roboto_bold"
                     android:textAlignment="center"
-                    android:textColor="@color/cazait_black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

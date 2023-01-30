@@ -8,16 +8,16 @@
 
     <item
         android:id="@+id/menu_cafe_interest"
-        android:icon="@drawable/bnv_interest"
-        android:title="Interest" />
-
+        android:icon="@drawable/bnv_heart"
+        android:title="@null"/>
+        
     <item
         android:id="@+id/menu_my_page"
         android:icon="@drawable/bnv_mypage"
         android:title="@string/cafe_list_frag_title_dashboard" />
 
     <item
-        android:id="@+id/menu_plus"
+        android:id="@+id/menu_view_more"
         android:icon="@drawable/bnv_plus"
         android:title="@string/cafe_list_frag_title_notifications" />
 

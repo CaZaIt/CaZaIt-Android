@@ -10,6 +10,7 @@ import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.util.extension.replace
 import org.cazait.cazait_android.ui.view.cafelist.CafeListFragment
 import org.cazait.cazait_android.ui.view.mypage.MyPageFragment
+import org.cazait.cazait_android.ui.view.viewmore.ViewMoreFragment
 import org.cazait.cazait_android.ui.viewmodel.MainViewModel
 
 @AndroidEntryPoint
@@ -21,7 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private val cafeListFragment: CafeListFragment by lazy { CafeListFragment() }
     private val cafeInterestFragment: CafeInterestFragment by lazy { CafeInterestFragment() }
     private val myPageFragment: MyPageFragment by lazy { MyPageFragment() }
-//    private val moreFragment: PlusFragment by lazy { PlusFragment() }
+    private val viewMoreFragment: ViewMoreFragment by lazy { ViewMoreFragment() }
 
     override fun initAfterBinding() {
     }
@@ -40,22 +41,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     replaceCafeListFragment()
                     return@setOnItemSelectedListener true
                 }
-
-                R.id.menu_cafe_interest -> {
-                    replaceCafeInterestFragment()
-                    return@setOnItemSelectedListener true
-                }
-
                 R.id.menu_my_page -> {
                     replaceMyPageFragment()
                     return@setOnItemSelectedListener true
                 }
-//                R.id.menu_plus -> {
-//                    replacePlusFragment()
-//                    return@setOnItemSelectedListener true
-//                }
-
-
+                R.id.menu_view_more -> {
+                    replaceViewMoreFragment()
+                    return@setOnItemSelectedListener true
+                }
                 else -> return@setOnItemSelectedListener false
             }
         }
@@ -76,4 +69,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         replace(R.id.container_main, myPageFragment)
     }
 
+    private fun replaceViewMoreFragment() {
+        supportFragmentManager.popBackStack()
+        replace(R.id.container_main, viewMoreFragment)
+    }
 }
