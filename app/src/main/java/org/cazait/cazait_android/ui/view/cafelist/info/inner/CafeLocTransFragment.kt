@@ -1,6 +1,8 @@
 package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -38,6 +40,62 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
     }
 
     override fun initView() {
+        createMap()
+        locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
+        onMapTouch()
+    }
+
+    private fun isPermitted(): Boolean {
+        for (perm in PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(
+                    this.requireContext(),
+                    perm
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return false
+            }
+        }
+        return true
+    }
+
+    override fun onMapReady(naverMap: NaverMap) {
+        this.naverMap = naverMap
+
+        naverMap.locationSource = locationSource
+        naverMap.uiSettings.isLocationButtonEnabled = true
+
+        markerCamera()
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
+        private val PERMISSIONS = arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 요청 호출됨")
+        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            if (!locationSource.isActivated) {
+                Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 거부")
+                naverMap.locationTrackingMode = LocationTrackingMode.None
+            } else {
+                Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 허용")
+                naverMap.locationTrackingMode = LocationTrackingMode.Follow
+            }
+            return
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    private fun createMap() {
         // MapFragment 객체 초기화, fragment 객체 열기
         val mapFragment = childFragmentManager.findFragmentById(R.id.naver_map) as MapFragment?
             ?: MapFragment.newInstance().also {
@@ -47,9 +105,9 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
         // Fragment의 getMapAsync()로 OnMapReadyCallback을 등록하면 비동기로 NaverMap 객체를 얻을 수 있다.
         // NaverMap 객체가 준비되면 OnMapReady() 콜백 메소드 호출
         mapFragment.getMapAsync(this)
+    }
 
-        locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
-
+    private fun onMapTouch() {
         // 지도 전체를 덮어씌우도록 TouchableWrapper를 추가
         val frameLayout = TouchableWrapper(requireActivity(), null, 0, listener)
         frameLayout.setBackgroundColor(
@@ -67,16 +125,7 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
         )
     }
 
-    companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
-    }
-
-    override fun onMapReady(naverMap: NaverMap) {
-        this.naverMap = naverMap
-
-        naverMap.locationSource = locationSource
-        naverMap.uiSettings.isLocationButtonEnabled = true
-
+    private fun markerCamera() {
         // 지정한 위치로 카메라 이동
         val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.548476, 127.0726703))
             .animate(CameraAnimation.Easing, 1000)
@@ -87,24 +136,5 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
             position = LatLng(37.548476, 127.0726703)
             map = naverMap
         }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 요청")
-        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
-            if (!locationSource.isActivated) {
-                Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 거부")
-                naverMap.locationTrackingMode = LocationTrackingMode.None
-            } else {
-                Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 허용")
-                naverMap.locationTrackingMode = LocationTrackingMode.Follow
-            }
-            return
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }
