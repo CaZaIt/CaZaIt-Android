@@ -32,25 +32,25 @@ class CafeRatingReviewFragment :
     override fun initView() {
         initRecyclerView()
 
-        binding.tvFilter.setOnClickListener {
-            showDialog()
-        }
-        binding.imgbtnFilter.setOnClickListener {
-            showDialog()
-        }
+//        binding.tvFilter.setOnClickListener {
+//            showDialog()
+//        }
+//        binding.imgbtnFilter.setOnClickListener {
+//            showDialog()
+//        }
     }
 
     // 정렬 기준 선택 다이얼로그
-    private fun showDialog(){
-        val sortMenu:Array<String> = resources.getStringArray(R.array.sortmenu)
-        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-        builder.setTitle("정렬 메뉴")
-        builder.setItems(sortMenu){ p0, p1 ->
-            Toast.makeText(context, "선택된 정렬 기준은 ${sortMenu[p1]}", Toast.LENGTH_LONG).show()
-        }
-        val alertDialog:AlertDialog = builder.create()
-        alertDialog.show()
-    }
+//    private fun showDialog(){
+//        val sortMenu:Array<String> = resources.getStringArray(R.array.sortmenu)
+//        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+//        builder.setTitle("정렬 메뉴")
+//        builder.setItems(sortMenu){ p0, p1 ->
+//            Toast.makeText(context, "선택된 정렬 기준은 ${sortMenu[p1]}", Toast.LENGTH_LONG).show()
+//        }
+//        val alertDialog:AlertDialog = builder.create()
+//        alertDialog.show()
+//    }
 
     private fun initRecyclerView() {
         reviewAdapter = CafeInfoReviewAdapter()
