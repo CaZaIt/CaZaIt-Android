@@ -1,4 +1,8 @@
 package org.cazait.cazait_android.data.model.remote
 
-class ServiceGenerator {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class ServiceGenerator @Inject constructor() {
 }

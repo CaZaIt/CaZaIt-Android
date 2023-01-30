@@ -120,4 +120,10 @@
     <string name="view_more_app_settings">앱 설정</string>
     <string name="view_more_customer_service">고객센터</string>
     <string name="view_more_terms_polices">약관 및 정책</string>
+
+    <!--Sort Filter-->
+    <string-array name="sortmenu">
+        <item>최근 작성순</item>
+        <item>별점순</item>
+    </string-array>
 </resources>
