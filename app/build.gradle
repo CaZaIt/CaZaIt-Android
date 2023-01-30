@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id("com.google.devtools.ksp") version("1.8.0-1.0.9")
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -67,6 +68,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.databinding:databinding-runtime:7.4.0'
     implementation 'com.android.car.ui:car-ui-lib:2.3.0'
+    implementation 'androidx.core:core-ktx:+'
     androidTestImplementation "androidx.arch.core:core-testing:$arch_version"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
     implementation 'androidx.fragment:fragment-ktx:1.5.5'
@@ -75,7 +77,6 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
     implementation "androidx.room:room-rxjava2:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
     ksp("androidx.room:room-compiler:$room_version")
@@ -122,8 +123,11 @@ dependencies {
 
     //naver maps
     implementation "com.naver.maps:map-sdk:$naver_map_version"
+
     //location request
     implementation "com.google.android.gms:play-services-location:$fused_location_provider_client_version"
+    
+
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
@@ -132,6 +136,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
 }
 
 kapt {

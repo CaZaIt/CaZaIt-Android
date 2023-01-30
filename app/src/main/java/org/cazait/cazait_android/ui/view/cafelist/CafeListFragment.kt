@@ -21,6 +21,7 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeInfoViewModel
 
     override fun initView() {
         initRecyclerView()
+
     }
 
     override fun initAfterBinding() {

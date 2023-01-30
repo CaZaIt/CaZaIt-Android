@@ -8,6 +8,7 @@
     <color name="cazait_black">#FF000000</color>
     <color name="cazait_white">#FFFFFFFF</color>
     <color name="cazait_beige">#FAF0DD</color>
+    <color name="cazait_gold">#E5D3CB</color>
     <color name="cazait_choco">#5D2424</color>
     <color name="cazait_latte_beige">#E5D3CB</color>
     <color name="cazait_foam_white">#F1F1EF</color>
@@ -22,10 +23,8 @@
     <color name="cong_hard">#FF0000</color>
 
     <!--login activity-->
-    <color name="beige">#FAF0DD</color>
-    <color name="brown">#8A5F5F</color>
-    <color name="gray">#B5B5B5</color>
-    <color name="wood">#8D6060</color>
+    <color name="background_white">#F5F5F5</color>
+    <color name="brown">#5D2424</color>
     <color name="darkgray">#757575</color>
 
     <!-- cafe list fragment-->
