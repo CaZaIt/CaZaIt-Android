@@ -14,7 +14,7 @@ import org.cazait.cazait_android.ui.view.MainActivity
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
-    var DB: SignUpDBHelper? = null
+    private var DB: SignUpDBHelper? = null
     private val binding: ActivityLoginBinding by lazy {
         DataBindingUtil.setContentView(
             this,
@@ -26,23 +26,23 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         DB = SignUpDBHelper(this)
 
-        binding.tvLoginSignup.setOnClickListener {
+        binding.tvLoginSignUp.setOnClickListener {
             val next = Intent(this, SignUpActivity::class.java)
             startActivity(next)
         }
 
-        binding.tvLoginDoing!!.setOnClickListener {
-            val loginid = binding.etLoginUserName!!.text.toString()
-            val loginpw = binding.etLoginPassword!!.text.toString()
-            if (loginid == "" || loginpw == "")
+        binding.tvLoginDoing.setOnClickListener {
+            val loginEmail = binding.etLoginUserName.text.toString()
+            val loginPw = binding.etLoginPassword.text.toString()
+            if (loginEmail == "" || loginPw == "")
                 Toast.makeText(
                     this@LoginActivity,
                     "회원정보를 전부 입력해주세요",
                     Toast.LENGTH_SHORT
                 ).show()
             else {
-                val checkUserpass = DB!!.checkUserpass(loginid, loginpw)
-                if (checkUserpass == true) {
+                val checkUserPass = DB!!.checkUserPass(loginEmail, loginPw)
+                if (checkUserPass) {
                     Toast.makeText(
                         this@LoginActivity,
                         "로그인 되었습니다",
@@ -50,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(
                         this@LoginActivity,
@@ -57,10 +58,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             }
-
         }
-
     }
 }

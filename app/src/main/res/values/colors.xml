@@ -24,7 +24,6 @@
 
     <!--login activity-->
     <color name="background_white">#F5F5F5</color>
-    <color name="brown">#5D2424</color>
     <color name="darkgray">#757575</color>
 
     <!-- cafe list fragment-->

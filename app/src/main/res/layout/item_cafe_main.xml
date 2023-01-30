@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -112,7 +111,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_cafe_name"
-                    app:srcCompat="@drawable/favorite" />
+                    app:srcCompat="@drawable/iv_interest_unclick" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

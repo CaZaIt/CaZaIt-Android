@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="back"
+            type="org.cazait.cazait_android.ui.view.signup.SignUpActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_white"
+        tools:context=".view.SignupActivity">
+
+        <View
+            android:id="@+id/view_sign_up_divide"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/cazait_choco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_sign_up_arrow_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_sign_up_enrollment"
+            android:layout_marginStart="27dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sign_up_enrollment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_sign_up_enrollment"
+            app:srcCompat="@drawable/arrow_back" />
+
+        <TextView
+            android:id="@+id/tv_sign_up_enrollment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="103dp"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/sign_up_sign_up"
+            android:textAlignment="center"
+            android:textColor="@color/cazait_white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/view_sign_up_divide"
+            app:layout_constraintEnd_toEndOf="@+id/view_sign_up_divide"
+            app:layout_constraintStart_toEndOf="@+id/iv_sign_up_arrow_back" />
+
+        <TextView
+            android:id="@+id/tv_sign_up_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/sign_up_email"
+            android:textColor="@color/cazait_choco"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_sign_up_divide" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_sign_up_email_example"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
+            app:layout_constraintEnd_toStartOf="@+id/btn_sign_up_email_double_check"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_id">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_white_rectangle"
+                android:importantForAccessibility="no"
+                android:paddingStart="15dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="14dp"
+                android:textColor="@color/cazait_black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_sign_up_email_double_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="26dp"
+            android:background="@drawable/round_beige_rectangle"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/sign_up_double_check"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_id" />
+
+        <TextView
+            android:id="@+id/tv_sign_up_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="33dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/sign_up_password"
+            android:textColor="@color/cazait_choco"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_sign_up_email_example" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_sign_up_password_insert"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="26dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_password"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_white_rectangle"
+                android:importantForAccessibility="no"
+                android:paddingStart="15dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="14dp"
+                android:textColor="@color/cazait_black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_sign_up_password_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/sign_up_password_check"
+            android:textColor="@color/cazait_choco"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_sign_up_password_insert" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_sign_up_password_insert_more"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="26dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_password_check"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_white_rectangle"
+                android:importantForAccessibility="no"
+                android:paddingStart="15dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="14dp"
+                android:textColor="@color/cazait_black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_sign_up_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="31dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/sign_up_nick_name"
+            android:textColor="@color/cazait_choco"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_sign_up_password_insert_more" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_sign_up_nick_name_example"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="13dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_sign_up_email_double_check"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_white_rectangle"
+                android:importantForAccessibility="no"
+                android:paddingStart="15dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="14dp"
+                android:textColor="@color/cazait_black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_sign_up_nick_name_double_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/round_beige_rectangle"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingStart="19dp"
+            android:paddingTop="13dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="12dp"
+            android:text="@string/sign_up_double_check"
+            android:textColor="@color/cazait_choco"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_email" />
+
+        <Button
+            android:id="@+id/btn_sign_up_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="122dp"
+            android:layout_marginTop="66dp"
+            android:layout_marginEnd="121dp"
+            android:background="@drawable/round_coffee_rectangle"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingLeft="25dp"
+            android:paddingTop="11dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="11dp"
+            android:text="@string/sign_up_join"
+            android:textAlignment="center"
+            android:textColor="@color/cazait_white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_sign_up_nick_name_example" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
