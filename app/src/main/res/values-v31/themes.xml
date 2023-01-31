@@ -15,11 +15,14 @@
 
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
-
-        <!-- Splash -->
-        <item name="android:windowSplashScreenBackground">@color/cazait_base_color_f5</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_cazait_logo</item>
-        <item name="android:windowSplashScreenIconBackgroundColor">@color/cazait_base_color_f5</item>
-        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+    </style>
+    
+    <!-- Splash -->
+    <style name="Theme.CaZaIt.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/cazait_base_color_f5</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/cazait_base_color_f5</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.CaZaItAndroid</item>
     </style>
 </resources>
