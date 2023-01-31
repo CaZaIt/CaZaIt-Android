@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
-    final val baseURL = "https://TODO"
+    val baseURL = "https://cazait.shop"
 
     @Provides
     @Singleton

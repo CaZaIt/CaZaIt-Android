@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
-import org.cazait.cazait_android.SignUpDBHelper
+import org.cazait.cazait_android.data.model.local.SignUpDBHelper
 import org.cazait.cazait_android.ui.view.signup.SignUpActivity
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
 import org.cazait.cazait_android.ui.view.MainActivity
