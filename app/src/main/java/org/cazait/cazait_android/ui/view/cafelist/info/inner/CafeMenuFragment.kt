@@ -1,5 +1,6 @@
 package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
+import MarginItemDecoration
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import org.cazait.cazait_android.databinding.FragmentCafeMenuBinding
 import org.cazait.cazait_android.ui.adapter.CafeInfoMenuAdapter
 import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoMenuViewModel
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewModel>() {
@@ -30,9 +32,11 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewM
     }
 
     private fun initRecyclerView() {
+        val spaceDecoration = MarginItemDecoration(resources.getDimension(R.dimen.cafe_info_menu_bottom_space).roundToInt())
         val recyclerView = binding.rvCafeInfoMenus
         recyclerView.layoutManager =
             LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        recyclerView.addItemDecoration(spaceDecoration)
         recyclerView.adapter = menuAdapter
     }
 

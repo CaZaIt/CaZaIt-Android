@@ -9,10 +9,6 @@ import org.cazait.cazait_android.databinding.FragmentCafeInterestBinding
 import org.cazait.cazait_android.ui.adapter.CafeInterestAdapter
 import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInterestViewModel
-import org.cazait.cazait_android.ui.viewmodel.CafeInterestViewModel
-import org.cazait.cazait_android.R
-import org.cazait.cazait_android.ui.adapter.CafeInterestAdapter
-import org.cazait.cazait_android.ui.base.BaseFragment
 import kotlin.math.roundToInt
 
 @AndroidEntryPoint
