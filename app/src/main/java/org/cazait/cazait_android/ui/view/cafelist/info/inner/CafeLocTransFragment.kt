@@ -45,19 +45,6 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
         onMapTouch()
     }
 
-    private fun isPermitted(): Boolean {
-        for (perm in PERMISSIONS) {
-            if (ContextCompat.checkSelfPermission(
-                    this.requireContext(),
-                    perm
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                return false
-            }
-        }
-        return true
-    }
-
     override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap
 
@@ -65,34 +52,6 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
         naverMap.uiSettings.isLocationButtonEnabled = true
 
         markerCamera()
-    }
-
-    companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
-        private val PERMISSIONS = arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        )
-    }
-
-    @Suppress("DEPRECATION")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 요청 호출됨")
-        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
-            if (!locationSource.isActivated) {
-                Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 거부")
-                naverMap.locationTrackingMode = LocationTrackingMode.None
-            } else {
-                Log.d("CafeLocTransFrag", "onRequestPermissinoResult 권한 허용")
-                naverMap.locationTrackingMode = LocationTrackingMode.Follow
-            }
-            return
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     private fun createMap() {
@@ -105,6 +64,27 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
         // Fragment의 getMapAsync()로 OnMapReadyCallback을 등록하면 비동기로 NaverMap 객체를 얻을 수 있다.
         // NaverMap 객체가 준비되면 OnMapReady() 콜백 메소드 호출
         mapFragment.getMapAsync(this)
+    }
+
+    private fun markerCamera() {
+        // 지정한 위치로 카메라 이동
+        val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.548476, 127.0726703))
+            .animate(CameraAnimation.Easing, 1000)
+        naverMap.moveCamera(cameraUpdate)
+
+        //지정한 위치에 마커 적용
+        Marker().apply {
+            position = LatLng(37.548476, 127.0726703)
+            map = naverMap
+        }
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
+        private val PERMISSIONS = arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
     }
 
     private fun onMapTouch() {
@@ -123,18 +103,5 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
         )
-    }
-
-    private fun markerCamera() {
-        // 지정한 위치로 카메라 이동
-        val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.548476, 127.0726703))
-            .animate(CameraAnimation.Easing, 1000)
-        naverMap.moveCamera(cameraUpdate)
-
-        //지정한 위치에 마커 적용
-        Marker().apply {
-            position = LatLng(37.548476, 127.0726703)
-            map = naverMap
-        }
     }
 }
