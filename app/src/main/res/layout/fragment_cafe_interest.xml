@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/cazait_foam_white"
-        tools:context=".CafeInterestFragment">
+        tools:context=".ui.view.interest.CafeInterestFragment">
 
         <View
             android:id="@+id/view_cafe_interest_divide"
