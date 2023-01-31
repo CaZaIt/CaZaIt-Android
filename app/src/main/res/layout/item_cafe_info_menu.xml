@@ -51,7 +51,7 @@
                 android:id="@+id/tv_cafe_menu_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@{menu.stringPrice + '원', default=@string/cafe_info_price1}"
