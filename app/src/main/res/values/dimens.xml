@@ -2,4 +2,5 @@
 <resources>
     <dimen name="cafe_item_space">34dp</dimen>
     <dimen name="cazait_radius">15dp</dimen>
+    <dimen name="cafe_interest_space">25dp</dimen>
 </resources>

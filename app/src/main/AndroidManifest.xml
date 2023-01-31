@@ -20,13 +20,7 @@
         <activity
             android:name=".ui.view.cafelist.info.inner.CafeRatingReviewEditActivity"
             android:exported="false"/>
-        <activity
-            android:name=".ui.view.login.LoginActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".ui.view.signup.SignUpActivity"
             android:exported="false">
@@ -49,7 +43,8 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.view.splash.SplashActivity"
+            android:name=".ui.view.login.LoginActivity"
+            android:theme="@style/Theme.CaZaItAndroid"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

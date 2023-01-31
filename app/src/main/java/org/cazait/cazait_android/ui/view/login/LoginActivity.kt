@@ -11,9 +11,11 @@ import org.cazait.cazait_android.SignUpDBHelper
 import org.cazait.cazait_android.ui.view.signup.SignUpActivity
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
 import org.cazait.cazait_android.ui.view.MainActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
+
     private var DB: SignUpDBHelper? = null
     private val binding: ActivityLoginBinding by lazy {
         DataBindingUtil.setContentView(
@@ -23,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         DB = SignUpDBHelper(this)
 

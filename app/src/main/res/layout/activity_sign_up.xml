@@ -73,8 +73,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="12dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="15"
             app:layout_constraintEnd_toStartOf="@+id/btn_sign_up_email_double_check"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_id">
@@ -101,6 +99,7 @@
             android:background="@drawable/round_beige_rectangle"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/sign_up_double_check"
+            android:textColor="@color/cazait_choco"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_id" />
@@ -140,6 +139,7 @@
                 android:paddingTop="14dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="14dp"
+                android:inputType="textPassword"
                 android:textColor="@color/cazait_black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -163,6 +163,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="26dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_password_check"
@@ -177,6 +179,7 @@
                 android:paddingTop="14dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="14dp"
+                android:inputType="textPassword"
                 android:textColor="@color/cazait_black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>

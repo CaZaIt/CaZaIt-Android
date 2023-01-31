@@ -71,7 +71,6 @@ class SignUpActivity : AppCompatActivity() {
         binding.etSignUpEmailExample.editText?.addTextChangedListener(emailListener)
         binding.etSignUpPasswordInsert.editText?.addTextChangedListener(passwordListener)
         binding.etSignUpPasswordInsertMore.editText?.addTextChangedListener(passwordCheckListener)
-        binding.etSignUpEmailExample.hint = resources.getString(R.string.sign_up_email_example)
         binding.etSignUpNickNameExample.editText?.addTextChangedListener(nickNameListener)
     }
 
@@ -85,6 +84,8 @@ class SignUpActivity : AppCompatActivity() {
         for (i in string.indices) if (Character.isAlphabetic(string[i].code)) return true
         return false
     }
+
+
 
     fun idRegex(id: String): Boolean {
         if ((!hasSpecialCharacter(id)) and (hasAlphabet(id)) and (id.length >= 6)) {
