@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
-import org.cazait.cazait_android.SignUpDBHelper
+import org.cazait.cazait_android.data.model.local.SignUpDBHelper
 import org.cazait.cazait_android.databinding.ActivitySignUpBinding
 import org.cazait.cazait_android.ui.view.login.LoginActivity
 
