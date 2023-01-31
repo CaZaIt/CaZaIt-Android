@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import android.util.SparseBooleanArray
 import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 import org.cazait.cazait_android.ui.view.cafelist.info.CafeInformationActivity
@@ -16,6 +17,30 @@ class CafeListItemAdapter : RecyclerView.Adapter<CafeListItemAdapter.ItemViewHol
             _data.clear()
             _data.addAll(value)
             notifyDataSetChanged()
+/*
+class CafeListItemAdapter(
+    private val context: Context,
+    private val dataset: List<CafeState>,
+
+) : RecyclerView.Adapter<CafeListItemAdapter.ItemViewHolder>() {
+    private val checkboxStatus = SparseBooleanArray()
+
+    inner class ItemViewHolder(val binding: ItemCafeMainBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: CafeState) {
+            binding.cafeState = item
+
+            binding.btnCafeMainFavorite.isChecked = checkboxStatus[adapterPosition]
+
+            binding.btnCafeMainFavorite.setOnClickListener {
+                if (!binding.btnCafeMainFavorite.isChecked)
+                    checkboxStatus.put(adapterPosition, false)
+                else
+                    checkboxStatus.put(adapterPosition, true)
+                notifyItemChanged(adapterPosition)
+            }
+
+*/
         }
 
     private var clickListener: ((id: Int) -> Unit)? = null
