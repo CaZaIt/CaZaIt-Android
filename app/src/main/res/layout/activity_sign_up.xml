@@ -69,10 +69,17 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_sign_up_email_example"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="12dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/cazait_choco"
             app:layout_constraintEnd_toStartOf="@+id/btn_sign_up_email_double_check"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_id">
@@ -80,7 +87,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_white_rectangle"
                 android:importantForAccessibility="no"
                 android:paddingStart="15dp"
                 android:paddingTop="14dp"
@@ -119,10 +125,16 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_sign_up_password_insert"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="26dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/cazait_choco"
             app:counterEnabled="true"
             app:counterMaxLength="16"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,13 +145,12 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_white_rectangle"
                 android:importantForAccessibility="no"
+                android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingTop="14dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="14dp"
-                android:inputType="textPassword"
                 android:textColor="@color/cazait_black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -159,10 +170,16 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_sign_up_password_insert_more"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="26dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/cazait_choco"
             app:counterEnabled="true"
             app:counterMaxLength="16"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,13 +190,12 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_white_rectangle"
                 android:importantForAccessibility="no"
+                android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingTop="14dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="14dp"
-                android:inputType="textPassword"
                 android:textColor="@color/cazait_black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -199,10 +215,17 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_sign_up_nick_name_example"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="13dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/cazait_choco"
             app:layout_constraintEnd_toStartOf="@+id/btn_sign_up_email_double_check"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_email">
@@ -210,7 +233,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_white_rectangle"
                 android:importantForAccessibility="no"
                 android:paddingStart="15dp"
                 android:paddingTop="14dp"
