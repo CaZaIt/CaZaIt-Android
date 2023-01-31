@@ -1,4 +1,4 @@
-package org.cazait.cazait_android
+package org.cazait.cazait_android.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
