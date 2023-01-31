@@ -1,5 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
     <style name="Theme.CaZaItAndroid" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/cazait_coffee</item>
@@ -14,6 +15,14 @@
 
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
-
+    </style>
+    
+    <!-- Splash -->
+    <style name="Theme.CaZaIt.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/cazait_base_color_f5</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/cazait_base_color_f5</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.CaZaItAndroid</item>
     </style>
 </resources>

@@ -1,7 +1,7 @@
 package org.cazait.cazait_android.ui.view.cafelist
 
 import MarginItemDecoration
-import android.util.Log
+import android.util.SparseBooleanArray
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
@@ -15,13 +15,12 @@ import kotlin.math.roundToInt
 @AndroidEntryPoint
 class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeInfoViewModel>() {
     override val viewModel: CafeInfoViewModel by viewModels()
-
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_list
 
+
     override fun initView() {
         initRecyclerView()
-
     }
 
     override fun initAfterBinding() {
@@ -32,7 +31,8 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeInfoViewModel
 
     private fun initRecyclerView() {
         val dataset = Datasource().loadAffirmations()
-        val spaceDecoration = MarginItemDecoration(resources.getDimension(R.dimen.cafe_item_space).roundToInt())
+        val spaceDecoration =
+            MarginItemDecoration(resources.getDimension(R.dimen.cafe_item_space).roundToInt())
         val recyclerView = binding.rvCafeList
 
         recyclerView.addItemDecoration(spaceDecoration)

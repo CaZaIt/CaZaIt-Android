@@ -3,6 +3,7 @@ package org.cazait.cazait_android.ui.view
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentTransaction
 import dagger.hilt.android.AndroidEntryPoint
+import org.cazait.cazait_android.CafeInterestFragment
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.ActivityMainBinding
 import org.cazait.cazait_android.ui.base.BaseActivity
@@ -19,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val viewModel: MainViewModel by viewModels()
 
     private val cafeListFragment: CafeListFragment by lazy { CafeListFragment() }
-//    private val cafeInterestFragment: CafeInterestFragment by lazy { CafeInterestFragment() }
+    private val cafeInterestFragment: CafeInterestFragment by lazy { CafeInterestFragment() }
     private val myPageFragment: MyPageFragment by lazy { MyPageFragment() }
     private val viewMoreFragment: ViewMoreFragment by lazy { ViewMoreFragment() }
 
@@ -31,6 +32,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initView() {
         initBottomNavigation()
+
+
     }
 
     private fun initBottomNavigation() {
@@ -63,8 +66,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     private fun replaceCafeInterestFragment() {
-//        supportFragmentManager.popBackStack()
-//        replace(R.id.container_main, cafeInterestFragment)
+        supportFragmentManager.popBackStack()
+        replace(R.id.container_main, cafeInterestFragment)
     }
 
     private fun replaceMyPageFragment() {
