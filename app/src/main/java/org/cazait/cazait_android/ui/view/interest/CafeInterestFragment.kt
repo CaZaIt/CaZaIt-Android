@@ -4,6 +4,11 @@ import MarginItemDecoration
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import org.cazait.cazait_android.R
+import org.cazait.cazait_android.databinding.FragmentCafeInterestBinding
+import org.cazait.cazait_android.ui.adapter.CafeInterestAdapter
+import org.cazait.cazait_android.ui.base.BaseFragment
+import org.cazait.cazait_android.ui.viewmodel.CafeInterestViewModel
 import org.cazait.cazait_android.ui.viewmodel.CafeInterestViewModel
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.ui.adapter.CafeInterestAdapter

@@ -1,9 +1,8 @@
-package org.cazait.cazait_android
+package org.cazait.cazait_android.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.cazait.cazait_android.data.model.CafeMenu
 import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.data.repository.DataRepositorySource
 import org.cazait.cazait_android.ui.base.BaseViewModel
