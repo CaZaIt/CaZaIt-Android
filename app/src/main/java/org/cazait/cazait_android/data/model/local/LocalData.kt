@@ -2,8 +2,8 @@ package org.cazait.cazait_android.data.model.local
 
 import android.content.Context
 import org.cazait.cazait_android.data.Resource
-import org.cazait.cazait_android.data.dto.login.LoginRequest
-import org.cazait.cazait_android.data.dto.login.LoginResponse
+import org.cazait.cazait_android.data.model.remote.login.LoginRequest
+import org.cazait.cazait_android.data.model.remote.login.LoginResponse
 import javax.inject.Inject
 
 class LocalData @Inject constructor(val context: Context) {

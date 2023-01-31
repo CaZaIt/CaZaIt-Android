@@ -4,5 +4,4 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ServiceGenerator @Inject constructor() {
-}
+class ServiceGenerator @Inject constructor()
