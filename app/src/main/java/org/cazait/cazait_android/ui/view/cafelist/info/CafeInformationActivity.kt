@@ -6,6 +6,8 @@ import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
@@ -66,6 +68,21 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         binding.fabReviewWrite.setOnClickListener {
             val intent = Intent(this, CafeRatingReviewEditActivity::class.java)
             startActivity(intent)
+        }
+
+        val pagerAdapter = ScreenSlidePagerAdapter(this)
+        binding.vpImg.adapter = pagerAdapter
+    }
+
+    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+        override fun getItemCount(): Int = Int.MAX_VALUE
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position % 3) {
+                0 -> ImageSlideFragment(R.drawable.image_cafe_ex1)
+                1 -> ImageSlideFragment(R.drawable.image_cafe_ex1)
+                else -> ImageSlideFragment(R.drawable.image_cafe_ex1)
+            }
         }
     }
 
