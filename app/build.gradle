@@ -85,29 +85,6 @@ dependencies {
     // viewpager2
     implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
 
-    // koin
-    // Koin Core features
-    implementation "io.insert-koin:koin-core:$koin_version"
-    // Koin Test features
-    testImplementation "io.insert-koin:koin-test:$koin_version"
-    // Koin for JUnit 4
-    testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
-    // Koin for JUnit 5
-    testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
-    // Koin main features for Android
-    implementation "io.insert-koin:koin-android:$koin_android_version"
-    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
-
-    // Java Compatibility
-    implementation "io.insert-koin:koin-android-compat:$koin_android_version"
-    // Jetpack WorkManager
-    implementation "io.insert-koin:koin-androidx-workmanager:$koin_android_version"
-    // Navigation Graph
-    implementation "io.insert-koin:koin-androidx-navigation:$koin_android_version"
-
-    // Jetpack Compose
-    implementation "io.insert-koin:koin-androidx-compose:$koin_android_compose_version"
-
     //chip
     implementation 'com.google.android.material:material:1.9.0-alpha01'
 
