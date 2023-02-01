@@ -1,7 +1,5 @@
 package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
-import android.app.AlertDialog
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +39,7 @@ class CafeRatingReviewFragment :
     }
 
     private fun observeReviewListData() {
-        viewModel.reviewList.observe(this){
+        viewModel.reviewList.observe(this) {
             reviewAdapter.data = it
         }
     }
