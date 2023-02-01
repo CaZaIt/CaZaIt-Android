@@ -9,7 +9,7 @@ import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.model.local.SignUpDBHelper
 import org.cazait.cazait_android.ui.view.signup.SignUpActivity
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
-import org.cazait.cazait_android.LoginViewModel
+import org.cazait.cazait_android.ui.viewmodel.LoginViewModel
 import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.view.MainActivity
 

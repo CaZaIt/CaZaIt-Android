@@ -1,8 +1,6 @@
 import android.graphics.Rect
-import android.util.DisplayMetrics
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.math.roundToInt
 
 class MarginItemDecoration(private val bottomDPSpace: Int) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(

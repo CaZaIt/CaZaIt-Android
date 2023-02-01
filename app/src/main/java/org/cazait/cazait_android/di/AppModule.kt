@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlin.coroutines.CoroutineContext
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
+import org.cazait.cazait_android.baseURL
 import org.cazait.cazait_android.data.model.local.LocalData
 import org.cazait.cazait_android.network.Network
 import org.cazait.cazait_android.network.NetworkConnectivity
@@ -18,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
-    val baseURL = "https://cazait.shop"
+
 
     @Provides
     @Singleton

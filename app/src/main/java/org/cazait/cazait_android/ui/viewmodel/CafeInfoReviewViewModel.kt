@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.cazait.cazait_android.data.model.ReviewData
-import org.cazait.cazait_android.data.repository.DataRepositorySource
+import org.cazait.cazait_android.data.repository.DataRepository
 import org.cazait.cazait_android.ui.base.BaseViewModel
 import javax.inject.Inject
 
 
 @HiltViewModel
-class CafeInfoReviewViewModel @Inject constructor(private val dataRepository: DataRepositorySource) :
+class CafeInfoReviewViewModel @Inject constructor(private val dataRepository: DataRepository) :
     BaseViewModel() {
     private val list = arrayListOf(
         ReviewData(4, "화양동", "뚜벅초", "3시간 전", "카페 분위기가 너무 좋네요~~ 또 오고 싶어요^^"),

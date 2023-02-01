@@ -4,7 +4,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import android.util.SparseBooleanArray
 import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 import org.cazait.cazait_android.ui.view.cafelist.info.CafeInformationActivity

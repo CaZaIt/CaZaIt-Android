@@ -1,12 +1,10 @@
 package org.cazait.cazait_android.ui.view.cafelist
 
 import MarginItemDecoration
-import android.util.SparseBooleanArray
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Datasource
-import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.databinding.FragmentCafeListBinding
 import org.cazait.cazait_android.ui.adapter.CafeListItemAdapter
 import org.cazait.cazait_android.ui.base.BaseFragment
