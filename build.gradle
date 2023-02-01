@@ -35,6 +35,8 @@ buildscript {
         naver_map_version = '3.14.0'
         //location request
         fused_location_provider_client_version = '17.0.0'
+
+        moshi_version = "1.14.0"
     }
     repositories {
         google()
