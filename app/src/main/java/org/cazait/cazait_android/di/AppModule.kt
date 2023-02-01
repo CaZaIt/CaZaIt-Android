@@ -1,6 +1,7 @@
 package org.cazait.cazait_android.di
 
 import android.content.Context
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +15,6 @@ import org.cazait.cazait_android.data.model.local.LocalData
 import org.cazait.cazait_android.network.Network
 import org.cazait.cazait_android.network.NetworkConnectivity
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -40,11 +40,16 @@ class AppModule {
     }
 
     @Provides
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder().build()
+    }
+
+    @Provides
     @Singleton
-    fun provideRetroInstance(): Retrofit {
+    fun provideRetroInstance(moshi: Moshi): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseURL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
 }
