@@ -6,17 +6,12 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
-<<<<<<< Updated upstream
 import org.cazait.cazait_android.data.model.local.SignUpDBHelper
 import org.cazait.cazait_android.ui.view.signup.SignUpActivity
-=======
->>>>>>> Stashed changes
 import org.cazait.cazait_android.databinding.ActivityLoginBinding
 import org.cazait.cazait_android.LoginViewModel
-import org.cazait.cazait_android.SignUpDBHelper
 import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.view.MainActivity
-import org.cazait.cazait_android.ui.view.signup.SignUpActivity
 
 
 @AndroidEntryPoint
