@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -11,24 +12,24 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="150dp"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="9dp"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintDimensionRatio="5:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="267dp"
+            android:layout_width="155dp"
+            android:layout_height="270dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/iv_cafe_interest_landscape"
-                android:layout_width="150dp"
+                android:layout_width="155dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/ex_cafe_landscape"
@@ -37,56 +38,47 @@
                 android:visibility="visible" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="150dp"
+                android:layout_width="155dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/cazait_white">
 
                 <TextView
                     android:id="@+id/tv_cafe_interest_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/roboto_bold"
+                    android:maxLines="2"
                     android:text="@{cafeState.name, default=카페}"
                     android:textColor="@color/cazait_black"
-                    android:textSize="17sp"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_cafe_interest_address"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_cafe_interest_distance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@{cafeState.distance + 'm', default=1024}"
-                    android:textColor="@color/cazait_black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_interest_name"
-                    app:layout_constraintStart_toEndOf="@+id/tv_cafe_interest_name" />
-
-                <TextView
                     android:id="@+id/tv_cafe_interest_address"
-                    android:layout_width="wrap_content"
+                    android:layout_width="135dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/roboto_regular"
+                    android:maxLines="2"
                     android:text="@{cafeState.address, default=addressaddressaddress}"
                     android:textColor="@color/cazait_black"
                     android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tv_cafe_interest_name"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cafe_interest_name" />
+                    app:layout_constraintBottom_toTopOf="@+id/tv_interest_state"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_interest_state"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="17dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="19dp"
                     android:background="@drawable/round_latte_beige_rectangle"
@@ -100,8 +92,7 @@
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_cafe_interest_address" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
                 <androidx.appcompat.widget.AppCompatCheckBox
@@ -115,7 +106,7 @@
                     android:contentDescription="@null"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_interest_name"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_cafe_interest_distance"
+
                     app:layout_constraintTop_toTopOf="@+id/tv_cafe_interest_name" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
