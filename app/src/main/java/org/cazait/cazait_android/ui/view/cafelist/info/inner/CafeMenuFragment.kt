@@ -29,6 +29,11 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewM
     }
     override fun initView() {
         initRecyclerView()
+        binding.apply {
+            swipefreshMenu.setOnRefreshListener {
+                swipefreshMenu.isRefreshing = false
+            }
+        }
     }
 
     private fun initRecyclerView() {

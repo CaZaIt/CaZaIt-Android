@@ -104,6 +104,9 @@ dependencies {
 
     //location request
     implementation "com.google.android.gms:play-services-location:$fused_location_provider_client_version"
+
+    //swipe refresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh"
     
     // Moshi
     implementation("com.squareup.moshi:moshi:$moshi_version")

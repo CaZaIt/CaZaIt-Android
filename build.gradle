@@ -36,6 +36,9 @@ buildscript {
         //location request
         fused_location_provider_client_version = '17.0.0'
 
+        //swipe refresh
+        swipe_refresh = '1.1.0'
+
         moshi_version = "1.14.0"
     }
     repositories {
