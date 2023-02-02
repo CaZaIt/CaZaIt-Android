@@ -4,8 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.cazait.cazait_android.data.repository.DataRepositoryImpl
 import org.cazait.cazait_android.data.repository.DataRepository
-import org.cazait.cazait_android.data.repository.DataRepositorySource
 import javax.inject.Singleton
 
 @Module
@@ -13,5 +13,5 @@ import javax.inject.Singleton
 abstract class DataModule {
     @Binds
     @Singleton
-    abstract fun provideDataRepository(dataRepository: DataRepository): DataRepositorySource
+    abstract fun provideDataRepository(dataRepositoryImpl: DataRepositoryImpl): DataRepository
 }

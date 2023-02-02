@@ -12,8 +12,3 @@ class Network @Inject constructor(val context: Context) : NetworkConnectivity {
         return getConnectivityManager().isDefaultNetworkActive
     }
 }
-
-interface NetworkConnectivity {
-    fun isConnected(): Boolean
-    fun getConnectivityManager(): ConnectivityManager
-}

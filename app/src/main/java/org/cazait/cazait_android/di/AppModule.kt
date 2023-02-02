@@ -1,6 +1,7 @@
 package org.cazait.cazait_android.di
 
 import android.content.Context
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,16 +10,21 @@ import dagger.hilt.components.SingletonComponent
 import kotlin.coroutines.CoroutineContext
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
+import org.cazait.cazait_android.baseURL
 import org.cazait.cazait_android.data.model.local.LocalData
 import org.cazait.cazait_android.network.Network
 import org.cazait.cazait_android.network.NetworkConnectivity
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
-    val baseURL = "https://cazait.shop"
+
 
     @Provides
     @Singleton
@@ -39,11 +45,18 @@ class AppModule {
     }
 
     @Provides
+    fun provideMoshi(): Moshi = Moshi.Builder().build()
+
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient()
+
+    @Provides
     @Singleton
-    fun provideRetroInstance(): Retrofit {
+    fun provideRetroInstance(moshi: Moshi, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseURL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
 }

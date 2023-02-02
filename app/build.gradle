@@ -51,7 +51,7 @@ dependencies {
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
     // Add Coroutines
@@ -68,7 +68,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.databinding:databinding-runtime:7.4.0'
     implementation 'com.android.car.ui:car-ui-lib:2.3.0'
-    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.core:core-splashscreen:1.0.0'
     androidTestImplementation "androidx.arch.core:core-testing:$arch_version"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
@@ -80,33 +80,10 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation "androidx.room:room-rxjava2:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
-    ksp("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 
     // viewpager2
     implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
-
-    // koin
-    // Koin Core features
-    implementation "io.insert-koin:koin-core:$koin_version"
-    // Koin Test features
-    testImplementation "io.insert-koin:koin-test:$koin_version"
-    // Koin for JUnit 4
-    testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
-    // Koin for JUnit 5
-    testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
-    // Koin main features for Android
-    implementation "io.insert-koin:koin-android:$koin_android_version"
-    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
-
-    // Java Compatibility
-    implementation "io.insert-koin:koin-android-compat:$koin_android_version"
-    // Jetpack WorkManager
-    implementation "io.insert-koin:koin-androidx-workmanager:$koin_android_version"
-    // Navigation Graph
-    implementation "io.insert-koin:koin-androidx-navigation:$koin_android_version"
-
-    // Jetpack Compose
-    implementation "io.insert-koin:koin-androidx-compose:$koin_android_compose_version"
 
     //chip
     implementation 'com.google.android.material:material:1.9.0-alpha01'
@@ -128,7 +105,8 @@ dependencies {
     //location request
     implementation "com.google.android.gms:play-services-location:$fused_location_provider_client_version"
     
-
+    // Moshi
+    implementation("com.squareup.moshi:moshi:$moshi_version")
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
@@ -138,6 +116,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 }
 
 kapt {
