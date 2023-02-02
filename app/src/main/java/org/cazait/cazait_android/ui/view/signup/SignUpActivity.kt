@@ -1,39 +1,39 @@
 package org.cazait.cazait_android.ui.view.signup
 
 import android.content.Intent
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
+import org.cazait.cazait_android.SignUpViewModel
 import org.cazait.cazait_android.data.model.local.SignUpDBHelper
 import org.cazait.cazait_android.databinding.ActivitySignUpBinding
+import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.view.login.LoginActivity
 
 @AndroidEntryPoint
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
+    override val layoutResourceId: Int
+        get() = R.layout.activity_sign_up
+    override val viewModel: SignUpViewModel by viewModels()
+
     private var nickNameFlag = false
     private var passwordFlag = false
     private var passwordCheckFlag = false
     private var emailFlag = false
     private var DB: SignUpDBHelper? = null
 
+    override fun initBeforeBinding() {
 
-    private val binding: ActivitySignUpBinding by lazy {
-        DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_sign_up
-        )
     }
 
+    override fun initAfterBinding() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        DB = SignUpDBHelper(this)
+    }
 
+    override fun initView() {
         binding.btnSignUpJoin.setOnClickListener {
             val email = binding.etSignUpEmailExample.editText?.text.toString()
             val pw = binding.etSignUpPasswordInsert.editText?.text.toString()
@@ -74,32 +74,16 @@ class SignUpActivity : AppCompatActivity() {
         binding.etSignUpNickNameExample.editText?.addTextChangedListener(nickNameListener)
     }
 
-    private fun hasSpecialCharacter(string: String): Boolean {
-        for (i in string.indices) if (!Character.isLetterOrDigit(string[i])) return true
-        return false
-    }
-
-
-    private fun hasAlphabet(string: String): Boolean {
-        for (i in string.indices) if (Character.isAlphabetic(string[i].code)) return true
-        return false
-    }
-
-
-
-    fun idRegex(id: String): Boolean {
-        if ((!hasSpecialCharacter(id)) and (hasAlphabet(id)) and (id.length >= 6)) {
-            return true
-        }
-        return false
+    fun nicknameRegex(id: String): Boolean {
+        return id.matches("^[가-힣a-zA-Z|d]{3,15}$".toRegex())
     }
 
     fun passwordRegex(password: String): Boolean {
-        return password.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$".toRegex())
+        return password.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\$@\$!%*#?&.])[A-Za-z[0-9]\$@\$!%*#?&.]{8,16}\$".toRegex())
     }
 
     fun passwordCheckRegex(passwordCheck: String): Boolean {
-        return passwordCheck.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$".toRegex())
+        return passwordCheck.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\$@\$!%*#?&.])[A-Za-z[0-9]\$@\$!%*#?&.]{8,16}\$".toRegex())
     }
 
     fun emailRegex(email: String): Boolean {
@@ -122,8 +106,8 @@ class SignUpActivity : AppCompatActivity() {
                     binding.etSignUpNickNameExample.error = "닉네임을 입력해주세요."
                     nickNameFlag = false
                 }
-                !idRegex(editText.toString()) -> {
-                    binding.etSignUpNickNameExample.error = "닉네임 양식이 맞지 않습니다"
+                !nicknameRegex(editText.toString()) -> {
+                    binding.etSignUpNickNameExample.error = "한글 또는 영어로 3~15자로 조합해 주세요"
                     nickNameFlag = false
                 }
                 else -> {
@@ -245,7 +229,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
-
     fun flagCheck() {
         binding.btnSignUpJoin.isEnabled = nickNameFlag && passwordFlag && passwordCheckFlag && emailFlag
     }
@@ -258,4 +241,4 @@ class SignUpActivity : AppCompatActivity() {
         if (etInsertMore != "" && etInsertMore != etInsert) return false
         return true
     }
-}
+    }

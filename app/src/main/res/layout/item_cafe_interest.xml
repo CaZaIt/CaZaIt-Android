@@ -106,7 +106,6 @@
                     android:contentDescription="@null"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_interest_name"
                     app:layout_constraintEnd_toEndOf="parent"
-
                     app:layout_constraintTop_toTopOf="@+id/tv_cafe_interest_name" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
