@@ -1,11 +1,11 @@
 package org.cazait.cazait_android.data.api
 
+import kotlinx.coroutines.flow.Flow
+import org.cazait.cazait_android.data.dto.Repo
+import org.cazait.cazait_android.data.dto.cafe.CafeDto
 import org.cazait.cazait_android.data.dto.cafe.CafesDto
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface CafeAPI {
     /**
@@ -13,10 +13,18 @@ interface CafeAPI {
      */
     @GET("/api/cafes/all")
     @Headers("Content-Type: application/json")
-    fun getCafes(
-    ): Call<CafesDto>
+    suspend fun getCafes(
+    ): CafesDto
 
     /**
      *
      */
+
+    // EX1
+    @GET("/users/{user}/repos")
+    fun listRepos(
+        @Path("user") user: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): Call<List<Repo>>
 }

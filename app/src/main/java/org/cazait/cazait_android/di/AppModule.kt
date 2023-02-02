@@ -10,11 +10,16 @@ import dagger.hilt.components.SingletonComponent
 import kotlin.coroutines.CoroutineContext
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
 import org.cazait.cazait_android.baseURL
 import org.cazait.cazait_android.data.model.local.LocalData
 import org.cazait.cazait_android.network.Network
 import org.cazait.cazait_android.network.NetworkConnectivity
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -40,15 +45,17 @@ class AppModule {
     }
 
     @Provides
-    fun provideMoshi(): Moshi {
-        return Moshi.Builder().build()
-    }
+    fun provideMoshi(): Moshi = Moshi.Builder().build()
+
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient()
 
     @Provides
     @Singleton
-    fun provideRetroInstance(moshi: Moshi): Retrofit {
+    fun provideRetroInstance(moshi: Moshi, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseURL)
+            .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
