@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
+import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -32,9 +33,8 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
     }
 
     override fun initView() {
-        binding.tvCafeInfoName.text = "롬곡"
-        binding.tvCafeInfoAdd.text = "서울특별시 광진구 광나루로 375-1 2층(군자동)"
-
+        binding.tvCafeInfoName.text = resources.getString(R.string.cafelist1_name)
+        binding.tvCafeInfoAdd.text = resources.getString(R.string.cafelist1_add)
         binding.fabReviewWrite.hide()
 
         binding.btnCafeMenu.setSelected(true)
