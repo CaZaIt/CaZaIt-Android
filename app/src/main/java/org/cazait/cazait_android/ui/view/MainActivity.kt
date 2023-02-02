@@ -32,8 +32,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initView() {
         initBottomNavigation()
-
-
     }
 
     private fun initBottomNavigation() {
