@@ -18,6 +18,10 @@
         android:theme="@style/Theme.CaZaItAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".ui.view.recently.CafeRecentlyActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.view.cafelist.info.inner.CafeRatingReviewEditActivity"
             android:exported="false"/>
 

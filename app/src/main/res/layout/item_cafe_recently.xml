@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="cafeState"
+            type="org.cazait.cazait_android.data.model.CafeState" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="9dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="366dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_cafe_landscape"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/ex_cafe_landscape"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:visibility="visible" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.55"
+                android:background="@color/cazait_white">
+
+                <TextView
+                    android:id="@+id/tv_cafe_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@{cafeState.name, default=카페}"
+                    android:textColor="@color/cazait_black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_cafe_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{cafeState.distance + 'm', default=1024}"
+                    android:textColor="@color/cazait_black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
+                    app:layout_constraintStart_toEndOf="@+id/tv_cafe_name" />
+
+                <TextView
+                    android:id="@+id/tv_cafe_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{cafeState.address, default=addressaddressaddress}"
+                    android:textColor="@color/cazait_black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_cafe_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cafe_name" />
+
+                <TextView
+                    android:id="@+id/tv_state"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="26dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/round_latte_beige_rectangle"
+                    android:contentDescription="@null"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:minHeight="38dp"
+                    android:text="@{cafeState.state, default=보통}"
+                    android:textAlignment="center"
+                    android:textColor="@color/cafe_list_item_normal"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_cafe_address" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/btn_cafe_main_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/selector_interest_checkbox"
+                    android:button="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_cafe_name" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
