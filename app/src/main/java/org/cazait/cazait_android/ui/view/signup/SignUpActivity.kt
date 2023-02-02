@@ -1,8 +1,6 @@
 package org.cazait.cazait_android.ui.view.signup
 
 import android.content.Intent
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Toast
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,77 +24,40 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
     private var emailFlag = false
     private var DB: SignUpDBHelper? = null
 
-    private val nickNameListener = object : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun afterTextChanged(editText: Editable?) {
-            if (editText == null) return
-            checkNickName(editText.toString())
-            checkFlag()
+    private val nickNameListener = object : CheckTextWatcher() {
+        override fun checkFlag() {
+            binding.btnSignUpJoin.isEnabled =
+                nickNameFlag && passwordFlag && passwordCheckFlag && emailFlag
         }
+
+        override fun checkText(text: String) = checkNickName(text)
     }
 
-    private val passwordListener = object : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun afterTextChanged(editText: Editable?) {
-            if (editText != null) {
-                when {
-                    editText.isEmpty() -> {
-                        binding.etSignUpPasswordInsert.error = "비밀번호를 입력해주세요."
-                        passwordFlag = false
-                    }
-                    !passwordRegex(editText.toString()) -> {
-                        binding.etSignUpPasswordInsert.error = "영문/숫자/특수문자(공백 제외)으로 8~16자로 조합"
-                        passwordFlag = false
-                    }
-                    !passwordCheckRegex(editText.toString()) -> {
-                        binding.etSignUpPasswordInsertMore.error = "영문/숫자/특수문자(공백 제외)으로 8~16자로 조합"
-                        passwordCheckFlag = false
-                    }
-                    editText.isNotEmpty() -> {
-                        binding.etSignUpPasswordInsert.error = null
-                        passwordFlag = true
-
-                        if (!isInvalidEditTextPassword()) {
-                            binding.etSignUpPasswordInsertMore.error = "비밀번호가 일치하지 않습니다"
-                            passwordCheckFlag = false
-                            passwordFlag = true
-                        } else {
-                            binding.etSignUpPasswordInsertMore.error = null
-                            passwordCheckFlag = true
-                        }
-                    }
-                }
-                checkFlag()
-            }
+    private val passwordListener = object : CheckTextWatcher() {
+        override fun checkFlag() {
+            binding.btnSignUpJoin.isEnabled =
+                nickNameFlag && passwordFlag && passwordCheckFlag && emailFlag
         }
+
+        override fun checkText(text: String) = checkPassword(text)
     }
 
-    private val passwordAgainListener = object : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun afterTextChanged(editText: Editable?) {
-            if (editText != null) {
-                checkPassword(editText.toString())
-                checkFlag()
-            }
+    private val passwordAgainListener = object : CheckTextWatcher() {
+        override fun checkFlag() {
+            binding.btnSignUpJoin.isEnabled =
+                nickNameFlag && passwordFlag && passwordCheckFlag && emailFlag
         }
+
+        override fun checkText(text: String) = checkPasswordAgain(text)
     }
 
-    private val emailListener = object : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun afterTextChanged(editText: Editable?) {
-            if (editText != null) {
-                checkPasswordAgain(editText.toString())
-                checkFlag()
-            }
+    private val emailListener = object : CheckTextWatcher() {
+        override fun checkFlag() {
+            binding.btnSignUpJoin.isEnabled =
+                nickNameFlag && passwordFlag && passwordCheckFlag && emailFlag
         }
+
+        override fun checkText(text: String) = checkEmail(text)
     }
 
     override fun initBeforeBinding() {}
@@ -122,30 +83,18 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
             val nickname = binding.etSignUpNickNameExample.editText?.text.toString()
 
             if (email == "" || pw == "" || repw == "" || nickname == "")
-                Toast.makeText(
-                    this@SignUpActivity,
-                    "회원정보를 전부 입력하세요",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this@SignUpActivity, "회원정보를 전부 입력하세요", Toast.LENGTH_SHORT).show()
             else if (pw == repw) {
-                val checkUsername = DB!!.checkUserName(email)
-                if (!checkUsername) {
+                val hasUserName = DB!!.checkUserName(email)
+                if (!hasUserName) {
                     val insert = DB!!.insertData(email, pw)
                     if (insert) {
-                        Toast.makeText(
-                            this@SignUpActivity,
-                            "가입되었습니다",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        val back = Intent(applicationContext, LoginActivity::class.java)
-                        startActivity(back)
-                    } else {
-                        Toast.makeText(
-                            this@SignUpActivity,
-                            "비밀번호가 일치하지 않습니다",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                        Toast.makeText(this@SignUpActivity, "가입되었습니다", Toast.LENGTH_SHORT).show()
+                        val loginActivityIntent = Intent(applicationContext, LoginActivity::class.java)
+                        startActivity(loginActivityIntent)
+                        finish()
+                    } else
+                        Toast.makeText(this@SignUpActivity, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -168,11 +117,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
         return regexEmail.matches(email)
     }
 
-    private fun checkFlag() {
-        binding.btnSignUpJoin.isEnabled =
-            nickNameFlag && passwordFlag && passwordCheckFlag && emailFlag
-    }
-
     private fun isInvalidEditTextPassword(): Boolean {
         val etInsert = binding.etSignUpPasswordInsert.editText?.text.toString()
         val etInsertMore =
@@ -180,6 +124,23 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
 
         if (etInsertMore != "" && etInsertMore != etInsert) return false
         return true
+    }
+
+    private fun checkEmail(email: String) {
+        when {
+            email.isEmpty() -> {
+                binding.etSignUpEmailExample.error = "이메일을 입력해주세요."
+                emailFlag = false
+            }
+            !emailRegex(email) -> {
+                binding.etSignUpEmailExample.error = "이메일 양식이 맞지 않습니다"
+                emailFlag = false
+            }
+            else -> {
+                binding.etSignUpEmailExample.error = null
+                emailFlag = true
+            }
+        }
     }
 
     private fun checkNickName(nickName: String) {
