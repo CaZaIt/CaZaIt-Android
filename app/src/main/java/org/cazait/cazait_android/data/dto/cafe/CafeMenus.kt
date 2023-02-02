@@ -2,9 +2,11 @@ package org.cazait.cazait_android.data.dto.cafe
 
 import com.google.gson.annotations.SerializedName
 
-data class CafesDto(
+data class CafeMenus(
     @SerializedName("data")
-    val cafes: List<CafeDto>,
+    val menus: List<CafeMenu>,
     val message: String,
     val result: String
-)
+) {
+    override fun toString() = "message:$message result:$result"
+}

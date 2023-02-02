@@ -1,6 +1,6 @@
 package org.cazait.cazait_android.data.api
 
-import org.cazait.cazait_android.data.dto.cafe.CafesDto
+import org.cazait.cazait_android.data.dto.cafe.Cafes
 import retrofit2.http.*
 
 interface CafeService {
@@ -10,5 +10,5 @@ interface CafeService {
     @GET("/api/cafes/all")
     @Headers("Content-Type: application/json")
     suspend fun getCafes(
-    ): CafesDto
+    ): Cafes
 }

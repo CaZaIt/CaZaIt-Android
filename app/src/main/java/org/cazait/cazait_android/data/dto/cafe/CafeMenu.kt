@@ -2,7 +2,7 @@ package org.cazait.cazait_android.data.dto.cafe
 
 import com.google.gson.annotations.SerializedName
 
-data class CafeMenuDto(
+data class CafeMenu(
     @SerializedName("cafeMenuId")
     val id: Long,
     val description: String,
