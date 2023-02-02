@@ -67,14 +67,16 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
     }
 
     private fun markerCamera() {
+        val locationLat = 37.548476
+        val locationLng = 127.0726703
         // 지정한 위치로 카메라 이동
-        val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.548476, 127.0726703))
+        val cameraUpdate = CameraUpdate.scrollTo(LatLng(locationLat, locationLng))
             .animate(CameraAnimation.Easing, 1000)
         naverMap.moveCamera(cameraUpdate)
 
         //지정한 위치에 마커 적용
         Marker().apply {
-            position = LatLng(37.548476, 127.0726703)
+            position = LatLng(locationLat, locationLng)
             map = naverMap
         }
     }
