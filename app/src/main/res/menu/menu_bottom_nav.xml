@@ -3,19 +3,18 @@
 
     <item
         android:id="@+id/menu_cafe_list"
-        android:icon="@drawable/bnv_home"
-        android:title="@null"/>
+        android:icon="@drawable/selector_bottom_navi_home"
+        android:title="@null" />
     <item
         android:id="@+id/menu_cafe_interest"
-        android:icon="@drawable/bnv_heart"
+        android:icon="@drawable/selector_bottom_navi_interest"
         android:title="@null"/>
     <item
         android:id="@+id/menu_my_page"
-        android:icon="@drawable/bnv_mypage"
+        android:icon="@drawable/selector_bottom_navi_my_page"
         android:title="@null"/>
     <item
         android:id="@+id/menu_view_more"
-        android:icon="@drawable/bnv_plus"
+        android:icon="@drawable/selector_bottom_navi_plus"
         android:title="@null"/>
-
 </menu>
