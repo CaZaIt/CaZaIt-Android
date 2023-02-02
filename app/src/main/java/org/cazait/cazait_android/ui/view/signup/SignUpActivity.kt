@@ -15,6 +15,7 @@ import org.cazait.cazait_android.ui.view.login.LoginActivity
 
 @AndroidEntryPoint
 class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
+
     override val layoutResourceId: Int
         get() = R.layout.activity_sign_up
     override val viewModel: SignUpViewModel by viewModels()
