@@ -28,8 +28,6 @@ class CafeRatingReviewEditActivity :
         binding.btnReviewOk.setOnClickListener {
             val reviewScore = binding.ratingBar.rating
             val reviewText = binding.etReviewEdit.text.toString()
-            Log.d("RatingBar Score", "{$reviewScore}점")
-            Log.d("RatingBar Review", "$reviewText")
             finish()
         }
         binding.imgbtnReviewBack.setOnClickListener {
