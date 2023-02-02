@@ -29,6 +29,11 @@ class CafeRatingReviewFragment :
 
     override fun initView() {
         initRecyclerView()
+        binding.apply {
+            swipefreshRatingreview.setOnRefreshListener {
+                swipefreshRatingreview.isRefreshing = false
+            }
+        }
     }
 
     private fun initRecyclerView() {
