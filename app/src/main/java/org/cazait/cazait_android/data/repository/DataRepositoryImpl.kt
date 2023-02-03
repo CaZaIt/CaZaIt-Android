@@ -3,28 +3,29 @@ package org.cazait.cazait_android.data.repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.cazait.cazait_android.data.Resource
-import org.cazait.cazait_android.data.api.CafeAPI
-import org.cazait.cazait_android.data.dto.cafe.CafesDto
-import org.cazait.cazait_android.data.model.remote.login.LoginRequest
-import org.cazait.cazait_android.data.model.remote.login.LoginResponse
+import org.cazait.cazait_android.data.api.CafeService
+import org.cazait.cazait_android.data.api.UserService
+import org.cazait.cazait_android.data.dto.cafe.Cafes
+import org.cazait.cazait_android.data.error.DEFAULT_ERROR
+import org.cazait.cazait_android.data.model.remote.request.LoginRequest
+import org.cazait.cazait_android.data.model.remote.response.LoginResponse
 import org.cazait.cazait_android.data.model.local.LocalData
-import org.cazait.cazait_android.data.model.remote.RemoteData
+import org.cazait.cazait_android.data.model.remote.datasource.UserRemoteDataSource
+import org.cazait.cazait_android.data.model.remote.request.SignUpRequest
+import org.cazait.cazait_android.data.model.remote.response.SignUpResponse
+import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.create
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class DataRepositoryImpl @Inject constructor(
-    private val remoteRepository: RemoteData,
+    private val remoteDataSource: UserRemoteDataSource,
     private val localRepository: LocalData,
     private val ioDispatcher: CoroutineContext,
-    private val retrofit: Retrofit
 ) : DataRepository {
-    private val cafeAPI: CafeAPI = retrofit.create(CafeAPI::class.java)
+    override fun postSignUp(body: SignUpRequest): Call<SignUpResponse> = remoteDataSource.postSignUp(body)
 
-    override suspend fun doLogin(loginRequest: LoginRequest): Flow<Resource<LoginResponse>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun postLogin(body: LoginRequest): Resource<LoginResponse> = remoteDataSource.postLogIn(body)
 
     override suspend fun addToFavourite(id: String): Flow<Resource<Boolean>> {
         TODO("Not yet implemented")
@@ -34,7 +35,7 @@ class DataRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun getCafes(): Flow<CafesDto> {
+    override suspend fun getCafes(): Flow<Cafes> {
         return getCafes()
     }
 }
