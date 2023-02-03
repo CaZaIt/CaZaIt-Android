@@ -9,11 +9,11 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface UserService {
-    @POST("/signup")
+    @POST("/api/users/sign-up")
     fun postSignUp(@Body signUpRequest: SignUpRequest): Call<SignUpResponse>
 
-    @POST("/login")
-    fun doLogin(@Body loginRequest: LoginRequest): LoginResponse
+    @POST("/api/users/log-in")
+    fun postLogin(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
     @POST("/cafes/{cafeId}/favourites")
     fun addToFavourite(@Path("cafeId") cafeId: String): Boolean

@@ -2,6 +2,8 @@ package org.cazait.cazait_android.data.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import okhttp3.Dispatcher
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.api.CafeService
 import org.cazait.cazait_android.data.api.UserService
@@ -20,11 +22,16 @@ import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class DataRepositoryImpl @Inject constructor(
-    private val remoteData: UserRemoteData
+    private val remoteData: UserRemoteData,
+    private val ioDispatcher: CoroutineContext
 ) : DataRepository {
     override fun postSignUp(body: SignUpRequest): Call<SignUpResponse> = remoteData.postSignUp(body)
 
-    override suspend fun postLogin(body: LoginRequest): Resource<LoginResponse> = remoteData.postLogIn(body)
+    override suspend fun postLogin(body: LoginRequest): Flow<Resource<LoginResponse>>{
+        return flow {
+            emit(remoteData.postLogin(body))
+        }.flowOn(ioDispatcher)
+    }
 
     override suspend fun addToFavourite(id: String): Flow<Resource<Boolean>> {
         TODO("Not yet implemented")

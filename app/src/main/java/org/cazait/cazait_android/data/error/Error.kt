@@ -11,4 +11,5 @@ const val DEFAULT_ERROR = -1
 const val NO_INTERNET_CONNECTION = -2
 const val NETWORK_ERROR = -3
 const val PASSWORD_ERROR = -101
-const val USER_NAME_ERROR = -102
+const val EMAIL_ERROR = -102
+const val EMAIL_OR_PASSWORD_ERROR = -103

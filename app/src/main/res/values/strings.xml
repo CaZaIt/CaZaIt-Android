@@ -73,6 +73,8 @@
     <string name="invalid_user_name">적절하지 않은 이름입니다</string>
     <string name="invalid_password">적절하지 않은 암호입니다</string>
     <string name="invalid_user_name_and_password">이름 또는 암호를 다시 확인해 주세요</string>
+    <string name="invalid_email_or_password">메일 또는 암호를 다시 확인해 주세요</string>
+    <string name="invalid_email">적절하지 않은 메일입니다</string>
 
     <!--Cafe Information Page-->
     <string name="cafe_info_name_add">카페명</string>
