@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.ui.view.cafelist.info.inner
+package org.cazait.cazait_android.ui.view.cafelist.info.util
 
 import android.content.Context
 import android.util.AttributeSet
