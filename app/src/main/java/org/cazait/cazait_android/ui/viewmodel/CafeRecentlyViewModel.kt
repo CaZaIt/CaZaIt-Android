@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.cazait.cazait_android.data.model.CafeState
-import org.cazait.cazait_android.data.repository.DataRepositorySource
+import org.cazait.cazait_android.data.repository.DataRepository
+import org.cazait.cazait_android.data.repository.DataRepositoryImpl
 import org.cazait.cazait_android.ui.base.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-open class CafeRecentlyViewModel @Inject constructor(private val dataRepository: DataRepositorySource) :
+open class CafeRecentlyViewModel @Inject constructor(private val dataRepository: DataRepository) :
     BaseViewModel() {
 
     private val list = arrayListOf<CafeState>()

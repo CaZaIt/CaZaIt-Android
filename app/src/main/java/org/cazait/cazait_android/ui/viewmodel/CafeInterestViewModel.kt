@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.cazait.cazait_android.data.model.CafeState
 import org.cazait.cazait_android.data.repository.DataRepository
+import org.cazait.cazait_android.data.repository.DataRepositoryImpl
 import org.cazait.cazait_android.ui.base.BaseViewModel
 import javax.inject.Inject
 
