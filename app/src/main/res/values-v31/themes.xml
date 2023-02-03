@@ -18,7 +18,7 @@
     </style>
     
     <!-- Splash -->
-    <style name="Theme.CaZaIt.Splash" parent="Theme.SplashScreen">
+    <style name="Theme.CaZaItAndroid.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/cazait_base_color_f5</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/cazait_base_color_f5</item>
