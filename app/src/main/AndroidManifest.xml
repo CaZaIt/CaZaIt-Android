@@ -50,7 +50,7 @@
         </activity>
         <activity
             android:name=".ui.view.login.LoginActivity"
-            android:theme="@style/Theme.CaZaItAndroid"
+            android:theme="@style/Theme.CaZaItAndroid.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

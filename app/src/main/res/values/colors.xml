@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="cazait_coffee">#7D5B51</color>
-    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
@@ -15,12 +14,7 @@
     <color name="cazait_base_color_f5">#F5F5F5</color>
 
     <!--    cazait color-->
-    <color name="cafeInfoTabBack">#8D6060</color>
-    <color name="favor">#8D6060</color>
     <color name="total_back">#FAF0DD</color>
-    <color name="cong_normal">#61FF00</color>
-    <color name="cong_empty">#00E1FF</color>
-    <color name="cong_hard">#FF0000</color>
 
     <!--login activity-->
     <color name="background_white">#F5F5F5</color>
@@ -28,9 +22,7 @@
 
     <!-- cafe list fragment-->
     <color name="cafe_list_item_normal">#533329</color>
-    <color name="cafe_list_item_great_congestion">#EF1C1C</color>
-    <color name="cafe_list_item_free">#34A3F2</color>
-    
+
     <!-- cafe information activity-->
     <color name="rating_review_edit">#5D2424</color>
     <color name="rating_review_filter">#8D6060</color>
