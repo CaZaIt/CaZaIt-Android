@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="next"
-            type="org.cazait.cazait_android.ui.view.login.LoginActivity" />
+            name="user"
+            type="org.cazait.cazait_android.data.model.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -120,5 +120,18 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_login_sign_up" />
+
+        <RelativeLayout
+            android:id="@+id/pv_login_loader_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -11,7 +11,7 @@ import retrofit2.Call
 
 interface DataRepository {
     fun postSignUp(body: SignUpRequest): Call<SignUpResponse>
-    suspend fun postLogin(body: LoginRequest): Resource<LoginResponse>
+    suspend fun postLogin(body: LoginRequest): Flow<Resource<LoginResponse>>
     suspend fun addToFavourite(cafeId: String): Flow<Resource<Boolean>>
     suspend fun removeFromFavourite(cafeId: String): Flow<Resource<Boolean>>
     suspend fun getCafes(): Flow<Cafes>

@@ -9,5 +9,5 @@ import retrofit2.Call
 
 interface UserRemoteDataSource {
     fun postSignUp(body: SignUpRequest): Call<SignUpResponse>
-    fun postLogIn(body: LoginRequest): Resource<LoginResponse>
+    fun postLogin(body: LoginRequest): Resource<LoginResponse>
 }

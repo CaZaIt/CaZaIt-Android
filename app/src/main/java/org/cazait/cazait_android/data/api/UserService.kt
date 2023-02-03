@@ -9,7 +9,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface UserService {
-    @POST("/signup")
+    @POST("/api/users/sign-up")
     fun postSignUp(@Body signUpRequest: SignUpRequest): Call<SignUpResponse>
 
     @POST("/login")

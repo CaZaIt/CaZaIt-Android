@@ -19,7 +19,7 @@ class UserRemoteData @Inject constructor(
 
     // 로그인과 회원 가입은 서로 다른 방식으로 작성했다.
     // 두 방식 모두 사용 가능하다.
-    override fun postLogIn(body: LoginRequest): Resource<LoginResponse> {
+    override fun postLogin(body: LoginRequest): Resource<LoginResponse> {
         if (body == LoginRequest("admin", "admin")) {
             return Resource.Success(
                 LoginResponse(
