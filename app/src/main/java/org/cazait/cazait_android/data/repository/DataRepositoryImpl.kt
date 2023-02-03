@@ -10,6 +10,7 @@ import org.cazait.cazait_android.data.error.DEFAULT_ERROR
 import org.cazait.cazait_android.data.model.remote.request.LoginRequest
 import org.cazait.cazait_android.data.model.remote.response.LoginResponse
 import org.cazait.cazait_android.data.model.local.LocalData
+import org.cazait.cazait_android.data.model.remote.datasource.UserRemoteData
 import org.cazait.cazait_android.data.model.remote.datasource.UserRemoteDataSource
 import org.cazait.cazait_android.data.model.remote.request.SignUpRequest
 import org.cazait.cazait_android.data.model.remote.response.SignUpResponse
@@ -19,13 +20,11 @@ import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class DataRepositoryImpl @Inject constructor(
-    private val remoteDataSource: UserRemoteDataSource,
-    private val localRepository: LocalData,
-    private val ioDispatcher: CoroutineContext,
+    private val remoteData: UserRemoteData
 ) : DataRepository {
-    override fun postSignUp(body: SignUpRequest): Call<SignUpResponse> = remoteDataSource.postSignUp(body)
+    override fun postSignUp(body: SignUpRequest): Call<SignUpResponse> = remoteData.postSignUp(body)
 
-    override suspend fun postLogin(body: LoginRequest): Resource<LoginResponse> = remoteDataSource.postLogIn(body)
+    override suspend fun postLogin(body: LoginRequest): Resource<LoginResponse> = remoteData.postLogIn(body)
 
     override suspend fun addToFavourite(id: String): Flow<Resource<Boolean>> {
         TODO("Not yet implemented")
