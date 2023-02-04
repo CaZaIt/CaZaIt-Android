@@ -2,97 +2,51 @@
     <string name="app_name">카자잇</string>
 
     <!--cafe information activity-->
-    <string name="cafe_info_landscape">카페 이미지</string>
     <string name="cafe_info_name">카페명</string>
     <string name="cafe_info_address">카페 주소</string>
     <string name="menu_cafe_info_cafe_info">카페정보</string>
     <string name="menu_cafe_info_location_transport">위치/교통</string>
     <string name="menu_cafe_info_rating_review">평점 및 후기</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Cafe List Fragment-->
-    <string name="cafe_list_frag_title">카페리스트</string>
-    <string name="cafe_list_frag_title_home">Home</string>
-    <string name="cafe_list_frag_title_dashboard">Dashboard</string>
-    <string name="cafe_list_frag_title_notifications">Notifications</string>
-
-    <string name="cafe_list_frag_cong_normal">보통</string>
-    <string name="cafe_list_frag_cong_empty">여유</string>
-    <string name="cafe_list_frag_cong_hard">혼잡</string>
 
     <string name="cafelist1_name">롬곡</string>
-    <string name="cafelist1_dis">220m</string>
     <string name="cafelist1_add">서울특별시 광진구 광나루로 375–1 2층(군자동)</string>
-
-    <string name="cafelist2_name">제주몰빵</string>
-    <string name="cafelist2_dis">1500m</string>
-    <string name="cafelist2_add">서울특별시 광진구 광나루로 375–1 2층(군자동)</string>
-
-    <string name="cafelist3_name">팬도로시</string>
-    <string name="cafelist3_dis">2000m</string>
-    <string name="cafelist3_add">서울특별시 광진구 광나루로 375–1 2층(군자동)</string>
 
     <!--login activity-->
     <string name="login_login">LOGIN</string>
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
-    <string name="login_id_find">아이디 찾기</string>
-    <string name="login_password_find">비밀번호 찾기</string>
     <string name="login_signup">회원가입</string>
     <string name="login_login_doing">로그인 하기</string>
 
     <!--Signup activity-->
     <string name="sign_up_sign_up">회원가입</string>
-    <string name="sign_up_id">아이디</string>
-    <string name="sign_up_id_example">예: kazait12</string>
     <string name="sign_up_double_check">중복확인</string>
-    <string name="sign_up_id_below">6자 이상의 영문 혹은 영문과 숫자를 조합</string>
     <string name="sign_up_password">비밀번호</string>
-    <string name="sign_up_password_insert">비밀번호를 입력해주세요</string>
     <string name="sign_up_password_check">비밀번호 확인</string>
-    <string name="sign_up_password_insert_more">비밀번호를 한 번 더 입력해주세요</string>
     <string name="sign_up_email">이메일</string>
-    <string name="sign_up_email_example">예: kazait12@naver.com</string>
     <string name="sign_up_join">가입하기</string>
     <string name="sign_up_nick_name">닉네임</string>
 
     <!--Main Activity-->
-    <string name="search_bar">search</string>
 
     <!--Filters-->
-    <string name="filter_congestion_order">혼잡도순</string>
     <string name="filter_distance_order">거리순</string>
 
     <!--Test Message-->
-    <string name="test_msg1">it is test message 1</string>
-    <string name="test_msg2">it is test message 2</string>
 
     <!--Error Message-->
     <string name="no_internet">인터넷 연결을 확인해 주세요</string>
     <string name="network_error">네트워크 에러, 다시 시도해 주세요</string>
-    <string name="invalid_user_name">적절하지 않은 이름입니다</string>
     <string name="invalid_password">적절하지 않은 암호입니다</string>
-    <string name="invalid_user_name_and_password">이름 또는 암호를 다시 확인해 주세요</string>
     <string name="invalid_email_or_password">메일 또는 암호를 다시 확인해 주세요</string>
     <string name="invalid_email">적절하지 않은 메일입니다</string>
 
     <!--Cafe Information Page-->
-    <string name="cafe_info_name_add">카페명</string>
     <string name="cafe_info_menu_ame">아메리카노</string>
-    <string name="cafe_info_menu_latte">카페라떼</string>
-    <string name="cafe_info_menu_vanila">바닐라라떼</string>
-    <string name="cafe_info_menu_moca">카페모카</string>
-    <string name="cafe_info_menu_caramel">카라멜 마끼아또</string>
     <string name="cafe_info_price1">1500원</string>
-    <string name="cafe_info_price2">2000원</string>
-    <string name="cafe_info_price3">2500원</string>
-    <string name="cafe_info_price4">3000원</string>
-    <string name="cafe_info_price5">3500원</string>
-    <string name="cafe_info_price6">4000원</string>
-    <string name="cafe_info_price7">4500원</string>
-    <string name="cafe_info_price8">5000원</string>
     <string name="cafe_info_rating_review_filter1">최근 작성순</string>
-    <string name="cafe_info_rating_review_filter2">평점순</string>
     <string name="cafe_info_menu_info">우리나라 원두를 사용하여 더욱 달달한 풍미가 살아있는 최고급 아메리카노</string>
     <string name="cafe_info_review_town">화양동</string>
     <string name="cafe_info_review_nickname">뚜벅초</string>
@@ -127,8 +81,4 @@
     <string name="view_more_terms_polices">약관 및 정책</string>
 
     <!--Sort Filter-->
-    <string-array name="sortmenu">
-        <item>최근 작성순</item>
-        <item>별점순</item>
-    </string-array>
 </resources>
