@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
-import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -15,6 +14,7 @@ import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.ActivityCafeInformationBinding
 import org.cazait.cazait_android.ui.base.BaseActivity
 import org.cazait.cazait_android.ui.view.cafelist.info.inner.*
+import org.cazait.cazait_android.ui.view.cafelist.info.util.OnMapTouchListener
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
 
 @AndroidEntryPoint
@@ -24,6 +24,21 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         get() = R.layout.activity_cafe_information
 
     override val viewModel: CafeInfoViewModel by viewModels()
+
+    override fun onTouch() {
+        binding.cafeInfoFragCon.requestDisallowInterceptTouchEvent(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                Log.d("Toolbar_item", "뒤로가기 클릭")
+                finish()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
 
     override fun initAfterBinding() {
 
@@ -43,21 +58,21 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
             .replace(R.id.cafe_info_frag_con, CafeMenuFragment())
             .commit()
 
-        setFragment1(
+        showMenuLocFragment(
             binding.btnCafeMenu,
             binding.btnCafeLocTrans,
             binding.btnCafeRatingReview,
             CafeMenuFragment(),
             binding.fabReviewWrite
         )
-        setFragment1(
+        showMenuLocFragment(
             binding.btnCafeLocTrans,
             binding.btnCafeRatingReview,
             binding.btnCafeMenu,
             CafeLocTransFragment(),
             binding.fabReviewWrite
         )
-        setFragment2(
+        showReviewFragment(
             binding.btnCafeRatingReview,
             binding.btnCafeMenu,
             binding.btnCafeLocTrans,
@@ -86,7 +101,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         }
     }
 
-    private fun setFragment1(
+    private fun showMenuLocFragment(
         btn1: Button,
         btn2: Button,
         btn3: Button,
@@ -105,7 +120,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         }
     }
 
-    private fun setFragment2(
+    private fun showReviewFragment(
         btn1: Button,
         btn2: Button,
         btn3: Button,
@@ -121,21 +136,6 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
                 .replace(R.id.cafe_info_frag_con, frag)
                 .commit()
             fab.show()
-        }
-    }
-
-    override fun onTouch() {
-        binding.cafeInfoFragCon.requestDisallowInterceptTouchEvent(true)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                Log.d("Toolbar_item", "뒤로가기 클릭")
-                finish()
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
         }
     }
 }

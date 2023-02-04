@@ -2,8 +2,6 @@ package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
 import android.Manifest
 import android.content.Context
-import android.content.pm.PackageManager
-import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -15,6 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.FragmentCafeLocTransBinding
 import org.cazait.cazait_android.ui.base.BaseFragment
+import org.cazait.cazait_android.ui.view.cafelist.info.util.OnMapTouchListener
+import org.cazait.cazait_android.ui.view.cafelist.info.util.TouchableWrapper
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
 
 @AndroidEntryPoint
@@ -51,7 +51,7 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
         naverMap.locationSource = locationSource
         naverMap.uiSettings.isLocationButtonEnabled = true
 
-        markerCamera()
+        showLocationRange()
     }
 
     private fun createMap() {
@@ -66,7 +66,7 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoV
         mapFragment.getMapAsync(this)
     }
 
-    private fun markerCamera() {
+    private fun showLocationRange() {
         val locationLat = 37.548476
         val locationLng = 127.0726703
         // 지정한 위치로 카메라 이동
