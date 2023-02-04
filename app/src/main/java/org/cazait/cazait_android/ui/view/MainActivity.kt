@@ -1,7 +1,10 @@
 package org.cazait.cazait_android.ui.view
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.activity.viewModels
-import androidx.fragment.app.FragmentTransaction
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.ui.view.interest.CafeInterestFragment
 import org.cazait.cazait_android.R
@@ -24,6 +27,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private val myPageFragment: MyPageFragment by lazy { MyPageFragment() }
     private val viewMoreFragment: ViewMoreFragment by lazy { ViewMoreFragment() }
 
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+
+    }
     override fun initAfterBinding() {
     }
 
@@ -32,6 +39,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initView() {
         initBottomNavigation()
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+        } else {
+
+        }
     }
 
     private fun initBottomNavigation() {
