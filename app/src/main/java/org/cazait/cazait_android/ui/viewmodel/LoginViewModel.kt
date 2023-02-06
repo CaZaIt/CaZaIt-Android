@@ -1,21 +1,28 @@
 package org.cazait.cazait_android.ui.viewmodel
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.remote.request.LoginRequest
 import org.cazait.cazait_android.data.model.remote.response.LoginResponse
-import org.cazait.cazait_android.data.repository.DataRepository
+import org.cazait.cazait_android.data.repository.UserRepository
 import org.cazait.cazait_android.ui.base.BaseViewModel
 import org.cazait.cazait_android.ui.util.SingleEvent
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val dataRepository: DataRepository) :
-    BaseViewModel() {
+class LoginViewModel @Inject constructor(
+    private val userRepository: UserRepository,
+    @ApplicationContext context: Context,
+) : BaseViewModel() {
 
     private val _loginProcess = MutableLiveData<Resource<LoginResponse>>()
     val loginProcess: LiveData<Resource<LoginResponse>>
@@ -24,14 +31,17 @@ class LoginViewModel @Inject constructor(private val dataRepository: DataReposit
     private val _showToast = MutableLiveData<SingleEvent<Any>>()
     val showToast: LiveData<SingleEvent<Any>> get() = _showToast
 
-    fun postSignUp() {
+    fun doSignUp() {
 
     }
 
-    fun postLogIn(email: String, password: String) {
+    fun doLogin(email: String, password: String) {
         viewModelScope.launch {
             _loginProcess.value = Resource.Loading()
-            dataRepository.postLogin(body = LoginRequest(email, password)).collect {
+            userRepository.login(body = LoginRequest(email, password)).onCompletion {
+                saveLoginToken(listOf(email, password))
+                Log.d("LoginViewModel", "SaveLoginToken() 실행됨")
+            }.collect {
                 _loginProcess.value = it
             }
         }
@@ -45,5 +55,25 @@ class LoginViewModel @Inject constructor(private val dataRepository: DataReposit
     fun showToastMessage(errorMessage: String?) {
         if (errorMessage == null) return
         _showToast.value = SingleEvent(errorMessage)
+    }
+
+    suspend fun isLoggedIn() = userRepository.isLoggedIn()
+
+    private fun saveUserPreferences(email: String, password: String) { // + remember할수도 있겠음
+        viewModelScope.launch {
+            userRepository.saveToken(listOf(email, password))
+        }
+    }
+
+    private fun clearUserPreferences() {
+        viewModelScope.launch {
+            userRepository.clearDataStore()
+        }
+    }
+
+    private fun saveLoginToken(token: List<String>) {
+        viewModelScope.launch {
+            userRepository.saveToken(token)
+        }
     }
 }

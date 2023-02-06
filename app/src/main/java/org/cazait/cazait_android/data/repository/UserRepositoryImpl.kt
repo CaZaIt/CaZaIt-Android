@@ -1,10 +1,8 @@
 package org.cazait.cazait_android.data.repository
 
 import android.content.Context
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.emptyPreferences
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.*
@@ -25,7 +23,11 @@ class UserRepositoryImpl @Inject constructor(
 ) : UserRepository {
     private val Context.tokenDataStore by preferencesDataStore(TOKEN_DATASTORE)
     private val Context.loginCheckDataStore by preferencesDataStore(LOGIN_CHECK_DATASTORE)
-
+    override suspend fun clearDataStore() {
+        context.tokenDataStore.edit { prefs ->
+            prefs.clear()
+        }
+    }
     override suspend fun login(body: LoginRequest): Flow<Resource<LoginResponse>> {
         return flow {
             emit(remoteData.postLogin(body))
@@ -62,12 +64,12 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
+
     override suspend fun isLoggedIn(): Flow<Boolean> {
         return context.loginCheckDataStore.data.map { prefs ->
             prefs[LOGIN_CHECK] ?: false
         }
     }
-
     private companion object PreferenceKeys {
         val ACCESS_TOKEN = stringPreferencesKey("access_token")
         val REFRESH_TOKEN = stringPreferencesKey("refresh_token")

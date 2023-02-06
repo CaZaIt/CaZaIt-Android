@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.datastore.core.DataStore
 import androidx.lifecycle.LiveData
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.error.EMAIL_OR_PASSWORD_ERROR
@@ -36,6 +40,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun initView() {
         initSignUpBtn()
         initLoginBtn()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.isLoggedIn().collect {
+                if (it) {
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
     }
 
     override fun initAfterBinding() {
@@ -46,6 +60,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private fun observeViewModel() {
         observe(viewModel.loginProcess, ::handleLoginResult)
         observeToast(viewModel.showToast)
+
     }
 
     private fun handleLoginResult(status: Resource<LoginResponse>) {
@@ -53,7 +68,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             is Resource.Loading -> binding.pvLoginLoaderView.toVisible()
             is Resource.Success -> status.data.let {
                 binding.pvLoginLoaderView.toGone()
-                // Log.d("Log", "${status.data.message}  ${status.data.result}")
                 when (status.data.result) {
                     "SUCCESS" -> {
                         val intent = Intent(applicationContext, MainActivity::class.java)
@@ -86,7 +100,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     }
 
     private fun doLogin() {
-        viewModel.postLogIn(
+        viewModel.doLogin(
             binding.etLoginUserName.text.toString(), binding.etLoginPassword.text.toString()
         )
     }
