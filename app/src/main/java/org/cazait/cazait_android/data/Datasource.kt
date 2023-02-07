@@ -1,5 +1,6 @@
 package org.cazait.cazait_android.data
 
+import org.cazait.cazait_android.data.model.CafeImg
 import org.cazait.cazait_android.data.model.CafeState
 
 class Datasource {
@@ -19,6 +20,12 @@ class Datasource {
             CafeState("12", "카페 딕셔너리", "1000", "서울시 xxxx - xxxxxx", "보통"),
             CafeState("13", "카페베네", "1100", "서울시 광진구 xxxx - xxxxxx", "보통")
 
+        )
+    }
+
+    fun loadCafeImg():ArrayList<CafeImg>{
+        return arrayListOf(
+//            CafeImg()
         )
     }
 }
