@@ -119,6 +119,9 @@ dependencies {
     // Gson
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+    // Dot Indicator
+    implementation 'com.tbuonomo:dotsindicator:4.3'
+
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.9.0-alpha01'
