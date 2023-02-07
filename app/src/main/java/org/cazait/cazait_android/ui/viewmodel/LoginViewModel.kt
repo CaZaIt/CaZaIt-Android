@@ -29,7 +29,8 @@ class LoginViewModel @Inject constructor(
         get() = _loginProcess
 
     private val _showToast = MutableLiveData<SingleEvent<Any>>()
-    val showToast: LiveData<SingleEvent<Any>> get() = _showToast
+    val showToast: LiveData<SingleEvent<Any>>
+        get() = _showToast
 
     fun doSignUp() {
 
@@ -39,9 +40,11 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             _loginProcess.value = Resource.Loading()
             userRepository.login(body = LoginRequest(email, password)).onCompletion {
-                saveLoginToken(listOf(email, password))
-                Log.d("LoginViewModel", "SaveLoginToken() 실행됨")
             }.collect {
+                if (it is Resource.Success) {
+                    saveLoginToken(it.data.data.jwtToken, it.data.data.refreshToken)
+                    saveLoginEmail(email)
+                }
                 _loginProcess.value = it
             }
         }
@@ -59,21 +62,21 @@ class LoginViewModel @Inject constructor(
 
     suspend fun isLoggedIn() = userRepository.isLoggedIn()
 
-    private fun saveUserPreferences(email: String, password: String) { // + remember할수도 있겠음
-        viewModelScope.launch {
-            userRepository.saveToken(listOf(email, password))
-        }
-    }
-
     private fun clearUserPreferences() {
         viewModelScope.launch {
             userRepository.clearDataStore()
         }
     }
 
-    private fun saveLoginToken(token: List<String>) {
+    private fun saveLoginToken(jwtToken: String, refreshToken: String) {
         viewModelScope.launch {
-            userRepository.saveToken(token)
+            userRepository.saveToken(listOf(jwtToken, refreshToken))
+        }
+    }
+
+    private fun saveLoginEmail(email: String) {
+        viewModelScope.launch {
+            userRepository.saveEmail(email)
         }
     }
 }

@@ -40,7 +40,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun initView() {
         initSignUpBtn()
         initLoginBtn()
+        doLoginIfLoggedIn()
+    }
 
+    override fun initAfterBinding() {
+        binding.lifecycleOwner = this
+        observeViewModel()
+    }
+
+    private fun doLoginIfLoggedIn() {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.isLoggedIn().collect {
                 if (it) {
@@ -52,15 +60,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         }
     }
 
-    override fun initAfterBinding() {
-        binding.lifecycleOwner = this
-        observeViewModel()
-    }
-
     private fun observeViewModel() {
         observe(viewModel.loginProcess, ::handleLoginResult)
         observeToast(viewModel.showToast)
-
     }
 
     private fun handleLoginResult(status: Resource<LoginResponse>) {

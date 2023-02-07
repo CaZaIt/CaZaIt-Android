@@ -17,6 +17,8 @@ interface UserRepository {
 
     suspend fun saveToken(token: List<String>)
 
+    suspend fun saveEmail(email: String)
+
     suspend fun getToken(): Flow<List<String>>
 
     suspend fun clearDataStore()
