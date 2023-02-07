@@ -1,11 +1,8 @@
 package org.cazait.cazait_android.ui.view.login
 
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.datastore.core.DataStore
 import androidx.lifecycle.LiveData
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

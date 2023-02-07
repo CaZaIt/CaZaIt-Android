@@ -33,6 +33,7 @@ class UserRepositoryImpl @Inject constructor(
             prefs.clear()
         }
     }
+
     override suspend fun login(body: LoginRequest): Flow<Resource<LoginResponse>> {
         return flow {
             emit(remoteData.postLogin(body))
@@ -60,7 +61,13 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getToken(): Flow<List<String>> {
+    override suspend fun saveUserId(id: Long) {
+        context.userDataStore.edit {prefs ->
+            prefs[USER_ID] = id
+        }
+    }
+
+    override suspend fun getTokenInDataStore(): Flow<List<String>> {
         return context.tokenDataStore.data.catch { exception ->
             if (exception is IOException) {
                 exception.printStackTrace()
@@ -75,13 +82,28 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getUserIdInDataStore(): Flow<Long> {
+        return context.userDataStore.data.catch { exception ->
+            if (exception is IOException) {
+                exception.printStackTrace()
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }.map { prefs ->
+            prefs[USER_ID]!!
+        }
+    }
+
     override suspend fun isLoggedIn(): Flow<Boolean> {
         return context.loginCheckDataStore.data.map { prefs ->
             prefs[LOGIN_CHECK] ?: false
         }
     }
+
     private companion object PreferenceKeys {
         val EMAIL = stringPreferencesKey("email")
+        val USER_ID = longPreferencesKey("user_id")
         val ACCESS_TOKEN = stringPreferencesKey("access_token")
         val REFRESH_TOKEN = stringPreferencesKey("refresh_token")
         val LOGIN_CHECK = booleanPreferencesKey("login_check")
