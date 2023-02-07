@@ -20,7 +20,4 @@ interface UserService {
 
     @DELETE("/cafes/{cafeId}/favourites")
     fun removeFromFavourite(@Path("cafeId") cafeId: String): Boolean
-
-    @GET("/cafes")
-    fun getCafes(): Cafes
 }
