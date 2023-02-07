@@ -29,13 +29,6 @@
                     android:fitsSystemWindows="true"
                     app:contentScrim="@android:color/transparent"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-                    <!--                    <androidx.viewpager2.widget.ViewPager2-->
-                    <!--                        android:id="@+id/vp_Img"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="match_parent"-->
-                    <!--                        android:layout_gravity="center"-->
-                    <!--                        app:layout_collapseMode="parallax" />-->
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
