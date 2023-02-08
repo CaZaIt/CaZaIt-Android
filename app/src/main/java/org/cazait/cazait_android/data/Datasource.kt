@@ -24,10 +24,12 @@ class Datasource {
         )
     }
 
-    fun loadCafeImg():ArrayList<CafeImg>{
-        return arrayListOf(
-            CafeImg(R.drawable.image_cafe_ex1),
-            CafeImg(R.drawable.image_cafe_ex1)
+    fun loadCafeImg():ArrayList<Int>{
+        return arrayListOf<Int>(
+            R.drawable.image_cafe_ex1,
+            R.drawable.image_cafe_ex2,
+            R.drawable.image_cafe_ex1,
+            R.drawable.image_cafe_ex2
         )
     }
 }

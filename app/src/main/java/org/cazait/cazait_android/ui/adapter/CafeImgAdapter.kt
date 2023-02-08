@@ -2,28 +2,24 @@ package org.cazait.cazait_android.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.model.CafeImg
 
-class CafeImgAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private val _image = mutableListOf<CafeImg>().apply {
-        add(CafeImg(R.drawable.image_cafe_ex1))
-        add(CafeImg(R.drawable.image_cafe_ex2))
-        add(CafeImg(R.drawable.image_cafe_ex2))
-        add(CafeImg(R.drawable.image_cafe_ex2))
+class CafeImgAdapter(var cafeImg: ArrayList<Int>) :
+    RecyclerView.Adapter<CafeImgAdapter.ImgViewHolder>() {
+    inner class ImgViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.item_cafe_img, parent, false)
+    ) {
+        val cafeImg = itemView.findViewById<ImageView>(R.id.cafe_info_img)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return object : RecyclerView.ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_cafe_img, parent, false)
-        ){}
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ImgViewHolder((parent))
+
+    override fun onBindViewHolder(holder: CafeImgAdapter.ImgViewHolder, position: Int) {
+        holder.cafeImg.setImageResource(cafeImg[position])
     }
 
-    override fun getItemCount() = _image.size
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-    }
+    override fun getItemCount(): Int = cafeImg.size
 }

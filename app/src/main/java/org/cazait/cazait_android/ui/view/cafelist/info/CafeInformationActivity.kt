@@ -52,8 +52,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
         val dotsIndicator = binding.dotsIndicator
         val viewPager = binding.vpImg
-        val vpAdapter = CafeImgAdapter()
-        viewPager.adapter = vpAdapter
+        viewPager.adapter = CafeImgAdapter(imgList)
         dotsIndicator.attachTo(viewPager)
 
         binding.tvCafeInfoName.text = resources.getString(R.string.cafelist1_name)
