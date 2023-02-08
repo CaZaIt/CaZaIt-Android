@@ -27,7 +27,7 @@
                 android:layout_marginStart="15.22dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="14dp"
-                android:src="@drawable/americano"
+                android:src="@drawable/cafe_menu_americano"
                 android:contentDescription="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
