@@ -21,4 +21,13 @@ class Datasource {
 
         )
     }
+
+    fun loadCafeImg():MutableList<Int>{
+        return arrayListOf(
+            R.drawable.image_cafe_ex1,
+            R.drawable.image_cafe_ex2,
+            R.drawable.image_cafe_ex1,
+            R.drawable.image_cafe_ex2
+        )
+    }
 }
