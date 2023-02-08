@@ -35,7 +35,7 @@ class LoginViewModel @Inject constructor(
             _loginProcess.value = Resource.Loading()
             userRepository.login(body = LoginRequest(email, password)).onCompletion {
             }.collect {
-                if (it is Resource.Success) {
+                if (it is Resource.Success && it.data.result == "SUCCESS") {
                     saveLoginToken(it.data.data.jwtToken, it.data.data.refreshToken)
                     saveUserId(it.data.data.id)
                     saveLoginEmail(email)
