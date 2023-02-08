@@ -1,5 +1,6 @@
 package org.cazait.cazait_android.data
 
+import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.model.Cafe
 
 class Datasource {

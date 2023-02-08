@@ -3,12 +3,23 @@ package org.cazait.cazait_android.ui.view.signup
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.LiveData
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.Single
 import org.cazait.cazait_android.R
+import org.cazait.cazait_android.data.Resource
+import org.cazait.cazait_android.data.error.EMAIL_OR_PASSWORD_ERROR
 import org.cazait.cazait_android.ui.viewmodel.SignUpViewModel
 import org.cazait.cazait_android.data.model.local.SignUpDBHelper
+import org.cazait.cazait_android.data.model.remote.response.SignUpResponse
 import org.cazait.cazait_android.databinding.ActivitySignUpBinding
 import org.cazait.cazait_android.ui.base.BaseActivity
+import org.cazait.cazait_android.ui.util.SingleEvent
+import org.cazait.cazait_android.ui.util.extension.observe
+import org.cazait.cazait_android.ui.util.extension.showToast
+import org.cazait.cazait_android.ui.util.extension.toGone
+import org.cazait.cazait_android.ui.util.extension.toVisible
 import org.cazait.cazait_android.ui.view.login.LoginActivity
 
 @AndroidEntryPoint
@@ -61,11 +72,44 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
     }
 
     override fun initBeforeBinding() {}
-    override fun initAfterBinding() {}
+    override fun initAfterBinding() {
+        binding.lifecycleOwner = this
+        observeViewModel()
+    }
 
     override fun initView() {
         initSignUpBtn()
         initEditTextListener()
+    }
+
+    private fun observeViewModel() {
+        observe(viewModel.signUpProcess, ::handleSignUpResult)
+        observeToast(viewModel.showToast)
+    }
+
+    private fun handleSignUpResult(status: Resource<SignUpResponse>) {
+        when (status) {
+            is Resource.Loading -> binding.pbSignUpLoaderView.toVisible()
+            is Resource.Success -> status.data.let {
+                binding.pbSignUpLoaderView.toGone()
+                when (status.data.result) {
+                    "SUCCESS" -> {
+                        val nextScreenIntent = Intent(applicationContext, LoginActivity::class.java)
+                        startActivity(nextScreenIntent)
+                        finish()
+                    }
+                    "FAIL" -> viewModel.showToastMessage(status.data.message)
+                }
+            }
+            is Resource.Error -> {
+                binding.pbSignUpLoaderView.toGone()
+                viewModel.showToastMessage(status.message)
+            }
+        }
+    }
+
+    private fun observeToast(event: LiveData<SingleEvent<Any>>) {
+        binding.root.showToast(this, event, Snackbar.LENGTH_LONG)
     }
 
     private fun initEditTextListener() {
@@ -83,20 +127,12 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
             val nickname = binding.etSignUpNickNameExample.editText?.text.toString()
 
             if (email == "" || pw == "" || repw == "" || nickname == "")
-                Toast.makeText(this@SignUpActivity, "회원정보를 전부 입력하세요", Toast.LENGTH_SHORT).show()
+                viewModel.showToastMessage("회원정보를 전부 입력하세요")
             else if (pw == repw) {
-                val hasUserName = DB!!.checkUserName(email)
-                if (!hasUserName) {
-                    val insert = DB!!.insertData(email, pw)
-                    if (insert) {
-                        Toast.makeText(this@SignUpActivity, "가입되었습니다", Toast.LENGTH_SHORT).show()
-                        val loginActivityIntent = Intent(applicationContext, LoginActivity::class.java)
-                        startActivity(loginActivityIntent)
-                        finish()
-                    } else
-                        Toast.makeText(this@SignUpActivity, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
-                }
-            }
+                viewModel.showToastMessage("가입되었습니다")
+                viewModel.signUp(email, pw, nickname)
+            } else
+                viewModel.showToastMessage("비밀번호가 일치하지 않습니다")
         }
     }
 
