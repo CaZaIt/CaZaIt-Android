@@ -5,9 +5,7 @@ import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.*
-import org.cazait.cazait_android.LOGIN_CHECK_DATASTORE
-import org.cazait.cazait_android.TOKEN_DATASTORE
-import org.cazait.cazait_android.USER_DATASTORE
+import org.cazait.cazait_android.*
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.remote.datasource.UserRemoteData
 import org.cazait.cazait_android.data.model.remote.request.LoginRequest
@@ -18,7 +16,7 @@ import java.io.IOException
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-private val Context.tokenDataStore by preferencesDataStore(TOKEN_DATASTORE)
+val Context.tokenDataStore by preferencesDataStore(TOKEN_DATASTORE)
 private val Context.loginCheckDataStore by preferencesDataStore(LOGIN_CHECK_DATASTORE)
 private val Context.userDataStore by preferencesDataStore(USER_DATASTORE)
 
@@ -99,13 +97,5 @@ class UserRepositoryImpl @Inject constructor(
         return context.loginCheckDataStore.data.map { prefs ->
             prefs[LOGIN_CHECK] ?: false
         }
-    }
-
-    private companion object PreferenceKeys {
-        val EMAIL = stringPreferencesKey("email")
-        val USER_ID = longPreferencesKey("user_id")
-        val ACCESS_TOKEN = stringPreferencesKey("access_token")
-        val REFRESH_TOKEN = stringPreferencesKey("refresh_token")
-        val LOGIN_CHECK = booleanPreferencesKey("login_check")
     }
 }

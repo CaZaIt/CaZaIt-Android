@@ -1,40 +1,91 @@
 package org.cazait.cazait_android.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.cazait.cazait_android.data.Datasource
-import org.cazait.cazait_android.data.model.CafeState
+import kotlinx.coroutines.launch
+import org.cazait.cazait_android.data.Resource
+import org.cazait.cazait_android.data.model.Cafe
+import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
+import org.cazait.cazait_android.data.model.remote.response.CafeListResponse
 import org.cazait.cazait_android.data.repository.DataRepository
-import org.cazait.cazait_android.data.repository.DataRepositoryImpl
 import org.cazait.cazait_android.ui.base.BaseViewModel
+import org.cazait.cazait_android.ui.util.SingleEvent
 import javax.inject.Inject
 
 @HiltViewModel
 open class CafeListViewModel @Inject constructor(private val dataRepository: DataRepository) :
     BaseViewModel() {
 
-    private val list = arrayListOf<CafeState>()
-    private val _cafeStateList = MutableLiveData<ArrayList<CafeState>>()
-    val cafeStateList: LiveData<ArrayList<CafeState>>
-        get() = _cafeStateList
+    private val cafes = arrayListOf<Cafe>()
+    private val _cafesLiveData = MutableLiveData<Resource<CafeListResponse>>()
+    val cafesLiveData: LiveData<Resource<CafeListResponse>>
+        get() = _cafesLiveData
+
+    private val _openCafeDetails = MutableLiveData<SingleEvent<Cafe>>()
+    val openCafeDetails: LiveData<SingleEvent<Cafe>>
+        get() = _openCafeDetails
+
+    private val _showToast = MutableLiveData<SingleEvent<Any>>()
+    val showToast: LiveData<SingleEvent<Any>>
+        get() = _showToast
 
     init {
-        val dataset: ArrayList<CafeState> = Datasource().loadAffirmations()
-        getCafeStateList(dataset)
+        //val dataset: ArrayList<CafeState> = Datasource().loadAffirmations()
+        //getCafeStateList(dataset)
     }
 
     // For Test
-    fun addItem() {
-        val state = CafeState("1", "추가된카페","100", "광진구","혼잡")
-        list.add(state)
-        _cafeStateList.postValue(list)
-        Log.d("te","te")
+//    fun addItem() {
+//        val state = CafeState("1", "추가된카페", "100", "광진구", "혼잡")
+//        cafes.add(state)
+//        _liveCafes.postValue(cafes)
+//        Log.d("te", "te")
+//    }
+//
+//    private fun getCafeStateList(dataset: ArrayList<CafeState>) {
+//        cafes.addAll(dataset)
+//        _liveCafes.postValue(dataset)
+//    }
+    /**
+     * 카페 목록을 새로 고침 한다.
+     * 즉, user의 위치에 기반하여 새로운 request를 보낸다.
+     */
+    fun refreshCafeList() {
+        val userId = 34L
+        val testLongitude = "127.543215"
+        val testLatitude = "36.987561"
+        val testLimit = 300
+        val testSort = "congestion"
+        val request = CafeListRequest(testLatitude, testLongitude, testLimit, testSort)
+        viewModelScope.launch {
+            _cafesLiveData.value = Resource.Loading()
+
+            dataRepository.getCafes(userId, query = request).collect {
+                _cafesLiveData.value = it
+            }
+        }
     }
 
-    private fun getCafeStateList(dataset: ArrayList<CafeState>) {
-        list.addAll(dataset)
-        _cafeStateList.postValue(dataset)
+    fun openCafeDetails(cafe: Cafe) {
+        _openCafeDetails.value = SingleEvent(cafe)
+    }
+
+    fun showToastMessage(errorCode: Int) {
+        val error = errorManager.getError(errorCode)
+        _showToast.value = SingleEvent(error.description)
+    }
+
+    fun showToastMessage(errorMessage: String?) {
+        if (errorMessage == null) return
+        _showToast.value = SingleEvent(errorMessage)
+    }
+
+    /**
+     * 현재 user의 위치 값을 알아낸다.
+     */
+    private fun getCurrentLocation() {
+
     }
 }

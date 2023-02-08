@@ -1,6 +1,5 @@
 package org.cazait.cazait_android.data.api
 
-import org.cazait.cazait_android.data.dto.cafe.Cafes
 import org.cazait.cazait_android.data.model.remote.request.LoginRequest
 import org.cazait.cazait_android.data.model.remote.request.SignUpRequest
 import org.cazait.cazait_android.data.model.remote.response.LoginResponse

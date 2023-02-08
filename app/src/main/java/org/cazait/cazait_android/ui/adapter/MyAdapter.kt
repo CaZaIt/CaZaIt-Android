@@ -3,17 +3,17 @@ package org.cazait.cazait_android.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.cazait.cazait_android.data.model.CafeState
+import org.cazait.cazait_android.data.model.Cafe
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 
 class MyAdapter()
     : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-    var userList = arrayListOf<CafeState>()
+    var userList = arrayListOf<Cafe>()
 
     // 생성된 뷰 홀더에 값 지정
     class MyViewHolder(private val binding: ItemCafeMainBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(currentCafe : CafeState) {
+        fun bind(currentCafe : Cafe) {
             binding.cafeState = currentCafe
         }
     }

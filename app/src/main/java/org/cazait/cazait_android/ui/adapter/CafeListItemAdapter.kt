@@ -4,51 +4,36 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.cazait.cazait_android.data.model.CafeState
+import androidx.recyclerview.widget.RecyclerView.Recycler
+import org.cazait.cazait_android.data.model.Cafe
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
+import org.cazait.cazait_android.ui.base.RecyclerItemListener
 import org.cazait.cazait_android.ui.view.cafelist.info.CafeInformationActivity
+import org.cazait.cazait_android.ui.viewmodel.CafeListViewModel
 
-class CafeListItemAdapter : RecyclerView.Adapter<CafeListItemAdapter.ItemViewHolder>() {
+class CafeListItemAdapter(
+    private val cafeListViewModel: CafeListViewModel,
+    private val cafes: List<Cafe>
+) : RecyclerView.Adapter<CafesViewHolder>() {
 
-    private val _data = mutableListOf<CafeState>()
-    var data: List<CafeState> = _data
-        set(value) {
-            _data.clear()
-            _data.addAll(value)
-            notifyDataSetChanged()
+    private val onItemClickListener: RecyclerItemListener = object : RecyclerItemListener {
+        override fun onItemSelected(cafe: Cafe) {
+            cafeListViewModel.openCafeDetails(cafe)
         }
-
-    private var clickListener: ((id: Int) -> Unit)? = null
-
-    fun setClickListener(listener: ((id: Int) -> Unit)) {
-        this.clickListener = listener
     }
 
-    override fun getItemCount() = _data.size
+    override fun getItemCount() = cafes.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CafesViewHolder {
         val listItemBinding = ItemCafeMainBinding
-            .inflate(inflater, parent, false)
+            .inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ItemViewHolder(listItemBinding)
+        return CafesViewHolder(listItemBinding)
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(_data[position])
-
-        holder.itemView.setOnClickListener {
-            val context = holder.itemView.context
-            val intent = Intent(context, CafeInformationActivity::class.java)
-
-            context.startActivity(intent)
-        }
+    override fun onBindViewHolder(holder: CafesViewHolder, position: Int) {
+        holder.bind(cafes[position], onItemClickListener)
     }
 
-    inner class ItemViewHolder(val binding: ItemCafeMainBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CafeState) {
-            binding.cafeState = item
-        }
-    }
+
 }

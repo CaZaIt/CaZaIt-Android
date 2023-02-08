@@ -34,7 +34,7 @@ class UserRemoteData @Inject constructor(
                 Resource.Error(response.message(), null)
             }
         } catch (e: IOException) {
-            Resource.Error(e.message!!, null)
+            Resource.Error(e.message, null)
         }
     }
 
