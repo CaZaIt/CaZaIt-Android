@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.R
-import org.cazait.cazait_android.data.model.CafeImg
 
-class CafeImgAdapter(var cafeImg: ArrayList<Int>) :
+class CafeImgAdapter(var cafeImg: MutableList<Int>) :
     RecyclerView.Adapter<CafeImgAdapter.ImgViewHolder>() {
     inner class ImgViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_cafe_img, parent, false)

@@ -49,6 +49,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     override fun initView() {
         val imgList = Datasource().loadCafeImg()
+        addCafeImg(imgList,R.drawable.image_cafe_ex1)
 
         val dotsIndicator = binding.dotsIndicator
         val viewPager = binding.vpImg
@@ -92,6 +93,10 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
             startActivity(intent)
         }
 
+    }
+
+    private fun addCafeImg(list: MutableList<Int>, image:Int){
+        list.add(image)
     }
 
     private fun showMenuLocFragment(
