@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
+import org.cazait.cazait_android.data.Datasource
 import org.cazait.cazait_android.databinding.ActivityCafeInformationBinding
 import org.cazait.cazait_android.ui.adapter.CafeImgAdapter
 import org.cazait.cazait_android.ui.base.BaseActivity
@@ -47,6 +48,8 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
     }
 
     override fun initView() {
+        val imgList = Datasource().loadCafeImg()
+
         val dotsIndicator = binding.dotsIndicator
         val viewPager = binding.vpImg
         val vpAdapter = CafeImgAdapter()
