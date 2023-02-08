@@ -19,7 +19,11 @@ interface UserRepository {
 
     suspend fun saveEmail(email: String)
 
-    suspend fun getToken(): Flow<List<String>>
+    suspend fun saveUserId(id: Long)
+
+    suspend fun getTokenInDataStore(): Flow<List<String>>
+
+    suspend fun getUserIdInDataStore(): Flow<Long>
 
     suspend fun clearDataStore()
 }

@@ -1,13 +1,22 @@
 package org.cazait.cazait_android.data.model.remote
 
+import android.content.Context
+import androidx.datastore.dataStore
+import androidx.datastore.preferences.core.emptyPreferences
 import com.google.gson.GsonBuilder
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.cazait.cazait_android.ACCESS_TOKEN
 import org.cazait.cazait_android.BuildConfig
 import org.cazait.cazait_android.baseURL
+import org.cazait.cazait_android.data.repository.tokenDataStore
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,19 +24,26 @@ import javax.inject.Singleton
 private const val timeoutRead = 30   //In seconds
 private const val contentType = "Content-Type"
 private const val contentTypeValue = "application/json"
+private const val accessToken = "X-ACCESS-TOKEN"
 private const val timeoutConnect = 30   //In seconds
 
 @Singleton
-class ServiceGenerator @Inject constructor() {
+class ServiceGenerator @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit
     private val gson = GsonBuilder().setLenient().create()
 
     private var headerInterceptor = Interceptor { chain ->
         val original = chain.request()
+        val jwtToken = runBlocking {
+            getLatestJwtToken()
+        }
 
         val request = original.newBuilder()
             .header(contentType, contentTypeValue)
+            .header(accessToken, jwtToken)
             .method(original.method, original.body)
             .build()
 
@@ -58,5 +74,28 @@ class ServiceGenerator @Inject constructor() {
 
     fun <S> createService(serviceClass: Class<S>): S {
         return retrofit.create(serviceClass)
+    }
+
+    private suspend fun getLatestJwtToken(): String {
+        val tokenFlow = getTokenInDataStore()
+        val tokenList = tokenFlow.first()
+
+        return if(tokenList.isEmpty()) ""
+        else tokenList.first()
+    }
+
+    private suspend fun getTokenInDataStore(): Flow<List<String>> {
+        return context.tokenDataStore.data.catch { exception ->
+            if (exception is IOException) {
+                exception.printStackTrace()
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }.map { prefs ->
+            prefs.asMap().values.toList().map {
+                it.toString()
+            }
+        }
     }
 }

@@ -1,13 +1,11 @@
 package org.cazait.cazait_android.ui.viewmodel
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 import org.cazait.cazait_android.data.Resource
@@ -43,6 +41,7 @@ class LoginViewModel @Inject constructor(
             }.collect {
                 if (it is Resource.Success) {
                     saveLoginToken(it.data.data.jwtToken, it.data.data.refreshToken)
+                    saveUserId(it.data.data.id)
                     saveLoginEmail(email)
                 }
                 _loginProcess.value = it
@@ -77,6 +76,12 @@ class LoginViewModel @Inject constructor(
     private fun saveLoginEmail(email: String) {
         viewModelScope.launch {
             userRepository.saveEmail(email)
+        }
+    }
+
+    private fun saveUserId(id: Long) {
+        viewModelScope.launch {
+            userRepository.saveUserId(id)
         }
     }
 }
