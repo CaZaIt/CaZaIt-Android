@@ -1,5 +1,8 @@
 package org.cazait.cazait_android.data
 
+import androidx.compose.ui.res.stringResource
+import org.cazait.cazait_android.R
+import org.cazait.cazait_android.data.model.CafeImg
 import org.cazait.cazait_android.data.model.CafeState
 
 class Datasource {
@@ -19,6 +22,17 @@ class Datasource {
             CafeState("12", "카페 딕셔너리", "1000", "서울시 xxxx - xxxxxx", "보통"),
             CafeState("13", "카페베네", "1100", "서울시 광진구 xxxx - xxxxxx", "보통")
 
+        )
+    }
+
+    fun loadCafeImg2():ArrayList<CafeImg>{
+        return arrayListOf(
+            CafeImg("${R.drawable.image_cafe_ex1}"),
+            CafeImg("${R.drawable.image_cafe_ex2}"),
+            CafeImg("${R.drawable.image_cafe_ex1}"),
+            CafeImg("${R.drawable.image_cafe_ex2}"),
+            CafeImg("${R.drawable.image_cafe_ex1}"),
+            CafeImg("${R.drawable.image_cafe_ex2}")
         )
     }
 }
