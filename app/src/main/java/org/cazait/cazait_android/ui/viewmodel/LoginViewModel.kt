@@ -30,10 +30,6 @@ class LoginViewModel @Inject constructor(
     val showToast: LiveData<SingleEvent<Any>>
         get() = _showToast
 
-    fun doSignUp() {
-
-    }
-
     fun doLogin(email: String, password: String) {
         viewModelScope.launch {
             _loginProcess.value = Resource.Loading()

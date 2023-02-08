@@ -39,7 +39,9 @@ class UserRepositoryImpl @Inject constructor(
     }
 
     override suspend fun signUp(body: SignUpRequest): Flow<Resource<SignUpResponse>> {
-        TODO("Not yet implemented")
+        return flow {
+            emit(remoteData.postSignUp(body))
+        }.flowOn(ioDispatcher)
     }
 
     override suspend fun saveToken(token: List<String>) {

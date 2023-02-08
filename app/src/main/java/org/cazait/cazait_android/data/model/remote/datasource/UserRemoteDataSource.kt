@@ -9,6 +9,6 @@ import org.cazait.cazait_android.data.model.remote.response.SignUpResponse
 import retrofit2.Call
 
 interface UserRemoteDataSource {
-    fun postSignUp(body: SignUpRequest): Call<SignUpResponse>
+    fun postSignUp(body: SignUpRequest): Resource<SignUpResponse>
     fun postLogin(body: LoginRequest): Resource<LoginResponse>
 }

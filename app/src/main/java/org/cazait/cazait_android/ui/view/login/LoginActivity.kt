@@ -61,9 +61,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     private fun handleLoginResult(status: Resource<LoginResponse>) {
         when (status) {
-            is Resource.Loading -> binding.pvLoginLoaderView.toVisible()
+            is Resource.Loading -> binding.pbLoginLoaderView.toVisible()
             is Resource.Success -> status.data.let {
-                binding.pvLoginLoaderView.toGone()
+                binding.pbLoginLoaderView.toGone()
                 when (status.data.result) {
                     "SUCCESS" -> {
                         val intent = Intent(applicationContext, MainActivity::class.java)
@@ -74,7 +74,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 }
             }
             is Resource.Error -> {
-                binding.pvLoginLoaderView.toGone()
+                binding.pbLoginLoaderView.toGone()
                 status.message.let {
                     viewModel.showToastMessage(it)
                 }
