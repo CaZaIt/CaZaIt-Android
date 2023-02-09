@@ -3,20 +3,19 @@ CaZaIt-Android
 UMC 3th Team Cazait
 
 ## Features
-* Room Database
+* DataStore
 * Hilt
 * ViewModel
-* Navigation
 * Repository and data source
+* Coroutine Flow API
+* OKHTTP
+* Retrofit
 
 ## Package Structure
 ```
 cazait_android
     ├── 🗂️data
     │   ├── 🗂️api
-    │   ├── 🗂️dto
-    │   │   ├── 🗂️cafe
-    │   │   └── 🗂️user
     │   ├── 🗂️error
     │   │   └── 🗂️mapper
     │   ├── 🗂️model
