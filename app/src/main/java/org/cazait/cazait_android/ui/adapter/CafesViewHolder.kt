@@ -8,7 +8,7 @@ import org.cazait.cazait_android.ui.base.RecyclerItemListener
 class CafesViewHolder(val binding: ItemCafeMainBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Cafe, recyclerItemListener: RecyclerItemListener) {
-        binding.cafeState = item
-        binding.root.setOnClickListener {  }
+        binding.cafe = item
+        binding.root.setOnClickListener { recyclerItemListener.onItemSelected(item) }
     }
 }

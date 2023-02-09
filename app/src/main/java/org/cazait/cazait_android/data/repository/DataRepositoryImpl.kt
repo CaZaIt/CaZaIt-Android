@@ -1,14 +1,14 @@
 package org.cazait.cazait_android.data.repository
 
 import android.content.Context
-import androidx.datastore.preferences.core.emptyPreferences
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.remote.datasource.CafeRemoteData
 import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
 import org.cazait.cazait_android.data.model.remote.response.CafeListResponse
-import java.io.IOException
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 

@@ -1,36 +1,26 @@
 package org.cazait.cazait_android.data.repository
 
-import android.content.Context
-import androidx.datastore.preferences.core.*
-import androidx.datastore.preferences.preferencesDataStore
-import dagger.hilt.android.qualifiers.ApplicationContext
+import android.util.Log
 import kotlinx.coroutines.flow.*
-import org.cazait.cazait_android.*
+import kotlinx.coroutines.runBlocking
 import org.cazait.cazait_android.data.Resource
+import org.cazait.cazait_android.data.model.local.LocalData
 import org.cazait.cazait_android.data.model.remote.datasource.UserRemoteData
 import org.cazait.cazait_android.data.model.remote.request.LoginRequest
 import org.cazait.cazait_android.data.model.remote.request.SignUpRequest
 import org.cazait.cazait_android.data.model.remote.response.LoginResponse
 import org.cazait.cazait_android.data.model.remote.response.SignUpResponse
-import java.io.IOException
+import org.cazait.cazait_android.data.model.remote.response.TokenResponse
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-val Context.tokenDataStore by preferencesDataStore(TOKEN_DATASTORE)
-private val Context.loginCheckDataStore by preferencesDataStore(LOGIN_CHECK_DATASTORE)
-private val Context.userDataStore by preferencesDataStore(USER_DATASTORE)
-
 class UserRepositoryImpl @Inject constructor(
     private val remoteData: UserRemoteData,
+    private val localData: LocalData,
     private val ioDispatcher: CoroutineContext,
-    @ApplicationContext private val context: Context
 ) : UserRepository {
 
-    override suspend fun clearDataStore() {
-        context.tokenDataStore.edit { prefs ->
-            prefs.clear()
-        }
-    }
+
 
     override suspend fun login(body: LoginRequest): Flow<Resource<LoginResponse>> {
         return flow {
@@ -45,59 +35,36 @@ class UserRepositoryImpl @Inject constructor(
     }
 
     override suspend fun saveToken(token: List<String>) {
-        context.tokenDataStore.edit { prefs ->
-            prefs[ACCESS_TOKEN] = token.first()
-            prefs[REFRESH_TOKEN] = token.last()
-        }
-
-        context.loginCheckDataStore.edit { prefs ->
-            prefs[LOGIN_CHECK] = true
-        }
+        localData.saveToken(token)
     }
 
     override suspend fun saveEmail(email: String) {
-        context.userDataStore.edit { prefs ->
-            prefs[EMAIL] = email
-        }
+        localData.saveEmail(email)
     }
 
     override suspend fun saveUserId(id: Long) {
-        context.userDataStore.edit {prefs ->
-            prefs[USER_ID] = id
-        }
+        localData.saveUserId(id)
     }
 
-    override suspend fun getTokenInDataStore(): Flow<List<String>> {
-        return context.tokenDataStore.data.catch { exception ->
-            if (exception is IOException) {
-                exception.printStackTrace()
-                emit(emptyPreferences())
-            } else {
-                throw exception
-            }
-        }.map { prefs ->
-            prefs.asMap().values.toList().map {
-                it.toString()
-            }
-        }
+    override suspend fun fetchTokenInDataStore(): Flow<List<String>> {
+        return localData.fetchTokenInDataStore()
     }
 
-    override suspend fun getUserIdInDataStore(): Flow<Long> {
-        return context.userDataStore.data.catch { exception ->
-            if (exception is IOException) {
-                exception.printStackTrace()
-                emit(emptyPreferences())
-            } else {
-                throw exception
-            }
-        }.map { prefs ->
-            prefs[USER_ID]!!
-        }
+    override suspend fun fetchUserIdInDataStore(): Flow<Long> {
+        return localData.fetchUserIdInDataStore()
     }
 
     override suspend fun isLoggedIn(): Flow<Boolean> {
-        return context.loginCheckDataStore.data.map { prefs ->
-            prefs[LOGIN_CHECK] ?: false
-        }
+        return localData.isLoggedIn()
+    }
+
+    override suspend fun clearDataStore() {
+        localData.clearDataStore()
+    }
+    // `postToken`으로 인해 앞 단계에 UseCase 추가 하면 더 좋을 것 같음
+    override suspend fun postToken(refreshTokenHeader: Map<String, String>): Flow<Resource<TokenResponse>> {
+        return flow {
+            emit(remoteData.postToken(refreshTokenHeader))
+        }.flowOn(ioDispatcher)
     }
 }

@@ -1,7 +1,6 @@
 package org.cazait.cazait_android.data.model.remote
 
 import android.content.Context
-import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.emptyPreferences
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -10,10 +9,9 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.cazait.cazait_android.ACCESS_TOKEN
 import org.cazait.cazait_android.BuildConfig
 import org.cazait.cazait_android.baseURL
-import org.cazait.cazait_android.data.repository.tokenDataStore
+import org.cazait.cazait_android.data.model.local.tokenDataStore
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
@@ -38,7 +36,7 @@ class ServiceGenerator @Inject constructor(
     private var headerInterceptor = Interceptor { chain ->
         val original = chain.request()
         val jwtToken = runBlocking {
-            getLatestJwtToken()
+            fetchJwtToken()
         }
 
         val request = original.newBuilder()
@@ -76,15 +74,15 @@ class ServiceGenerator @Inject constructor(
         return retrofit.create(serviceClass)
     }
 
-    private suspend fun getLatestJwtToken(): String {
-        val tokenFlow = getTokenInDataStore()
+    private suspend fun fetchJwtToken(): String {
+        val tokenFlow = fetchTokenInDataStore()
         val tokenList = tokenFlow.first()
 
         return if(tokenList.isEmpty()) ""
         else tokenList.first()
     }
 
-    private suspend fun getTokenInDataStore(): Flow<List<String>> {
+    private suspend fun fetchTokenInDataStore(): Flow<List<String>> {
         return context.tokenDataStore.data.catch { exception ->
             if (exception is IOException) {
                 exception.printStackTrace()

@@ -14,7 +14,7 @@ class MyAdapter()
     // 생성된 뷰 홀더에 값 지정
     class MyViewHolder(private val binding: ItemCafeMainBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(currentCafe : Cafe) {
-            binding.cafeState = currentCafe
+            binding.cafe = currentCafe
         }
     }
 

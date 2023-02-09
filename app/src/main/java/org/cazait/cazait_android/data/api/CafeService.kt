@@ -14,7 +14,7 @@ interface CafeService {
     fun getCafes(
         @Path("userId") userId: Long,
         @Query("latitude") latitude: String,
-        @Query("limit") limit: Int,
+        @Query("limit") limit: String,
         @Query("longitude") longitude: String,
         @Query("sort") sort: String
     ): Call<CafeListResponse>
