@@ -79,7 +79,5 @@ class LocalData @Inject constructor(val context: Context) {
             prefs.clear()
         }
     }
-
-
 }
 

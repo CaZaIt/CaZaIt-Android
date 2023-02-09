@@ -7,7 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.delay
 import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Resource

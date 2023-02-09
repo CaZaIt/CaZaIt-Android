@@ -1,14 +1,11 @@
 package org.cazait.cazait_android.ui.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import org.cazait.cazait_android.data.model.Cafe
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
 import org.cazait.cazait_android.ui.base.RecyclerItemListener
-import org.cazait.cazait_android.ui.view.cafelist.info.CafeInformationActivity
 import org.cazait.cazait_android.ui.viewmodel.CafeListViewModel
 
 class CafeListItemAdapter(
@@ -34,6 +31,4 @@ class CafeListItemAdapter(
     override fun onBindViewHolder(holder: CafesViewHolder, position: Int) {
         holder.bind(cafes[position], onItemClickListener)
     }
-
-
 }

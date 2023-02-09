@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -43,7 +44,7 @@ open class CafeListViewModel @Inject constructor(
      * 즉, user의 위치에 기반하여 새로운 request를 보낸다.
      */
     fun refreshCafeList() {
-        var userId = 40L
+        var userId = 41L
         val testLongitude = "126.9457"
         val testLatitude = "37.586"
         val testLimit = "0"
