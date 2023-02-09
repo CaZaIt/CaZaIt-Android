@@ -9,6 +9,7 @@ import org.cazait.cazait_android.data.model.remote.request.LoginRequest
 import org.cazait.cazait_android.data.model.remote.request.SignUpRequest
 import org.cazait.cazait_android.data.model.remote.response.LoginResponse
 import org.cazait.cazait_android.data.model.remote.response.SignUpResponse
+import org.cazait.cazait_android.data.model.remote.response.TokenResponse
 import org.cazait.cazait_android.network.NetworkConnectivity
 import org.cazait.cazait_android.usecase.errors.ErrorManager
 import retrofit2.Call
@@ -38,6 +39,22 @@ class UserRemoteData @Inject constructor(
             }
         } catch (e: IOException) {
             Resource.Error(e.message, null)
+        }
+    }
+
+    override fun postToken(refreshTokenHeader: Map<String, String>): Resource<TokenResponse> {
+        if(!networkConnectivity.isConnected())
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+
+        return try {
+            val response = userService.postRefreshToken(refreshTokenHeader).execute()
+            if(response.isSuccessful)
+                Resource.Success(response.body()!!)
+            else {
+                Resource.Error(response.message())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
         }
     }
 

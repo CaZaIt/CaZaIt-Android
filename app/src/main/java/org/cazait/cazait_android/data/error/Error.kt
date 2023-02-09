@@ -13,3 +13,5 @@ const val NETWORK_ERROR = -3
 const val PASSWORD_ERROR = -101
 const val EMAIL_ERROR = -102
 const val EMAIL_OR_PASSWORD_ERROR = -103
+const val EXPIRED_ACCESS_TOKEN = -104
+const val EXPIRED_REFRESH_TOKEN = -105

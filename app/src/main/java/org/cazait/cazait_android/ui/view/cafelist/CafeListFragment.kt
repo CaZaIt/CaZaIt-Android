@@ -7,6 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Resource
@@ -37,13 +38,40 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
         // 뷰모델을 lifeCycle 에 종속시킨다. lifeCycle 동안 옵저버 역할을 하게 된다.
         binding.lifecycleOwner = this
     }
-
-    override fun initView() {
-    }
+    override fun initView() {}
 
     override fun initAfterBinding() {
         viewModel.refreshCafeList()
         observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        observe(viewModel.cafesLiveData, ::handleCafeList)
+        observeEvent(viewModel.openCafeDetails, ::navigateToDetailsScreen)
+    }
+
+    private fun handleCafeList(status: Resource<CafeListResponse>) {
+        when (status) {
+            is Resource.Loading -> showLoadingView()
+            is Resource.Success -> status.data.let {
+                Log.d("CafeListFragment", "${status.data.message} ${status.data.result}")
+                when(status.data.result) {
+                    "SUCCESS" -> {
+                        val cafes = convertCafeListResponseToCafes(it)
+                        bindRVCafeListData(cafes = cafes)
+                    }
+                    "FAIL" -> {
+                        viewModel.refreshCafeList()
+                    }
+                }
+            }
+            is Resource.Error -> {
+                showDataView(false)
+                status.message.let {
+                    viewModel.showToastMessage(it)
+                }
+            }
+        }
     }
 
     private fun bindRVCafeListData(cafes: Cafes) {
@@ -72,28 +100,6 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
         binding.pbLoading.toGone()
     }
 
-    private fun observeViewModel() {
-        observe(viewModel.cafesLiveData, ::handleCafeList)
-        observeEvent(viewModel.openCafeDetails, ::navigateToDetailsScreen)
-    }
-
-    private fun handleCafeList(status: Resource<CafeListResponse>) {
-        when (status) {
-            is Resource.Loading -> showLoadingView()
-            is Resource.Success -> status.data.let {
-                Log.d("CafeListFragment", "${status.data.message} ${status.data.result}")
-//                val cafes = convertCafeListResponseToCafes(it)
-//                bindRVCafeListData(cafes = cafes)
-            }
-            is Resource.Error -> {
-                showDataView(false)
-                status.message.let {
-                    viewModel.showToastMessage(it)
-                }
-            }
-        }
-    }
-
     private fun navigateToDetailsScreen(navigateEvent: SingleEvent<Cafe>) {
         navigateEvent.getContentIfNotHandled().let {
             val nextScreenIntent = Intent(context, CafeInformationActivity::class.java).apply {
@@ -104,7 +110,8 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
     }
 
     private fun convertCafeListResponseToCafes(cafeListResponse: CafeListResponse): Cafes {
-        val cafeList = cafeListResponse.data.map {
+        // data[0]인 이유는 0번째 페이지이기 때문임 만일 페이지 수가 넘어가면 1씩 증가시켜서 추가해줘야 함
+        val cafeList = cafeListResponse.data[0].map {
             Cafe(
                 it.cafeId,
                 it.name,
