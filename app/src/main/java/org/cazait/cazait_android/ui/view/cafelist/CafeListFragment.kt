@@ -1,15 +1,20 @@
 package org.cazait.cazait_android.ui.view.cafelist
 
 import MarginItemDecoration
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
+import org.cazait.cazait_android.REQUEST_LOCATION_PERMISSION
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.Cafe
 import org.cazait.cazait_android.data.model.Cafes
@@ -38,7 +43,10 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
         // 뷰모델을 lifeCycle 에 종속시킨다. lifeCycle 동안 옵저버 역할을 하게 된다.
         binding.lifecycleOwner = this
     }
-    override fun initView() {}
+
+    override fun initView() {
+        getUserLocation()
+    }
 
     override fun initAfterBinding() {
         viewModel.refreshCafeList()
@@ -55,7 +63,7 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
             is Resource.Loading -> showLoadingView()
             is Resource.Success -> status.data.let {
                 Log.d("CafeListFragment", "${status.data.message} ${status.data.result}")
-                when(status.data.result) {
+                when (status.data.result) {
                     "SUCCESS" -> {
                         val cafes = convertCafeListResponseToCafes(it)
                         bindRVCafeListData(cafes = cafes)
@@ -121,5 +129,33 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
             )
         }.toList()
         return Cafes(ArrayList(cafeList))
+    }
+
+    private fun getUserLocation() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(requireActivity(),arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
+        } else {
+            viewModel.getUserLocation()
+        }
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                viewModel.getUserLocation()
+            } else {
+                // Permission denied, show a message to the user
+                Toast.makeText(requireContext(), "Location permission is required to show user location", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    companion object{
+        private const val REQUEST_CODE = 100
     }
 }
