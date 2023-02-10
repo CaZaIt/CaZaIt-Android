@@ -3,9 +3,6 @@ package org.cazait.cazait_android.di
 import android.app.Application
 import android.content.Context
 import android.location.Geocoder
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.location.LocationServices
 import dagger.Module

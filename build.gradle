@@ -34,7 +34,7 @@ buildscript {
         //naver-map version
         naver_map_version = '3.14.0'
         //location request
-        fused_location_provider_client_version = '18.0.0'
+        fused_location_provider_client_version = '21.0.1'
 
         //swipe refresh
         swipe_refresh = '1.1.0'
