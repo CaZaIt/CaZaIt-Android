@@ -1,14 +1,8 @@
 package org.cazait.cazait_android.ui.viewmodel
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Application
-import android.content.pm.PackageManager
 import android.location.Location
 import android.util.Log
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -16,7 +10,6 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import org.cazait.cazait_android.REQUEST_LOCATION_PERMISSION
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.error.EXPIRED_ACCESS_TOKEN
 import org.cazait.cazait_android.data.model.Cafe
@@ -33,7 +26,6 @@ open class CafeListViewModel @Inject constructor(
     private val dataRepository: DataRepository,
     private val userRepository: UserRepository,
     private val fusedLocationProviderClient: FusedLocationProviderClient,
-    private val application: Application
 ) : BaseViewModel() {
 
     private val _cafesLiveData = MutableLiveData<Resource<CafeListResponse>>()
@@ -58,12 +50,19 @@ open class CafeListViewModel @Inject constructor(
      * 즉, user의 위치에 기반하여 새로운 request를 보낸다.
      */
     fun refreshCafeList() {
+
         val userId = 41L
         val testLongitude = "126.9457"
         val testLatitude = "37.586"
         val testLimit = "0"
         val testSort = "distance"
-        val request = CafeListRequest(testLatitude, testLongitude, testLimit, testSort)
+
+        val request: CafeListRequest = if(userLocation.value != null) {
+            CafeListRequest(userLocation.value!!.peekContent().latitude.toString(), userLocation.value!!.peekContent().longitude.toString(), testLimit, testSort)
+        } else
+            CafeListRequest(testLatitude, testLongitude, testLimit, testSort)
+
+        Log.d("CafeListViewModel", "선택된 것은... ${request.latitude}, ${request.longitude}")
         viewModelScope.launch {
             _cafesLiveData.value = Resource.Loading()
             dataRepository.getCafes(userId, query = request).collect {

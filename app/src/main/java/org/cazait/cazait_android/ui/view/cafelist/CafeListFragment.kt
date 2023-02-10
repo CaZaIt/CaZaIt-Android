@@ -4,10 +4,10 @@ import MarginItemDecoration
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -49,12 +49,13 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
     }
 
     override fun initAfterBinding() {
-        viewModel.refreshCafeList()
+        // viewModel.refreshCafeList()
         observeViewModel()
     }
 
     private fun observeViewModel() {
         observe(viewModel.cafesLiveData, ::handleCafeList)
+        observeEvent(viewModel.userLocation, ::handleUserLocation)
         observeEvent(viewModel.openCafeDetails, ::navigateToDetailsScreen)
     }
 
@@ -117,6 +118,12 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
         }
     }
 
+    private fun handleUserLocation(locationEvent: SingleEvent<Location>) {
+        locationEvent.getContentIfNotHandled().let {
+            viewModel.refreshCafeList()
+        }
+    }
+
     private fun convertCafeListResponseToCafes(cafeListResponse: CafeListResponse): Cafes {
         // data[0]인 이유는 0번째 페이지이기 때문임 만일 페이지 수가 넘어가면 1씩 증가시켜서 추가해줘야 함
         val cafeList = cafeListResponse.data[0].map {
@@ -150,7 +157,7 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
                 viewModel.getUserLocation()
             } else {
                 // Permission denied, show a message to the user
-                Toast.makeText(requireContext(), "Location permission is required to show user location", Toast.LENGTH_SHORT).show()
+                viewModel.showToastMessage("카페 목록을 불러오기 위해 위치 접근 권한이 필요합니다")
             }
         }
     }
