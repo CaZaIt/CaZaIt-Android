@@ -10,6 +10,7 @@ const val TOKEN_DATASTORE = "token_datastore"
 const val LOGIN_CHECK_DATASTORE = "login_check_datastore"
 const val USER_DATASTORE = "user_datastore"
 const val CAFE_ITEM_KEY = "CAFE_ITEM_KEY"
+const val REQUEST_LOCATION_PERMISSION = 100
 
 val EMAIL = stringPreferencesKey("email")
 val USER_ID = longPreferencesKey("user_id")

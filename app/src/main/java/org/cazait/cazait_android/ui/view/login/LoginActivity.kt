@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Resource
@@ -44,12 +45,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     private fun doLoginIfLoggedIn() {
         CoroutineScope(Dispatchers.IO).launch {
-            viewModel.isLoggedIn().collect {
-                if (it) {
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
+            val hasLoggedIn = viewModel.isLoggedIn().first()
+            if (hasLoggedIn) {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }

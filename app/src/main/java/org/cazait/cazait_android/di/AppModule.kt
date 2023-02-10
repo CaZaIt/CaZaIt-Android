@@ -1,9 +1,10 @@
 package org.cazait.cazait_android.di
 
+import android.app.Application
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
+import android.location.Geocoder
+import com.google.android.gms.common.GoogleApiAvailability
+import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,4 +37,17 @@ class AppModule {
     fun provideNetworkConnectivity(@ApplicationContext context: Context): NetworkConnectivity {
         return Network(context)
     }
+
+    @Provides
+    @Singleton
+    fun provideGoogleApiAvailability() = GoogleApiAvailability.getInstance()
+
+    @Provides
+    @Singleton
+    fun provideLocationProviderClient(application: Application) =
+        LocationServices.getFusedLocationProviderClient(application)
+
+    @Provides
+    @Singleton
+    fun provideGeocoder(application: Application) = Geocoder(application)
 }

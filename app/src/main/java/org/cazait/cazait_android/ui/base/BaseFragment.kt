@@ -34,8 +34,8 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.d("bmsk", "onViewCreated")
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initBeforeBinding()
+        initView()
         initAfterBinding()
     }
 
