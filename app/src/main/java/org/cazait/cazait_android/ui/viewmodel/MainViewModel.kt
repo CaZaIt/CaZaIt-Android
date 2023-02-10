@@ -1,37 +1,67 @@
 package org.cazait.cazait_android.ui.viewmodel
 
-import android.Manifest
-import android.app.Activity
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import org.cazait.cazait_android.ui.base.BaseViewModel
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.google.android.gms.location.sample.locationaddress.data.FormattedAddress
+import com.google.android.gms.location.sample.locationaddress.data.GeocodingApi
+import com.google.android.gms.location.sample.locationaddress.data.LocationApi
+import com.google.android.gms.location.sample.locationaddress.data.PlayServicesAvailabilityChecker
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel : BaseViewModel() {
-    private val _locationPermissionGranted = MutableLiveData<Boolean>()
-    val locationPermissionGranted: LiveData<Boolean>
-        get() = _locationPermissionGranted
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    availabilityChecker: PlayServicesAvailabilityChecker,
+    private val locationApi: LocationApi,
+    private val geocodingApi: GeocodingApi
+) : ViewModel() {
 
-    fun requestLocationPermission(activity: Activity) {
-        val permission = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
-        } else {
-            _locationPermissionGranted.value = true
+    val uiState = flow {
+        emit(
+            if (availabilityChecker.isGooglePlayServicesAvailable()) {
+                UiState.PlayServicesAvailable
+            } else {
+                UiState.PlayServicesUnavailable
+            }
+        )
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, UiState.Initializing)
+
+    var addressList by mutableStateOf(emptyList<FormattedAddress>())
+        private set
+
+    var showProgress by mutableStateOf(false)
+        private set
+
+    val maxResultsRange = 1..7
+    var maxResults by mutableStateOf(1)
+        private set
+
+    fun updateMaxResults(max: Int) {
+        maxResults = max.coerceIn(maxResultsRange)
+    }
+
+    fun getCurrentAddress() {
+        viewModelScope.launch {
+            showProgress = true
+            val location = locationApi.getCurrentLocation()
+            val addresses = if (location != null) {
+                geocodingApi.getFromLocation(location, maxResults)
+            } else {
+                emptyList()
+            }
+            addressList = addresses
+            showProgress = false
         }
     }
+}
 
-    fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
-        if(requestCode == LOCATION_PERMISSION_REQUEST_CODE && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            _locationPermissionGranted.value = true
-        } else {
-
-        }
-    }
-
-    companion object{
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-    }
+enum class UiState {
+    Initializing, PlayServicesUnavailable, PlayServicesAvailable
 }
