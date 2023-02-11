@@ -111,11 +111,12 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
 
     private fun navigateToDetailsScreen(navigateEvent: SingleEvent<Cafe>) {
         navigateEvent.getContentIfNotHandled().let {
-            val nextScreenIntent = Intent(context, CafeInformationActivity::class.java).apply {
-                putExtra(CAFE_ITEM_KEY, it)
-            }
-            if(it != null)
+            if(it != null) {
+                val nextScreenIntent = Intent(context, CafeInformationActivity::class.java).apply {
+                    putExtra(CAFE_ITEM_KEY, it)
+                }
                 startActivity(nextScreenIntent)
+            }
         }
     }
 
