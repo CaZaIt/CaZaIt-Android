@@ -29,7 +29,7 @@ class UserRemoteData @Inject constructor(
         }
 
         return try {
-            val response = userService.postLogin(body).execute()
+            val response = userService.postLogin(loginRequest = body).execute()
             if (response.isSuccessful) {
                 Resource.Success(response.body()!!)
             } else {
@@ -45,7 +45,7 @@ class UserRemoteData @Inject constructor(
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
 
         return try {
-            val response = userService.postRefreshToken(refreshTokenHeader).execute()
+            val response = userService.postRefreshToken(headers = refreshTokenHeader).execute()
             if(response.isSuccessful)
                 Resource.Success(response.body()!!)
             else {
