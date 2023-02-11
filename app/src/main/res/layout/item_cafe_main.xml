@@ -48,10 +48,10 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="17dp"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="@{cafe.name, default=카페}"
                     android:textColor="@color/cazait_black"
                     android:textSize="20sp"
-                    android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,10 +60,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@{cafe.getStringDistance() + 'm', default=1024}"
                     android:textColor="@color/cazait_black"
                     android:textSize="12sp"
-                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
                     app:layout_constraintStart_toEndOf="@+id/tv_cafe_name" />
 
@@ -72,10 +72,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@{cafe.address, default=addressaddressaddress}"
                     android:textColor="@color/cazait_black"
                     android:textSize="12sp"
-                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintStart_toStartOf="@+id/tv_cafe_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_cafe_name" />
 
@@ -89,13 +89,13 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/round_latte_beige_rectangle"
                     android:contentDescription="@null"
+                    android:fontFamily="@font/roboto_bold"
                     android:gravity="center"
                     android:minHeight="38dp"
                     android:text="@{cafe.getKorState(), default=보통}"
-                    android:textColor="@color/cafe_list_item_normal"
-                    android:fontFamily="@font/roboto_bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
+                    app:stateColor="@{cafe.state}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -103,14 +103,14 @@
 
                 <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/btn_cafe_main_favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/selector_interest_checkbox"
                     android:button="@android:color/transparent"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_cafe_name"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_cafe_name"/>
+                    app:layout_constraintTop_toTopOf="@+id/tv_cafe_name" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
