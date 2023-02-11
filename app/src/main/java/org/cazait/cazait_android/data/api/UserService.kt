@@ -11,12 +11,21 @@ import retrofit2.http.*
 interface UserService {
     @POST("/api/users/sign-up")
     fun postSignUp(@Body signUpRequest: SignUpRequest): Call<SignUpResponse>
-    @POST("/api/users/log-in")
-    fun postLogin(@Body loginRequest: LoginRequest): Call<LoginResponse>
+
+    @POST("/api/auths/log-in")
+    fun postLogin(
+        @Query("role") role: String = "user",
+        @Body loginRequest: LoginRequest
+    ): Call<LoginResponse>
+
     @POST("/cafes/{cafeId}/favourites")
     fun addToFavourite(@Path("cafeId") cafeId: String): Boolean
-    @POST("/api/users/refresh")
-    fun postRefreshToken(@HeaderMap headers: Map<String, String>): Call<TokenResponse>
+    @POST("/api/auths/refresh")
+    fun postRefreshToken(
+        @Query("role") role: String = "user",
+        @HeaderMap headers: Map<String, String>
+    ): Call<TokenResponse>
+
     @DELETE("/cafes/{cafeId}/favourites")
     fun removeFromFavourite(@Path("cafeId") cafeId: String): Boolean
 }

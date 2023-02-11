@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 import org.cazait.cazait_android.data.model.CafeImageRes
 
 data class CafeListResponse(
+    @SerializedName("code") val code: Int,
     @SerializedName("data") val data: List<List<Data>>,
     @SerializedName("message") val message: String,
     @SerializedName("result") val result: String
