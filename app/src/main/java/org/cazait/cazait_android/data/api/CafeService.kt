@@ -1,8 +1,7 @@
 package org.cazait.cazait_android.data.api
 
-import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
-import org.cazait.cazait_android.data.model.remote.request.LoginRequest
 import org.cazait.cazait_android.data.model.remote.response.CafeListResponse
+import org.cazait.cazait_android.data.model.remote.response.InterestCafesResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -19,9 +18,8 @@ interface CafeService {
         @Query("sort") sort: String
     ): Call<CafeListResponse>
 
-    @POST("/api/cafes/all/user/{userId}")
-    fun getCafes2(
-        @Path("userId") userId: Long,
-        @Body cafeListRequest: CafeListRequest
-    ): Call<CafeListResponse>
+    @GET("/api/favorites/user/{userId}")
+    fun getInterestCafes(
+        @Path("userId") userId: Long
+    ): Call<InterestCafesResponse>
 }
