@@ -64,6 +64,7 @@
     <string name="tv_cafe_like_fragment_shop">관심 매장</string>
     <string name="review_edit_hint">공백 포함 최대 50자 이내로 작성해주세요.</string>
     <string name="review_edit_ok">작성하기</string>
+    <string name="interest_cafes_no_data">관심 매장을\n등록해 주세요 ❤️</string>
 
     <!--Cafe Recently Fragment-->
     <string name="tv_cafe_recently_seen">최근 본 매장</string>

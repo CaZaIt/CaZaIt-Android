@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.data.model.Cafe
 import org.cazait.cazait_android.databinding.ItemCafeMainBinding
+import org.cazait.cazait_android.ui.adapter.holder.CafesViewHolder
 import org.cazait.cazait_android.ui.base.RecyclerItemListener
 import org.cazait.cazait_android.ui.viewmodel.CafeListViewModel
 
@@ -29,6 +30,6 @@ class CafeListItemAdapter(
     }
 
     override fun onBindViewHolder(holder: CafesViewHolder, position: Int) {
-        holder.bind(cafes[position], onItemClickListener)
+        holder.bindForCafeListPage(cafes[position], onItemClickListener)
     }
 }
