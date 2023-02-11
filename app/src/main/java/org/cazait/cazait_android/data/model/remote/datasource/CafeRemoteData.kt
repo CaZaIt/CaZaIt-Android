@@ -7,6 +7,7 @@ import org.cazait.cazait_android.data.error.NO_INTERNET_CONNECTION
 import org.cazait.cazait_android.data.model.remote.ServiceGenerator
 import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
 import org.cazait.cazait_android.data.model.remote.response.CafeListResponse
+import org.cazait.cazait_android.data.model.remote.response.InterestCafesResponse
 import org.cazait.cazait_android.network.NetworkConnectivity
 import org.cazait.cazait_android.usecase.errors.ErrorManager
 import retrofit2.Response
@@ -35,6 +36,24 @@ class CafeRemoteData @Inject constructor(
             ).execute()
 
             if (response.isSuccessful) {
+                Resource.Success(response.body()!!)
+            } else {
+                Resource.Error(response.message())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
+        }
+    }
+
+    override fun getInterestCafes(userId: Long): Resource<InterestCafesResponse> {
+        if(!networkConnectivity.isConnected()) {
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+        }
+
+        return try {
+            val response = cafeService.getInterestCafes(userId).execute()
+
+            if(response.isSuccessful) {
                 Resource.Success(response.body()!!)
             } else {
                 Resource.Error(response.message())
