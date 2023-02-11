@@ -17,14 +17,6 @@ class DataRepositoryImpl @Inject constructor(
     private val ioDispatcher: CoroutineContext,
     @ApplicationContext private val context: Context
 ) : DataRepository {
-    override suspend fun addToFavourite(id: String): Flow<Resource<Boolean>> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun removeFromFavourite(cafeId: String): Flow<Resource<Boolean>> {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun getCafes(userId: Long, query: CafeListRequest): Flow<Resource<CafeListResponse>> {
         return flow {
             emit(remoteData.getCafeList(userId, query))

@@ -38,10 +38,10 @@ open class CafeInterestViewModel @Inject constructor(private val dataRepository:
             Cafe(13,"카페베네",1100, "서울시 광진구 xxxx - xxxxxx", "보통")
 
         )
-        setCafeinterestList(dataList)
+        setCafeInterestList(dataList)
     }
 
-    private fun setCafeinterestList(dataset: ArrayList<Cafe>) {
+    private fun setCafeInterestList(dataset: ArrayList<Cafe>) {
         list.addAll(dataset)
         _cafeInterestList.postValue(dataset)
     }

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.data.model.Cafe
-import org.cazait.cazait_android.databinding.ItemCafeRecentlyBinding
+import org.cazait.cazait_android.databinding.ItemCafeRecentBinding
 
 class CafeRecentlyAdapter :
     RecyclerView.Adapter<CafeRecentlyAdapter.CafeRecentlyViewHolder>() {
@@ -19,7 +19,7 @@ class CafeRecentlyAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CafeRecentlyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val recentlyItemBinding = ItemCafeRecentlyBinding.inflate(inflater, parent, false)
+        val recentlyItemBinding = ItemCafeRecentBinding.inflate(inflater, parent, false)
 
         return CafeRecentlyViewHolder(recentlyItemBinding)
     }
@@ -39,11 +39,10 @@ class CafeRecentlyAdapter :
         return position
     }
 
-    inner class CafeRecentlyViewHolder(val binding: ItemCafeRecentlyBinding) :
+    inner class CafeRecentlyViewHolder(val binding: ItemCafeRecentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(cafe: Cafe) {
-            binding.cafeState = cafe
-
+            binding.cafe = cafe
         }
     }
 }

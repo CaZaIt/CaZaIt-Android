@@ -19,7 +19,6 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
     override val viewModel: CafeInterestViewModel by viewModels()
     private val interestAdapter = CafeInterestAdapter()
 
-
     override fun initView() {
         initRecyclerView()
 
@@ -33,7 +32,6 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
     }
 
     private fun initRecyclerView() {
-
         val recyclerView = binding.rvCafeInterest
         recyclerView.layoutManager =
             GridLayoutManager(activity, 2)

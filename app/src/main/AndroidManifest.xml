@@ -17,7 +17,7 @@
         android:theme="@style/Theme.CaZaItAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".ui.view.recently.CafeRecentlyActivity"
+            android:name=".ui.view.mypage.recent.CafeRecentActivity"
             android:exported="false" />
 
         <activity

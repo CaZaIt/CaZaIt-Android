@@ -81,6 +81,8 @@
     <string name="view_more_app_settings">앱 설정</string>
     <string name="view_more_customer_service">고객센터</string>
     <string name="view_more_terms_polices">약관 및 정책</string>
+
+    <!--Cafe-->
     <string name="no_data">no_data</string>
     <string name="cafe_state_free">여유</string>
     <string name="cafe_state_normal">보통</string>

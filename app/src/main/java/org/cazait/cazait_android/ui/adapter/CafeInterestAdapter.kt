@@ -44,7 +44,7 @@ class CafeInterestAdapter :
     inner class CafeInterestViewHolder(val binding: ItemCafeInterestBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(cafe: Cafe) {
-            binding.cafeState = cafe
+            binding.cafe = cafe
 
         }
     }

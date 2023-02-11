@@ -7,8 +7,7 @@ import org.cazait.cazait_android.R
 import org.cazait.cazait_android.databinding.FragmentMyPageBinding
 import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.base.BaseViewModel
-import org.cazait.cazait_android.ui.view.recently.CafeRecentlyActivity
-import org.cazait.cazait_android.ui.view.signup.SignUpActivity
+import org.cazait.cazait_android.ui.view.mypage.recent.CafeRecentActivity
 
 @AndroidEntryPoint
 class MyPageFragment : BaseFragment<FragmentMyPageBinding, BaseViewModel>() {
@@ -30,7 +29,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, BaseViewModel>() {
         //클릭 시 CafeRecentlyActivity로 넘어갑니다.
 
         binding.myPageArrowFront2.setOnClickListener {
-            val intent = Intent(getActivity(), CafeRecentlyActivity::class.java)
+            val intent = Intent(getActivity(), CafeRecentActivity::class.java)
             startActivity(intent)
         }
     }

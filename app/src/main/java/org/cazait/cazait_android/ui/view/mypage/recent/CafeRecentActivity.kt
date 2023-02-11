@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.ui.view.recently
+package org.cazait.cazait_android.ui.view.mypage.recent
 
 import MarginItemDecoration
 import androidx.activity.viewModels
@@ -6,19 +6,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
-import org.cazait.cazait_android.data.Datasource
-import org.cazait.cazait_android.databinding.ActivityCafeRecentlyBinding
+import org.cazait.cazait_android.databinding.ActivityCafeRecentBinding
 import org.cazait.cazait_android.ui.adapter.CafeRecentlyAdapter
 import org.cazait.cazait_android.ui.base.BaseActivity
-import org.cazait.cazait_android.ui.viewmodel.CafeRecentlyViewModel
+import org.cazait.cazait_android.ui.viewmodel.CafeRecentViewModel
 import kotlin.math.roundToInt
 
 @AndroidEntryPoint
-class CafeRecentlyActivity : BaseActivity<ActivityCafeRecentlyBinding, CafeRecentlyViewModel>() {
+class CafeRecentActivity : BaseActivity<ActivityCafeRecentBinding, CafeRecentViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.activity_cafe_recently
+        get() = R.layout.activity_cafe_recent
 
-    override val viewModel: CafeRecentlyViewModel by viewModels()
+    override val viewModel: CafeRecentViewModel by viewModels()
     private lateinit var recentlyAdapter: CafeRecentlyAdapter
 
     override fun initBeforeBinding() {
@@ -39,7 +38,6 @@ class CafeRecentlyActivity : BaseActivity<ActivityCafeRecentlyBinding, CafeRecen
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvCafeRecently.adapter = recentlyAdapter
 
-        val dataset = Datasource().loadAffirmations()
         val spaceDecoration =
             MarginItemDecoration(resources.getDimension(R.dimen.cafe_item_space).roundToInt())
         val recyclerView = binding.rvCafeRecently

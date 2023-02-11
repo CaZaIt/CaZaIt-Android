@@ -9,7 +9,7 @@ import org.cazait.cazait_android.ui.base.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-open class CafeRecentlyViewModel @Inject constructor(private val dataRepository: DataRepository) :
+open class CafeRecentViewModel @Inject constructor(private val dataRepository: DataRepository) :
     BaseViewModel() {
 
     private val list = arrayListOf<Cafe>()
