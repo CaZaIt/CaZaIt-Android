@@ -114,7 +114,8 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
             val nextScreenIntent = Intent(context, CafeInformationActivity::class.java).apply {
                 putExtra(CAFE_ITEM_KEY, it)
             }
-            startActivity(nextScreenIntent)
+            if(it != null)
+                startActivity(nextScreenIntent)
         }
     }
 
