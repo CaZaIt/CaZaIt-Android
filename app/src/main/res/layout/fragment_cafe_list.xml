@@ -23,7 +23,7 @@
             android:layout_height="39dp"
             android:layout_marginStart="28dp"
             android:contentDescription="@null"
-            android:src="@drawable/ic_cazait_logo"
+            android:src="@drawable/ic_cazait_symbol"
             app:layout_constraintBottom_toBottomOf="@+id/sv_search"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/sv_search" />
