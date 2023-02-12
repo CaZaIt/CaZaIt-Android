@@ -1,6 +1,5 @@
 package org.cazait.cazait_android.data.model.remote.datasource
 
-import android.util.Log
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.api.UserService
 import org.cazait.cazait_android.data.error.NO_INTERNET_CONNECTION
@@ -12,7 +11,6 @@ import org.cazait.cazait_android.data.model.remote.response.SignUpResponse
 import org.cazait.cazait_android.data.model.remote.response.TokenResponse
 import org.cazait.cazait_android.network.NetworkConnectivity
 import org.cazait.cazait_android.usecase.errors.ErrorManager
-import retrofit2.Call
 import java.io.IOException
 import javax.inject.Inject
 

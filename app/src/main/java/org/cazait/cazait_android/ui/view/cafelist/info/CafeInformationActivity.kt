@@ -1,6 +1,8 @@
 package org.cazait.cazait_android.ui.view.cafelist.info
 
 import android.content.Intent
+import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
@@ -8,8 +10,10 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
+import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Datasource
+import org.cazait.cazait_android.data.model.Cafe
 import org.cazait.cazait_android.databinding.ActivityCafeInformationBinding
 import org.cazait.cazait_android.ui.adapter.CafeImgAdapter
 import org.cazait.cazait_android.ui.base.BaseActivity
@@ -48,8 +52,23 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
     }
 
     override fun initView() {
+        // ------------------ CafeListFrag에서 데이터를 넘겨 받음
+        val cafe = if (Build.VERSION.SDK_INT >= 33) {     // cafeId가 담기는 것
+            intent.getParcelableExtra(CAFE_ITEM_KEY, Cafe::class.java)
+        } else {
+            intent.getParcelableExtra(CAFE_ITEM_KEY)
+        }
+        // 위 데이터를 fragment에 넘겨줌
+        val bundle = Bundle()
+        if (cafe != null) {
+            bundle.putLong("cafeId", cafe.id)
+        }
+        val menuFrag = CafeMenuFragment()
+        menuFrag.arguments = bundle
+        //-----------------
+
         val imgList = Datasource().loadCafeImg()
-        addCafeImg(imgList,R.drawable.image_cafe_ex1)
+        addCafeImg(imgList, R.drawable.image_cafe_ex1)
 
         val dotsIndicator = binding.dotsIndicator
         val viewPager = binding.vpImg
@@ -63,7 +82,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         binding.btnCafeMenu.setSelected(true)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.cafe_info_frag_con, CafeMenuFragment())
+            .replace(R.id.cafe_info_frag_con, menuFrag)
             .commit()
 
         showMenuLocFragment(
@@ -95,7 +114,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     }
 
-    private fun addCafeImg(list: MutableList<Int>, image:Int){
+    private fun addCafeImg(list: MutableList<Int>, image: Int) {
         list.add(image)
     }
 

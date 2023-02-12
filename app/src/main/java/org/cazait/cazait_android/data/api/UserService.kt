@@ -20,6 +20,7 @@ interface UserService {
 
     @POST("/cafes/{cafeId}/favourites")
     fun addToFavourite(@Path("cafeId") cafeId: String): Boolean
+
     @POST("/api/auths/refresh")
     fun postRefreshToken(
         @Query("role") role: String = "user",
