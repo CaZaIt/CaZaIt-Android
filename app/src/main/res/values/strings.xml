@@ -64,6 +64,7 @@
     <string name="tv_cafe_like_fragment_shop">관심 매장</string>
     <string name="review_edit_hint">공백 포함 최대 50자 이내로 작성해주세요.</string>
     <string name="review_edit_ok">작성하기</string>
+    <string name="interest_cafes_no_data">관심 매장을\n등록해 주세요 ❤️</string>
 
     <!--Cafe Recently Fragment-->
     <string name="tv_cafe_recently_seen">최근 본 매장</string>
@@ -81,7 +82,13 @@
     <string name="view_more_app_settings">앱 설정</string>
     <string name="view_more_customer_service">고객센터</string>
     <string name="view_more_terms_polices">약관 및 정책</string>
+
+    <!--Cafe-->
     <string name="no_data">no_data</string>
+    <string name="cafe_state_free">여유</string>
+    <string name="cafe_state_normal">보통</string>
+    <string name="cafe_state_crowded">혼잡</string>
+    <string name="cafe_state_very_crowded">매우 혼잡</string>
 
 
     <!--Sort Filter-->

@@ -21,7 +21,10 @@
     <color name="darkgray">#757575</color>
 
     <!-- cafe list fragment-->
+    <color name="cafe_list_item_free">#34A3F2</color>
     <color name="cafe_list_item_normal">#533329</color>
+    <color name="cafe_list_item_crowded">#EF741C</color>
+    <color name="cafe_list_item_very_crowded">#EF1C1C</color>
 
     <!-- cafe information activity-->
     <color name="rating_review_edit">#5D2424</color>

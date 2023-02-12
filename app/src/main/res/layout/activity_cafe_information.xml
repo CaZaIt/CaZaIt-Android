@@ -29,6 +29,7 @@
                     android:fitsSystemWindows="true"
                     app:contentScrim="@android:color/transparent"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -44,18 +45,17 @@
                             android:id="@+id/dots_indicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:measureAllChildren="false"
                             android:layout_gravity="center|bottom"
                             android:layout_marginBottom="10dp"
+                            android:measureAllChildren="false"
                             app:dotsColor="@color/cazait_white"
                             app:dotsCornerRadius="8dp"
                             app:dotsSize="10dp"
                             app:dotsSpacing="4dp"
                             app:dotsWidthFactor="2.5"
                             app:progressMode="false"
-                            app:selectedDotColor="@color/cazait_coffee"/>
+                            app:selectedDotColor="@color/cazait_coffee" />
                     </FrameLayout>
-
 
                     <androidx.appcompat.widget.Toolbar
                         android:layout_width="match_parent"

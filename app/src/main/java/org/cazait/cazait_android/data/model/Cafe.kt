@@ -10,9 +10,18 @@ data class Cafe(
     val distance: Int,
     val address: String,
     val state: String
-): Parcelable {
-    fun toStringDistance() = distance.toString()
+) : Parcelable {
+    fun getStringDistance() = distance.toString()
+    fun getKorState(): String = stateMapper.getValue(state)
 }
+
+val stateMapper: Map<String, String>
+    get() = mapOf(
+        "FREE" to "여유",
+        "NORMAL" to "보통",
+        "CROWDED" to "혼잡",
+        "VERY_CROWDED" to "매우 혼잡"
+    ).withDefault { "보통" }
 
 /**
  * Parcelable is an Android interface that allows you to pass complex data structures between activities, services, and other Android components.
