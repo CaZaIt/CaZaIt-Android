@@ -33,7 +33,8 @@ class DataRepositoryImpl @Inject constructor(
     ): Flow<Resource<MenuResponse>> {
         return flow {
             emit(infoRemoteData.getMenus(cafeId))
-
+        }.flowOn(ioDispatcher)
+    }
     override suspend fun getInterestCafes(userId: Long): Flow<Resource<InterestCafesResponse>> {
         return flow<Resource<InterestCafesResponse>> {
             emit(remoteData.getInterestCafes(userId))
