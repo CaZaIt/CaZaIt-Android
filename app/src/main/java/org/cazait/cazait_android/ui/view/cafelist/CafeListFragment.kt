@@ -144,7 +144,9 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED
         ) {
-            ActivityCompat.requestPermissions(requireActivity(),arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
+            ActivityCompat.requestPermissions(requireActivity(),arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_LOCATION_PERMISSION
+            )
         } else {
             viewModel.getUserLocation()
         }
@@ -162,9 +164,5 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
                 viewModel.showToastMessage("카페 목록을 불러오기 위해 위치 접근 권한이 필요합니다")
             }
         }
-    }
-
-    companion object{
-        private const val REQUEST_CODE = 100
     }
 }
