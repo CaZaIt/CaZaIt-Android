@@ -6,10 +6,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.location.FusedLocationProviderClient
+import dagger.hilt.android.lifecycle.HiltViewModel
 import org.cazait.cazait_android.ui.base.BaseViewModel
 import org.cazait.cazait_android.ui.util.SingleEvent
 import javax.inject.Inject
-
+@HiltViewModel
 class CafeInfoLocTransViewModel @Inject constructor(
     private val fusedLocationProviderClient: FusedLocationProviderClient
 ) : BaseViewModel() {

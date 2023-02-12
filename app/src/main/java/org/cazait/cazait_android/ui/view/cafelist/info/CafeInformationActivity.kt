@@ -28,6 +28,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         get() = R.layout.activity_cafe_information
 
     override val viewModel: CafeInfoViewModel by viewModels()
+
     private lateinit var imgList: List<CafeImageRes>
     private lateinit var name:String
     private lateinit var address:String
@@ -115,6 +116,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
         binding.fabReviewWrite.setOnClickListener {
             val intent = Intent(this, CafeRatingReviewEditActivity::class.java)
+            intent.putExtra("cafeId", cafe!!.id)
             startActivity(intent)
         }
 

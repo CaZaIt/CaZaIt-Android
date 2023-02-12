@@ -9,11 +9,9 @@ import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.remote.datasource.CafeInfoRemoteData
 import org.cazait.cazait_android.data.model.remote.datasource.CafeRemoteData
 import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
+import org.cazait.cazait_android.data.model.remote.request.ReviewEditRequest
 import org.cazait.cazait_android.data.model.remote.request.ReviewRequest
-import org.cazait.cazait_android.data.model.remote.response.CafeListResponse
-import org.cazait.cazait_android.data.model.remote.response.MenuResponse
-import org.cazait.cazait_android.data.model.remote.response.InterestCafesResponse
-import org.cazait.cazait_android.data.model.remote.response.ReviewResponse
+import org.cazait.cazait_android.data.model.remote.response.*
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -53,6 +51,16 @@ class DataRepositoryImpl @Inject constructor(
     override suspend fun getInterestCafes(userId: Long): Flow<Resource<InterestCafesResponse>> {
         return flow<Resource<InterestCafesResponse>> {
             emit(remoteData.getInterestCafes(userId))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun postReview(
+        userId: Long,
+        cafeId: Long,
+        body: ReviewEditRequest
+    ): Flow<Resource<ReviewEditResponse>> {
+        return flow {
+            emit(infoRemoteData.postReview(userId, cafeId, body))
         }.flowOn(ioDispatcher)
     }
 }
