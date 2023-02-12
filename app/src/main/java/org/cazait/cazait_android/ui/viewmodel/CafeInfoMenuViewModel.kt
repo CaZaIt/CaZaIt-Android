@@ -30,13 +30,13 @@ open class CafeInfoMenuViewModel @Inject constructor(private val dataRepository:
     private fun initDataSet() {
 
         // 테스트용으로 값을 넣어주고 있음
-        val dataList = arrayListOf(
-            CafeMenu(
-                "우리나라 원두를 사용하여 더욱 달달한 풍미가 살아있는 최고급 아메리카노",
-                "아메리카노",
-                1500
-            )
-        )
+//        val dataList = arrayListOf(
+//            CafeMenu(
+//                "우리나라 원두를 사용하여 더욱 달달한 풍미가 살아있는 최고급 아메리카노",
+//                "아메리카노",
+//                1500
+//            )
+//        )
 
     }
 
