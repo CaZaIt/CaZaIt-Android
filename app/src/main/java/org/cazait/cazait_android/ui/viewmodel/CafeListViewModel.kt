@@ -8,8 +8,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.error.EXPIRED_ACCESS_TOKEN
 import org.cazait.cazait_android.data.model.Cafe
@@ -50,27 +52,28 @@ open class CafeListViewModel @Inject constructor(
      * 즉, user의 위치에 기반하여 새로운 request를 보낸다.
      */
     fun refreshCafeList() {
-
-        val userId = 41L
-        val testLongitude = "126.9457"
-        val testLatitude = "37.586"
-        val testLimit = "0"
-        val testSort = "distance"
-
-        val request: CafeListRequest = if(userLocation.value != null) {
-            CafeListRequest(userLocation.value!!.peekContent().latitude.toString(), userLocation.value!!.peekContent().longitude.toString(), testLimit, testSort)
-        } else
-            CafeListRequest(testLatitude, testLongitude, testLimit, testSort)
-
-        Log.d("CafeListViewModel", "선택된 것은... ${request.latitude}, ${request.longitude}")
         viewModelScope.launch {
-            _cafesLiveData.value = Resource.Loading()
-            dataRepository.getCafes(userId, query = request).collect {
-                if (isExpiredToken(it)) {
-                    Log.d("CafeListViewModel", "refreshTokens")
-                    refreshTokens()
+            val userId = userRepository.fetchUserIdInDataStore().first()
+            val testLongitude = "126.9457"
+            val testLatitude = "37.586"
+            val testLimit = "0"
+            val testSort = "distance"
+
+            val request: CafeListRequest = if(userLocation.value != null) {
+                CafeListRequest(userLocation.value!!.peekContent().latitude.toString(), userLocation.value!!.peekContent().longitude.toString(), testLimit, testSort)
+            } else
+                CafeListRequest(testLatitude, testLongitude, testLimit, testSort)
+
+            Log.d("CafeListViewModel", "선택된 것은... ${request.latitude}, ${request.longitude}")
+            viewModelScope.launch {
+                _cafesLiveData.value = Resource.Loading()
+                dataRepository.getCafes(userId, query = request).collect {
+                    if (isExpiredToken(it)) {
+                        Log.d("CafeListViewModel", "refreshTokens")
+                        refreshTokens()
+                    }
+                    _cafesLiveData.value = it
                 }
-                _cafesLiveData.value = it
             }
         }
     }

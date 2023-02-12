@@ -9,6 +9,7 @@ import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.remote.datasource.CafeRemoteData
 import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
 import org.cazait.cazait_android.data.model.remote.response.CafeListResponse
+import org.cazait.cazait_android.data.model.remote.response.InterestCafesResponse
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -17,17 +18,15 @@ class DataRepositoryImpl @Inject constructor(
     private val ioDispatcher: CoroutineContext,
     @ApplicationContext private val context: Context
 ) : DataRepository {
-    override suspend fun addToFavourite(id: String): Flow<Resource<Boolean>> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun removeFromFavourite(cafeId: String): Flow<Resource<Boolean>> {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun getCafes(userId: Long, query: CafeListRequest): Flow<Resource<CafeListResponse>> {
         return flow {
             emit(remoteData.getCafeList(userId, query))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun getInterestCafes(userId: Long): Flow<Resource<InterestCafesResponse>> {
+        return flow<Resource<InterestCafesResponse>> {
+            emit(remoteData.getInterestCafes(userId))
         }.flowOn(ioDispatcher)
     }
 }

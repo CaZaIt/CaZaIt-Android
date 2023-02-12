@@ -10,6 +10,20 @@
         android:background="@color/cazait_foam_white"
         tools:context=".ui.view.interest.CafeInterestFragment">
 
+        <TextView
+            android:id="@+id/tv_no_data3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/no_data"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="32sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:id="@+id/view_cafe_interest_divide"
             android:layout_width="match_parent"
@@ -20,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_cafe_like_fragment_shop"
+            android:id="@+id/tv_cafe_interest_shop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -33,7 +47,7 @@
             app:layout_constraintTop_toTopOf="@+id/view_cafe_interest_divide" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_cafe_interest"
+            android:id="@+id/rv_interest_cafes"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -43,6 +57,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_cafe_interest_divide" />
+
+        <FrameLayout
+            android:id="@+id/pb_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="23dp"
+            tools:layout_editor_absoluteY="190dp"
+            tools:visibility="visible">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/interest_cafes_no_data"
+            android:textColor="@color/cazait_choco"
+            android:textSize="32sp"
+            android:fontFamily="@font/roboto_bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

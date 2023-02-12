@@ -2,47 +2,83 @@ package org.cazait.cazait_android.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import org.cazait.cazait_android.data.Resource
+import org.cazait.cazait_android.data.error.EXPIRED_ACCESS_TOKEN
 import org.cazait.cazait_android.data.model.Cafe
+import org.cazait.cazait_android.data.model.remote.response.InterestCafesResponse
 import org.cazait.cazait_android.data.repository.DataRepository
+import org.cazait.cazait_android.data.repository.UserRepository
 import org.cazait.cazait_android.ui.base.BaseViewModel
+import org.cazait.cazait_android.ui.util.SingleEvent
 import javax.inject.Inject
 
 @HiltViewModel
-open class CafeInterestViewModel @Inject constructor(private val dataRepository: DataRepository) :
-    BaseViewModel() {
+open class CafeInterestViewModel @Inject constructor(
+    private val dataRepository: DataRepository,
+    private val userRepository: UserRepository
+) : BaseViewModel() {
 
-    private val list = arrayListOf<Cafe>()
-    private val _cafeInterestList = MutableLiveData<ArrayList<Cafe>>()
-    val cafeInterestList: LiveData<ArrayList<Cafe>>
-        get() = _cafeInterestList
+    private val _showToast = MutableLiveData<SingleEvent<Any>>()
+    val showToast: LiveData<SingleEvent<Any>>
+        get() = _showToast
 
-    init {
-        initDataSet()
+    private val _interestCafes = MutableLiveData<Resource<InterestCafesResponse>>()
+    val interestCafes: LiveData<Resource<InterestCafesResponse>>
+        get() = _interestCafes
+
+    private val _openCafeDetails = MutableLiveData<SingleEvent<Cafe>>()
+    val openCafeDetails: LiveData<SingleEvent<Cafe>>
+        get() = _openCafeDetails
+
+    fun refreshInterestCafeList() {
+        viewModelScope.launch {
+            val userId = userRepository.fetchUserIdInDataStore().first()
+
+            _interestCafes.value = Resource.Loading()
+            dataRepository.getInterestCafes(userId).collect {
+                if (isExpiredToken(it)) {
+                    refreshTokens()
+                }
+                _interestCafes.value = it
+            }
+        }
     }
 
-    private fun initDataSet() {
-        val dataList = arrayListOf(
-            Cafe(1,"카페 범쿤",100, "서울시 광진구 능동 239 - 26", "보통"),
-            Cafe(2,"눈물",200, "서울시 광진구 xxxx - xxxxxx", "혼잡"),
-            Cafe(3,"눙물",300, "서울시 광진구 xxxx - xxxxxx", "보통"),
-            Cafe(4,"국물",400, "서울시 광진구 xxxx - xxxxxx", "여유"),
-            Cafe(5,"물논",1200, "서울시 광진구 xxxx - xxxxxx", "보통"),
-            Cafe(6,"물론",400, "서울시 광진구 xxxx - xxxxxx", "보통"),
-            Cafe(7,"투썸플레이스 삼호가든사거리점",500, "서울 서초구 서초중앙로 238 가든리체프라자 2층 252호", "혼잡"),
-            Cafe(8,"골목",600, "서울시 광진구 xxxx - xxxxxx", "보통"),
-            Cafe(9,"눔룬",700, "서울시 광진구 xxxx - xxxxxx", "보통"),
-            Cafe(10,"엔제리너스카페24시",800, "서울시 광진구 xxxx - xxxxxx", "보통"),
-            Cafe(11,"제주몰빵",900, "서울시 광진구 xxxx - xxxxxx", "보통"),
-            Cafe(12,"카페 딕셔너리",1000, "서울시 xxxx - xxxxxx", "보통"),
-            Cafe(13,"카페베네",1100, "서울시 광진구 xxxx - xxxxxx", "보통")
+    fun showToastMessage(errorCode: Int) {
+        val error = errorManager.getError(errorCode)
+        _showToast.value = SingleEvent(error.description)
+    }
 
+    fun showToastMessage(errorMessage: String?) {
+        if (errorMessage == null) return
+        _showToast.value = SingleEvent(errorMessage)
+    }
+
+    fun openCafeDetails(cafe: Cafe) {
+        _openCafeDetails.value = SingleEvent(cafe)
+    }
+
+    private fun isExpiredToken(response: Resource<InterestCafesResponse>): Boolean {
+        return response is Resource.Success
+                && response.data.result == "FAIL"
+                && response.data.message == errorManager.getError(EXPIRED_ACCESS_TOKEN).description
+    }
+
+    private suspend fun refreshTokens() {
+        val refreshToken = userRepository.fetchTokenInDataStore().first()
+
+        val tokenResponse =
+            userRepository.postToken(mapOf("REFRESH-TOKEN" to refreshToken.last())).first()
+        if (tokenResponse is Resource.Success) userRepository.saveToken(
+            listOf(
+                tokenResponse.data.data.jwtToken,
+                tokenResponse.data.data.refreshToken
+            )
         )
-        setCafeinterestList(dataList)
-    }
-
-    private fun setCafeinterestList(dataset: ArrayList<Cafe>) {
-        list.addAll(dataset)
-        _cafeInterestList.postValue(dataset)
     }
 }

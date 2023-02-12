@@ -94,8 +94,6 @@ dependencies {
     // viewpager2
     implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
 
-    //chip
-    implementation 'com.google.android.material:material:1.9.0-alpha01'
 
     /* Third Party Library */
 

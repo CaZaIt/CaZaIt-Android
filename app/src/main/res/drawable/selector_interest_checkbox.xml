@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="false"
-        android:drawable="@drawable/iv_interest_unclick" />
+        android:drawable="@drawable/ic_interest_unclicked" />
     <item android:state_checked="true"
-        android:drawable="@drawable/iv_interest_click" />
+        android:drawable="@drawable/ic_interest_clicked" />
 
 </selector>
