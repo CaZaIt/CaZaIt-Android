@@ -1,6 +1,7 @@
 package org.cazait.cazait_android.data.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -9,7 +10,11 @@ data class Cafe(
     val name: String,
     val distance: Int,
     val address: String,
-    val state: String
+    val state: String,
+    val favorite: Boolean,
+    @SerializedName("getCafeImageRes") val cafeImageRes: List<CafeImageRes>,
+    val latitude: String,
+    val longitude: String,
 ) : Parcelable {
     fun getStringDistance() = distance.toString()
     fun getKorState(): String = stateMapper.getValue(state)

@@ -130,11 +130,15 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
         // data[0]인 이유는 0번째 페이지이기 때문임 만일 페이지 수가 넘어가면 1씩 증가시켜서 추가해줘야 함
         val cafeList = cafeListResponse.data[0].map {
             Cafe(
-                it.cafeId,
-                it.name,
-                it.distance,
-                it.address,
-                it.congestionStatus
+                id = it.cafeId,
+                name = it.name,
+                distance = it.distance,
+                address = it.address,
+                state = it.congestionStatus,
+                favorite = it.favorite,
+                cafeImageRes = it.cafeImageRes,
+                latitude = it.latitude,
+                longitude = it.longitude
             )
         }.toList()
         return Cafes(ArrayList(cafeList))
