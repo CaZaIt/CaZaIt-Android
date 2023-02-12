@@ -64,11 +64,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         when (status) {
             is Resource.Loading -> binding.pbLoginLoaderView.toVisible()
             is Resource.Success -> status.data.let {
-                Log.d("LoginActivity", "석셋스 1")
                 binding.pbLoginLoaderView.toGone()
                 when (status.data.result) {
                     "SUCCESS" -> {
-                        Log.d("LoginActivity", "석셋스 2")
                         val intent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(intent)
                         finish()

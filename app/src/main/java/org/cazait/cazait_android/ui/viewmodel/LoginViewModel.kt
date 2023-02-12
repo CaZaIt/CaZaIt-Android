@@ -32,9 +32,7 @@ class LoginViewModel @Inject constructor(
 
     fun doLogin(email: String, password: String) {
         viewModelScope.launch {
-            Log.d("LoginViewModel", "doLogin//launch1")
             _loginProcess.value = Resource.Loading()
-            Log.d("LoginViewModel", "doLogin//launch2")
             userRepository.login(body = LoginRequest(email, password)).collect {
                 if ((it is Resource.Success) && (it.data.result == "SUCCESS")) {
                     saveLoginToken(it.data.data.jwtToken, it.data.data.refreshToken)
