@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class MenuRequest(
     @SerializedName("cafeId")
-    val cafeId: Int
+    val cafeId: Long
 )

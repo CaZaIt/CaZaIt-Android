@@ -22,7 +22,7 @@ interface CafeService {
 
     @GET("/api/menus/cafe/{cafeId}")
     fun getMenus(
-        @Path("cafeId") cafeId: Int
+        @Path("cafeId") cafeId: Long
     ): Call<MenuResponse>
 
     @GET("/api/reviews/{cafeId}/all")

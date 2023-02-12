@@ -5,42 +5,37 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.data.model.CafeMenu
 import org.cazait.cazait_android.databinding.ItemCafeInfoMenuBinding
+import org.cazait.cazait_android.ui.viewmodel.CafeInfoMenuViewModel
 
-class CafeInfoMenuAdapter :
-    RecyclerView.Adapter<CafeInfoMenuAdapter.MenuItemViewHolder>() {
+class CafeInfoMenuAdapter(
+    private val cafeInfoMenuViewModel: CafeInfoMenuViewModel,
+    private val menus: List<CafeMenu>
+) : RecyclerView.Adapter<MenusViewHolder>() {
 
-    private val _data = mutableListOf<CafeMenu>()
-    var data: List<CafeMenu> = _data
-        set(value) {
-            _data.clear()
-            _data.addAll(value)
-            notifyDataSetChanged()
-        }
+//    private val _data = mutableListOf<CafeMenu>()
+//    var data: List<CafeMenu> = _data
+//        set(value) {
+//            _data.clear()
+//            _data.addAll(value)
+//            notifyDataSetChanged()
+//        }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenusViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val listItemBinding = ItemCafeInfoMenuBinding.inflate(inflater, parent, false)
 
-        return MenuItemViewHolder(listItemBinding)
+        return MenusViewHolder(listItemBinding)
     }
 
     // ViewHolder의 bind 메소드를 호출한다.
-    override fun onBindViewHolder(holder: CafeInfoMenuAdapter.MenuItemViewHolder, position: Int) {
-        // Log.d("ListAdapter", "===== ===== ===== ===== onBindViewHolder ===== ===== ===== =====")
-        holder.bind(_data[position])
+    override fun onBindViewHolder(holder: MenusViewHolder, position: Int) {
+        holder.bind(menus[position])
     }
 
-    override fun getItemCount() = _data.size
+    override fun getItemCount() = menus.size
 
     // RecyclerView의 재사용 문제 해결
     override fun getItemViewType(position: Int): Int {
         return position
-    }
-
-    inner class MenuItemViewHolder(val binding: ItemCafeInfoMenuBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(cafeMenu: CafeMenu) {
-            binding.menu = cafeMenu
-        }
     }
 }

@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="menu"
-            type="org.cazait.cazait_android.data.model.CafeMenu"/>
+            type="org.cazait.cazait_android.data.model.CafeMenu" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,8 +28,8 @@
                 android:layout_marginStart="15.22dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="14dp"
-                android:src="@drawable/cafe_menu_americano"
                 android:contentDescription="@null"
+                android:src="@drawable/cafe_menu_americano"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

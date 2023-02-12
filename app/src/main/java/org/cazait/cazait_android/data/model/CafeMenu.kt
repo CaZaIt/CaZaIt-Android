@@ -4,7 +4,7 @@ data class CafeMenu(
     val desc: String,
     val name: String,
     val price: Int
-    // val image: ????
+//     val image: Int
 ) {
     fun getStringPrice() = price.toString()
 }

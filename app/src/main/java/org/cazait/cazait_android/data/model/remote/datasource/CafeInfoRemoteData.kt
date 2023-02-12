@@ -19,20 +19,20 @@ class CafeInfoRemoteData @Inject constructor(
 ) : CafeInfoRemoteDataSource {
     private val cafeService = serviceGenerator.createService(CafeService::class.java)
 
-    override fun getMenus(cafeId: Int): Resource<MenuResponse> {
+    override fun getMenus(cafeId: Long): Resource<MenuResponse> {
         if (!networkConnectivity.isConnected()) {
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
         }
 
         return try {
-            val response = cafeService.getMenus(cafeId).execute()
+            val response = cafeService.getMenus(cafeId = cafeId).execute()
             if (response.isSuccessful) {
                 Resource.Success(response.body()!!)
             } else {
-                Resource.Error(response.message(), null)
+                Resource.Error(response.message())
             }
         } catch (e: IOException) {
-            Resource.Error(e.message, null)
+            Resource.Error(e.message)
         }
     }
 

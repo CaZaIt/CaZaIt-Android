@@ -3,6 +3,7 @@ package org.cazait.cazait_android.data.model.remote.response
 import com.google.gson.annotations.SerializedName
 
 data class LoginResponse(
+    @SerializedName("code") val code : Int,
     @SerializedName("data") val data: Data,
     @SerializedName("message") val message: String,
     @SerializedName("result") val result: String

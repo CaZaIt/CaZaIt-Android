@@ -37,7 +37,9 @@ class DataRepositoryImpl @Inject constructor(
         }.flowOn(ioDispatcher)
     }
 
-    override suspend fun getMenus(cafeId: Int): Flow<Resource<MenuResponse>> {
+    override suspend fun getMenus(
+        cafeId: Long
+    ): Flow<Resource<MenuResponse>> {
         return flow {
             emit(infoRemoteData.getMenus(cafeId))
         }.flowOn(ioDispatcher)
