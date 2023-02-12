@@ -1,7 +1,7 @@
 package org.cazait.cazait_android.ui.view.cafelist.info.inner
 
-import android.Manifest
 import android.content.Context
+import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -28,6 +28,8 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoL
     private lateinit var naverMap: NaverMap
     private lateinit var locationSource: FusedLocationSource
     private var listener: OnMapTouchListener? = null
+    private var cafeLat: Double = 0.0
+    private var cafeLong:Double = 0.0
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -42,6 +44,10 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoL
     }
 
     override fun initView() {
+        cafeLat = arguments?.getString("cafeLat")!!.toDouble()
+        cafeLong = arguments?.getString("cafeLong")!!.toDouble()
+        Log.d("Clicked CafeLat Check", "$cafeLat")
+        Log.d("Clicked CafeLong Check", "$cafeLong")
         createMap()
         locationSource = FusedLocationSource(this, REQUEST_LOCATION_PERMISSION)
         onMapTouch()
@@ -64,16 +70,16 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoL
     }
 
     private fun showLocationRange() {
-        val locationLat = 37.548476
-        val locationLng = 127.0726703
+//        val locationLat = 37.548476
+//        val locationLng = 127.0726703
         // 지정한 위치로 카메라 이동
-        val cameraUpdate = CameraUpdate.scrollTo(LatLng(locationLat, locationLng))
+        val cameraUpdate = CameraUpdate.scrollTo(LatLng(cafeLat, cafeLong))
             .animate(CameraAnimation.Easing, 1000)
         naverMap.moveCamera(cameraUpdate)
 
         //지정한 위치에 마커 적용
         Marker().apply {
-            position = LatLng(locationLat, locationLng)
+            position = LatLng(cafeLat, cafeLong)
             map = naverMap
         }
     }

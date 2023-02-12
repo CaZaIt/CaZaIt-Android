@@ -45,8 +45,7 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewM
         val cafeId = arguments?.getLong("cafeId")
         Log.d("Clicked CafeId Check", "$cafeId")
         if (cafeId != null) {
-//            viewModel.getMenus(cafeId)
-            viewModel.getMenus(1)
+            viewModel.getMenus(cafeId)
         }
 
 //        initRecyclerView()

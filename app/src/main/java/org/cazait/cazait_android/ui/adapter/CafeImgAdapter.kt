@@ -1,23 +1,29 @@
 package org.cazait.cazait_android.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.cazait.cazait_android.R
+import org.cazait.cazait_android.data.model.CafeImageRes
 
-class CafeImgAdapter(var cafeImg: MutableList<Int>) :
+class CafeImgAdapter(private val context: Context, private val cafeImg: List<CafeImageRes>) :
     RecyclerView.Adapter<CafeImgAdapter.ImgViewHolder>() {
-    inner class ImgViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_cafe_img, parent, false)
-    ) {
-        val cafeImg = itemView.findViewById<ImageView>(R.id.cafe_info_img)
+    inner class ImgViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageView: ImageView = itemView.findViewById(R.id.cafe_info_img)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ImgViewHolder((parent))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImgViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.item_cafe_img, parent, false)
+        return ImgViewHolder(view)
+    }
 
-    override fun onBindViewHolder(holder: CafeImgAdapter.ImgViewHolder, position: Int) {
-        holder.cafeImg.setImageResource(cafeImg[position])
+    override fun onBindViewHolder(holder: ImgViewHolder, position: Int) {
+        val imgUrl = cafeImg[position].imageUrl
+        Glide.with(context).load(imgUrl).into(holder.imageView)
     }
 
     override fun getItemCount(): Int = cafeImg.size

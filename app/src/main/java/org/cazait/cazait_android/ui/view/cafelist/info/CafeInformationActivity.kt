@@ -12,8 +12,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
-import org.cazait.cazait_android.data.Datasource
 import org.cazait.cazait_android.data.model.Cafe
+import org.cazait.cazait_android.data.model.CafeImageRes
 import org.cazait.cazait_android.databinding.ActivityCafeInformationBinding
 import org.cazait.cazait_android.ui.adapter.CafeImgAdapter
 import org.cazait.cazait_android.ui.base.BaseActivity
@@ -28,6 +28,10 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         get() = R.layout.activity_cafe_information
 
     override val viewModel: CafeInfoViewModel by viewModels()
+    private lateinit var imgList: List<CafeImageRes>
+    private lateinit var name:String
+    private lateinit var address:String
+    private lateinit var bundle: Bundle
 
     override fun onTouch() {
         binding.cafeInfoFragCon.requestDisallowInterceptTouchEvent(true)
@@ -59,47 +63,49 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
             intent.getParcelableExtra(CAFE_ITEM_KEY)
         }
         // 위 데이터를 fragment에 넘겨줌
-        val bundle = Bundle()
+        bundle = Bundle()
         if (cafe != null) {
             bundle.putLong("cafeId", cafe.id)
+            bundle.putString("cafeLat", cafe.latitude)
+            bundle.putString("cafeLong",cafe.longitude)
+            imgList = ArrayList(cafe.cafeImageRes)
+            name = cafe.name
+            address = cafe.address
         }
         val menuFrag = CafeMenuFragment()
         menuFrag.arguments = bundle
         //-----------------
 
-        val imgList = Datasource().loadCafeImg()
-        addCafeImg(imgList, R.drawable.image_cafe_ex1)
-
         val dotsIndicator = binding.dotsIndicator
         val viewPager = binding.vpImg
-        viewPager.adapter = CafeImgAdapter(imgList)
+        viewPager.adapter = CafeImgAdapter(this, imgList)
         dotsIndicator.attachTo(viewPager)
 
-        binding.tvCafeInfoName.text = resources.getString(R.string.cafelist1_name)
-        binding.tvCafeInfoAdd.text = resources.getString(R.string.cafelist1_add)
-        binding.fabReviewWrite.hide()
+        binding.tvCafeInfoName.text = name
+        binding.tvCafeInfoAdd.text = address
 
-        binding.btnCafeMenu.setSelected(true)
+        binding.fabReviewWrite.hide()
+        binding.btnCafeMenu.isSelected = true
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.cafe_info_frag_con, menuFrag)
             .commit()
 
-        showMenuLocFragment(
+        showFragment(
             binding.btnCafeMenu,
             binding.btnCafeLocTrans,
             binding.btnCafeRatingReview,
             CafeMenuFragment(),
             binding.fabReviewWrite
         )
-        showMenuLocFragment(
+        showFragment(
             binding.btnCafeLocTrans,
             binding.btnCafeRatingReview,
             binding.btnCafeMenu,
             CafeLocTransFragment(),
             binding.fabReviewWrite
         )
-        showReviewFragment(
+        showFragment(
             binding.btnCafeRatingReview,
             binding.btnCafeMenu,
             binding.btnCafeLocTrans,
@@ -114,11 +120,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     }
 
-    private fun addCafeImg(list: MutableList<Int>, image: Int) {
-        list.add(image)
-    }
-
-    private fun showMenuLocFragment(
+    private fun showFragment(
         btn1: Button,
         btn2: Button,
         btn3: Button,
@@ -126,33 +128,22 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         fab: FloatingActionButton
     ) {
         btn1.setOnClickListener {
-            btn1.setSelected(true)
-            btn2.setSelected(false)
-            btn3.setSelected(false)
+            btn1.isSelected = true
+            btn2.isSelected = false
+            btn3.isSelected = false
+            if(binding.btnCafeMenu.isSelected || binding.btnCafeLocTrans.isSelected){
+                val frag = frag
+                frag.arguments = bundle
+                fab.hide()
+            }else{
+                val frag = frag
+                frag.arguments = bundle
+                fab.show()
+            }
             supportFragmentManager.popBackStack()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.cafe_info_frag_con, frag)
                 .commit()
-            fab.hide()
-        }
-    }
-
-    private fun showReviewFragment(
-        btn1: Button,
-        btn2: Button,
-        btn3: Button,
-        frag: Fragment,
-        fab: FloatingActionButton
-    ) {
-        btn1.setOnClickListener {
-            btn1.setSelected(true)
-            btn2.setSelected(false)
-            btn3.setSelected(false)
-            supportFragmentManager.popBackStack()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.cafe_info_frag_con, frag)
-                .commit()
-            fab.show()
         }
     }
 }
