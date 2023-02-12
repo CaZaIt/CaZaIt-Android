@@ -29,7 +29,8 @@ interface CafeService {
 
     @GET("/api/reviews/{cafeId}/all")
     fun getReviews(
-        @Path("cafeId") cafeId: Int
+        @Path("cafeId") cafeId: Long,
+        @Query("sortBy") sortBy: String
     ): Call<ReviewResponse>
 
     @GET("/api/favorites/user/{userId}")

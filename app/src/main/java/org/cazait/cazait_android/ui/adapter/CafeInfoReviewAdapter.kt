@@ -5,37 +5,35 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.data.model.ReviewData
 import org.cazait.cazait_android.databinding.ItemCafeInfoRatingReviewBinding
+import org.cazait.cazait_android.ui.adapter.holder.ReviewsViewHolder
+import org.cazait.cazait_android.ui.viewmodel.CafeInfoReviewViewModel
 
-class CafeInfoReviewAdapter: RecyclerView.Adapter<CafeInfoReviewAdapter.ReviewItemViewHolder>() {
-    private val _data = mutableListOf<ReviewData>()
-    var data: List<ReviewData> = _data
-        set(value) {
-            _data.clear()
-            _data.addAll(value)
-            notifyDataSetChanged()
-        }
+class CafeInfoReviewAdapter(
+    private val cafeInfoReviewViewModel: CafeInfoReviewViewModel,
+    private val reviews: List<ReviewData>
+): RecyclerView.Adapter<ReviewsViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val listItemBinding = ItemCafeInfoRatingReviewBinding.inflate(inflater, parent, false)
 
-        return ReviewItemViewHolder(listItemBinding)
+        return ReviewsViewHolder(listItemBinding)
     }
 
-    override fun onBindViewHolder(holder: ReviewItemViewHolder, position: Int) {
-        holder.bind(_data[position])
+    override fun onBindViewHolder(holder: ReviewsViewHolder, position: Int) {
+        holder.bind(reviews[position])
     }
 
-    override fun getItemCount() = _data.size
+    override fun getItemCount() = reviews.size
 
     // RecyclerView의 재사용 문제 해결
     override fun getItemViewType(position: Int): Int {
         return position
     }
 
-    inner class ReviewItemViewHolder(val binding: ItemCafeInfoRatingReviewBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(reviewData: ReviewData){
-            binding.review = reviewData
-        }
-    }
+//    inner class ReviewItemViewHolder(val binding: ItemCafeInfoRatingReviewBinding): RecyclerView.ViewHolder(binding.root){
+//        fun bind(reviewData: ReviewData){
+//            binding.review = reviewData
+//        }
+//    }
 }

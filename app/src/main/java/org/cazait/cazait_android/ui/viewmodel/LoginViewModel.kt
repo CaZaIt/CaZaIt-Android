@@ -1,6 +1,7 @@
 package org.cazait.cazait_android.ui.viewmodel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -19,7 +20,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository,
-    @ApplicationContext context: Context,
 ) : BaseViewModel() {
 
     private val _loginProcess = MutableLiveData<Resource<LoginResponse>>()
@@ -32,9 +32,11 @@ class LoginViewModel @Inject constructor(
 
     fun doLogin(email: String, password: String) {
         viewModelScope.launch {
+            Log.d("LoginViewModel", "doLogin//launch1")
             _loginProcess.value = Resource.Loading()
+            Log.d("LoginViewModel", "doLogin//launch2")
             userRepository.login(body = LoginRequest(email, password)).collect {
-                if (it is Resource.Success && it.data.result == "SUCCESS") {
+                if ((it is Resource.Success) && (it.data.result == "SUCCESS")) {
                     saveLoginToken(it.data.data.jwtToken, it.data.data.refreshToken)
                     saveUserId(it.data.data.id)
                     saveLoginEmail(email)

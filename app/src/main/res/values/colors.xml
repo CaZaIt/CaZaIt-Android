@@ -32,4 +32,6 @@
     <color name="cafe_information_menu">#F1F1EF</color>
     <color name="base_cafe_info_color">#F5F5F5</color>
     <color name="cafe_price">#FF0000</color>
+
+    <color name="test">#FFFFFF</color>
 </resources>

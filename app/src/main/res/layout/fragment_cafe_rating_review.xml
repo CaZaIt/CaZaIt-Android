@@ -107,6 +107,23 @@
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+            <FrameLayout
+                android:id="@+id/pb_review_loader_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="190dp"
+                tools:visibility="visible">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminate="true" />
+            </FrameLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
