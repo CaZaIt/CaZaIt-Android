@@ -5,20 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.data.model.CafeMenu
 import org.cazait.cazait_android.databinding.ItemCafeInfoMenuBinding
+import org.cazait.cazait_android.ui.adapter.holder.MenusViewHolder
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoMenuViewModel
 
 class CafeInfoMenuAdapter(
     private val cafeInfoMenuViewModel: CafeInfoMenuViewModel,
     private val menus: List<CafeMenu>
 ) : RecyclerView.Adapter<MenusViewHolder>() {
-
-//    private val _data = mutableListOf<CafeMenu>()
-//    var data: List<CafeMenu> = _data
-//        set(value) {
-//            _data.clear()
-//            _data.addAll(value)
-//            notifyDataSetChanged()
-//        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenusViewHolder {
         val inflater = LayoutInflater.from(parent.context)

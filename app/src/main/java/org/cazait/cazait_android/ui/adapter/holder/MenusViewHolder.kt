@@ -1,4 +1,4 @@
-package org.cazait.cazait_android.ui.adapter
+package org.cazait.cazait_android.ui.adapter.holder
 
 import androidx.recyclerview.widget.RecyclerView
 import org.cazait.cazait_android.data.model.CafeMenu
