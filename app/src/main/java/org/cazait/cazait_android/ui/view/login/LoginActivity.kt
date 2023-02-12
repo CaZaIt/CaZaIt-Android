@@ -1,6 +1,7 @@
 package org.cazait.cazait_android.ui.view.login
 
 import android.content.Intent
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.LiveData
@@ -63,9 +64,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         when (status) {
             is Resource.Loading -> binding.pbLoginLoaderView.toVisible()
             is Resource.Success -> status.data.let {
+                Log.d("LoginActivity", "석셋스 1")
                 binding.pbLoginLoaderView.toGone()
                 when (status.data.result) {
                     "SUCCESS" -> {
+                        Log.d("LoginActivity", "석셋스 2")
                         val intent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(intent)
                         finish()

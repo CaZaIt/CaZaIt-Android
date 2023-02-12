@@ -49,7 +49,7 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
     }
 
     override fun initAfterBinding() {
-        // viewModel.refreshCafeList()
+        viewModel.refreshCafeList()
         observeViewModel()
     }
 

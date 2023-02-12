@@ -9,4 +9,3 @@ data class ReviewData(
 ) {
     fun getStringScore() = score.toString()
 }
-
