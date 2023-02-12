@@ -36,7 +36,20 @@ class CafeInfoRemoteData @Inject constructor(
         }
     }
 
-    override fun getReviews(body: ReviewRequest): Resource<ReviewResponse> {
-        TODO("Not yet implemented")
+    override fun getReviews(cafeId: Long, query: ReviewRequest): Resource<ReviewResponse> {
+        if (!networkConnectivity.isConnected()) {
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+        }
+
+        return try {
+            val response = cafeService.getReviews(cafeId = cafeId, sortBy = query.sortBy).execute()
+            if (response.isSuccessful) {
+                Resource.Success(response.body()!!)
+            } else {
+                Resource.Error(response.message())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
+        }
     }
 }

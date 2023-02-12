@@ -7,5 +7,5 @@ import org.cazait.cazait_android.data.model.remote.response.ReviewResponse
 
 interface CafeInfoRemoteDataSource {
     fun getMenus(cafeId: Long): Resource<MenuResponse>
-    fun getReviews(body: ReviewRequest): Resource<ReviewResponse>
+    fun getReviews(cafeId: Long, body: ReviewRequest): Resource<ReviewResponse>
 }
