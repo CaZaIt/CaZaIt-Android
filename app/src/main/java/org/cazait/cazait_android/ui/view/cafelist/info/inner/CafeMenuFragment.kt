@@ -108,26 +108,10 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewM
             CafeMenu(
                 it.description,
                 it.name,
-                it.price
+                it.price,
+                it.imageUrl
             )
         }.toList()
         return CafeMenus(ArrayList(menuList))
-    }
-
-//    private fun initRecyclerView() {
-//        val spaceDecoration = MarginItemDecoration(
-//            resources.getDimension(R.dimen.cafe_info_menu_bottom_space).roundToInt()
-//        )
-//        val recyclerView = binding.rvCafeInfoMenus
-//        recyclerView.layoutManager =
-//            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-//        recyclerView.addItemDecoration(spaceDecoration)
-//        recyclerView.adapter = menuAdapter
-//    }
-
-    private fun observeMenuListData() {
-        viewModel.cafeMenuList.observe(this) {
-//            menuAdapter.data = it
-        }
     }
 }
