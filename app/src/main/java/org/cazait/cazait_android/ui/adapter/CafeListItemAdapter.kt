@@ -26,7 +26,7 @@ class CafeListItemAdapter(
         val listItemBinding = ItemCafeMainBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return CafesViewHolder(listItemBinding)
+        return CafesViewHolder(listItemBinding, cafeListViewModel)
     }
 
     override fun onBindViewHolder(holder: CafesViewHolder, position: Int) {

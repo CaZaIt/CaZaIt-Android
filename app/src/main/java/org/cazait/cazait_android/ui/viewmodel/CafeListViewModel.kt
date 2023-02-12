@@ -29,6 +29,9 @@ open class CafeListViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val fusedLocationProviderClient: FusedLocationProviderClient,
 ) : BaseViewModel() {
+    private val _userIdLiveData = MutableLiveData<Long>()
+    val userIdLiveData: LiveData<Long>
+        get() = _userIdLiveData
 
     private val _cafesLiveData = MutableLiveData<Resource<CafeListResponse>>()
     val cafesLiveData: LiveData<Resource<CafeListResponse>>
@@ -53,21 +56,26 @@ open class CafeListViewModel @Inject constructor(
      */
     fun refreshCafeList() {
         viewModelScope.launch {
-            val userId = userRepository.fetchUserIdInDataStore().first()
+            _userIdLiveData.value = userRepository.fetchUserIdInDataStore().first()
             val testLongitude = "126.9457"
             val testLatitude = "37.586"
             val testLimit = "0"
             val testSort = "distance"
 
-            val request: CafeListRequest = if(userLocation.value != null) {
-                CafeListRequest(userLocation.value!!.peekContent().latitude.toString(), userLocation.value!!.peekContent().longitude.toString(), testLimit, testSort)
+            val request: CafeListRequest = if (userLocation.value != null) {
+                CafeListRequest(
+                    userLocation.value!!.peekContent().latitude.toString(),
+                    userLocation.value!!.peekContent().longitude.toString(),
+                    testLimit,
+                    testSort
+                )
             } else
                 CafeListRequest(testLatitude, testLongitude, testLimit, testSort)
 
             Log.d("CafeListViewModel", "선택된 것은... ${request.latitude}, ${request.longitude}")
             viewModelScope.launch {
                 _cafesLiveData.value = Resource.Loading()
-                dataRepository.getCafes(userId, query = request).collect {
+                dataRepository.getCafes(_userIdLiveData.value!!, query = request).collect {
                     if (isExpiredToken(it)) {
                         Log.d("CafeListViewModel", "refreshTokens")
                         refreshTokens()
@@ -103,6 +111,23 @@ open class CafeListViewModel @Inject constructor(
                 Log.d("MyFragmentViewModel", "Longitude: ${location.longitude}")
                 _userLocation.value = SingleEvent(location)
             }
+        }
+    }
+
+    fun likeCafe(userId: Long, cafeId: Long) {
+        viewModelScope.launch {
+            dataRepository.postInterestCafe(userId = userId, cafeId = cafeId).collect {
+                Log.d("CafeListViewModel", "likeCafe")
+            }
+        }
+    }
+
+    /**
+     * 미구현
+     */
+    fun dislikeCafe(favoritesId: Long) {
+        viewModelScope.launch {
+            dataRepository.deleteInterestCafe(favoritesId)
         }
     }
 
