@@ -39,6 +39,7 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
 
     override fun initAfterBinding() {
         observeViewModel()
+        viewModel.refreshInterestCafeList()
     }
 
     override fun initBeforeBinding() {
@@ -110,6 +111,7 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
                 address = it.address,
                 state = it.congestion,
                 favorite = true,
+                favoritesId = it.favoritesId,
                 cafeImageRes = listOf(),
                 latitude = it.latitude,
                 longitude = it.longitude

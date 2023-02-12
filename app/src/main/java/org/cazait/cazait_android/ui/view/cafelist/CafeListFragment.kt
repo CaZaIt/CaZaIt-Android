@@ -8,13 +8,12 @@ import android.location.Location
 import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.core.app.ActivityCompat
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
-import org.cazait.cazait_android.REQUEST_LOCATION_PERMISSION
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.Cafe
 import org.cazait.cazait_android.data.model.Cafes
@@ -33,14 +32,20 @@ import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel>() {
+
     override val viewModel: CafeListViewModel by viewModels()
 
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_list
 
     private lateinit var adapter: CafeListItemAdapter
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            handleLocationPermissionResult(isGranted)
+        }
+
     override fun initBeforeBinding() {
-        // 뷰모델을 lifeCycle 에 종속시킨다. lifeCycle 동안 옵저버 역할을 하게 된다.
         binding.lifecycleOwner = this
     }
 
@@ -49,7 +54,6 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
     }
 
     override fun initAfterBinding() {
-        // viewModel.refreshCafeList()
         observeViewModel()
     }
 
@@ -57,6 +61,27 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
         observe(viewModel.cafesLiveData, ::handleCafeList)
         observeEvent(viewModel.userLocation, ::handleUserLocation)
         observeEvent(viewModel.openCafeDetails, ::navigateToDetailsScreen)
+    }
+
+    private fun getUserLocation() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        } else {
+            viewModel.getUserLocation()
+        }
+    }
+
+    private fun handleLocationPermissionResult(isGranted: Boolean) {
+        if (isGranted) {
+            viewModel.getUserLocation()
+        } else {
+            // Permission denied, show a message to the user
+            viewModel.showToastMessage("카페 목록을 불러오기 위해 위치 접근 권한이 필요합니다")
+        }
     }
 
     private fun handleCafeList(status: Resource<CafeListResponse>) {
@@ -111,7 +136,7 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
 
     private fun navigateToDetailsScreen(navigateEvent: SingleEvent<Cafe>) {
         navigateEvent.getContentIfNotHandled().let {
-            if(it != null) {
+            if (it != null) {
                 val nextScreenIntent = Intent(context, CafeInformationActivity::class.java).apply {
                     putExtra(CAFE_ITEM_KEY, it)
                 }
@@ -142,31 +167,5 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
             )
         }.toList()
         return Cafes(ArrayList(cafeList))
-    }
-
-    private fun getUserLocation() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(requireActivity(),arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_LOCATION_PERMISSION
-            )
-        } else {
-            viewModel.getUserLocation()
-        }
-    }
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == REQUEST_LOCATION_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                viewModel.getUserLocation()
-            } else {
-                // Permission denied, show a message to the user
-                viewModel.showToastMessage("카페 목록을 불러오기 위해 위치 접근 권한이 필요합니다")
-            }
-        }
     }
 }
