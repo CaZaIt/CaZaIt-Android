@@ -21,7 +21,6 @@ import org.cazait.cazait_android.ui.viewmodel.CafeInfoMenuViewModel
 import java.util.ArrayList
 import kotlin.math.roundToInt
 
-
 @AndroidEntryPoint
 class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewModel>() {
     override val viewModel: CafeInfoMenuViewModel by viewModels()

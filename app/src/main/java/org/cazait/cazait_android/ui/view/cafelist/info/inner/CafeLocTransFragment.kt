@@ -70,8 +70,6 @@ class CafeLocTransFragment : BaseFragment<FragmentCafeLocTransBinding, CafeInfoL
     }
 
     private fun showLocationRange() {
-//        val locationLat = 37.548476
-//        val locationLng = 127.0726703
         // 지정한 위치로 카메라 이동
         val cameraUpdate = CameraUpdate.scrollTo(LatLng(cafeLat, cafeLong))
             .animate(CameraAnimation.Easing, 1000)
