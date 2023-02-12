@@ -107,7 +107,7 @@ dependencies {
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     //naver maps
-    implementation "com.naver.maps:map-sdk:$naver_map_version"
+    implementation "com.naver.maps:map-sdk:3.16.2"
 
     //location request
     implementation "com.google.android.gms:play-services-location:$fused_location_provider_client_version"
