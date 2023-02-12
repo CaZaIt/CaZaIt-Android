@@ -29,7 +29,6 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     override val viewModel: CafeInfoViewModel by viewModels()
 
-    private lateinit var imgList: List<CafeImageRes>
     private lateinit var name:String
     private lateinit var address:String
     private lateinit var bundle: Bundle
@@ -57,19 +56,16 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
     }
 
     override fun initView() {
-        // ------------------ CafeListFrag에서 데이터를 넘겨 받음
-        val cafe = if (Build.VERSION.SDK_INT >= 33) {     // cafeId가 담기는 것
+        val cafe = if (Build.VERSION.SDK_INT >= 33) {
             intent.getParcelableExtra(CAFE_ITEM_KEY, Cafe::class.java)
         } else {
             intent.getParcelableExtra(CAFE_ITEM_KEY)
         }
-        // 위 데이터를 fragment에 넘겨줌
         bundle = Bundle()
         if (cafe != null) {
             bundle.putLong("cafeId", cafe.id)
             bundle.putString("cafeLat", cafe.latitude)
             bundle.putString("cafeLong",cafe.longitude)
-            imgList = ArrayList(cafe.cafeImageRes)
             name = cafe.name
             address = cafe.address
         }
@@ -79,7 +75,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
         val dotsIndicator = binding.dotsIndicator
         val viewPager = binding.vpImg
-        viewPager.adapter = CafeImgAdapter(this, imgList)
+        viewPager.adapter = CafeImgAdapter(this, viewModel.makeCafeImgList(cafe!!))
         dotsIndicator.attachTo(viewPager)
 
         binding.tvCafeInfoName.text = name
