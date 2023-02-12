@@ -30,7 +30,7 @@
     <string name="sign_up_nick_name">닉네임</string>
 
     <!--Main Activity-->
-
+    <string name="press_back_again_to_exit">뒤로 버튼을 한 번 더 누르면 종료됩니다</string>
     <!--Filters-->
     <string name="filter_distance_order">거리순</string>
 

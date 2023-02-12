@@ -1,5 +1,7 @@
 package org.cazait.cazait_android.ui.view
 
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.R
@@ -14,6 +16,9 @@ import org.cazait.cazait_android.ui.viewmodel.MainViewModel
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+    private var backButtonPressedTime = 0L
+    private val backButtonThreshold = 2000L
+
     override val layoutResourceId: Int
         get() = R.layout.activity_main
     override val viewModel: MainViewModel by viewModels()
@@ -24,6 +29,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private val viewMoreFragment: ViewMoreFragment by lazy { ViewMoreFragment() }
 
     override fun initBeforeBinding() {
+        setupBackButtonHandler()
     }
 
     override fun initView() {
@@ -33,6 +39,20 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun initAfterBinding() {
     }
 
+    private fun setupBackButtonHandler() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val currentTime = System.currentTimeMillis()
+                if (backButtonPressedTime + backButtonThreshold > currentTime) {
+                    finish()
+                } else {
+                    Toast.makeText(this@MainActivity, R.string.press_back_again_to_exit, Toast.LENGTH_SHORT).show()
+                }
+                backButtonPressedTime = currentTime
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
+    }
     private fun initBottomNavigation() {
         binding.bnvMain.itemIconTintList = null
         binding.bnvMain.setOnItemSelectedListener {

@@ -108,7 +108,11 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
                 name = it.cafeName,
                 distance = 0,
                 address = it.address,
-                state = it.congestion
+                state = it.congestion,
+                favorite = true,
+                cafeImageRes = listOf(),
+                latitude = it.latitude,
+                longitude = it.longitude
             )
         }.toList()
         return Cafes(ArrayList(cafes))
