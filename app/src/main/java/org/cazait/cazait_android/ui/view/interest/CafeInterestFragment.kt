@@ -11,6 +11,7 @@ import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.Cafe
+import org.cazait.cazait_android.data.model.CafeImageRes
 import org.cazait.cazait_android.data.model.Cafes
 import org.cazait.cazait_android.data.model.remote.response.InterestCafesResponse
 import org.cazait.cazait_android.databinding.FragmentCafeInterestBinding
@@ -116,7 +117,7 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
                 state = it.congestion,
                 favorite = true,
                 favoritesId = it.favoritesId,
-                cafeImageRes = listOf(),
+                cafeImageRes = listOf(CafeImageRes(0, it.imageUrl[0])),
                 latitude = it.latitude,
                 longitude = it.longitude
             )

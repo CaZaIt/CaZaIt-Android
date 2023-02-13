@@ -1,6 +1,7 @@
 package org.cazait.cazait_android.data.model.remote.response
 
 import com.google.gson.annotations.SerializedName
+import org.cazait.cazait_android.data.model.CafeImageRes
 
 data class InterestCafesResponse(
     val code: Int,
