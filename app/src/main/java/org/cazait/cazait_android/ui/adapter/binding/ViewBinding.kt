@@ -1,8 +1,10 @@
 package org.cazait.cazait_android.ui.adapter.binding
 
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import com.tbuonomo.viewpagerdotsindicator.setBackgroundCompat
 import org.cazait.cazait_android.R
 
 object ViewBinding {

@@ -17,4 +17,6 @@ interface DataRepository {
         cafeId: Long,
         body: ReviewEditRequest
     ): Flow<Resource<ReviewEditResponse>>
+    suspend fun postInterestCafe(userId: Long, cafeId: Long): Flow<Resource<PostInterestCafeResponse>>
+    suspend fun deleteInterestCafe(favoritesId: Long): Flow<Resource<DeleteInterestCafeResponse>>
 }

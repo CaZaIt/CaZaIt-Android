@@ -42,4 +42,15 @@ interface CafeService {
         @Path("cafeId") cafeId: Long,
         @Body reviewEditRequest: ReviewEditRequest
     ):Call<ReviewEditResponse>
+
+    @POST("/api/favorites/user/{userId}/cafe/{cafeId}")
+    fun postInterestCafe(
+        @Path("userId") userId: Long,
+        @Path("cafeId") cafeId: Long
+    ): Call<PostInterestCafeResponse>
+
+    @DELETE("/api/favorites/delete/{favoritesId}")
+    fun deleteInterestCafe(
+        @Path("favoritesId") cafeId: Long
+    ): Call<DeleteInterestCafeResponse>
 }

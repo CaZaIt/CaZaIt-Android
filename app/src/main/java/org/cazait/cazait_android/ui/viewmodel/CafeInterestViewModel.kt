@@ -63,6 +63,17 @@ open class CafeInterestViewModel @Inject constructor(
         _openCafeDetails.value = SingleEvent(cafe)
     }
 
+    fun likeCafe(userId: Long, cafeId: Long) {
+
+    }
+
+    fun dislikeCafe(favoritesId: Long) {
+        viewModelScope.launch {
+            dataRepository.deleteInterestCafe(favoritesId).collect()
+            refreshInterestCafeList()
+        }
+    }
+
     private fun isExpiredToken(response: Resource<InterestCafesResponse>): Boolean {
         return response is Resource.Success
                 && response.data.result == "FAIL"

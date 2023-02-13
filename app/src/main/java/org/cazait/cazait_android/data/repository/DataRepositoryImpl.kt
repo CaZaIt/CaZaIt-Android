@@ -1,7 +1,5 @@
 package org.cazait.cazait_android.data.repository
 
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -19,7 +17,6 @@ class DataRepositoryImpl @Inject constructor(
     private val remoteData: CafeRemoteData,
     private val infoRemoteData: CafeInfoRemoteData,
     private val ioDispatcher: CoroutineContext,
-    @ApplicationContext private val context: Context
 ) : DataRepository {
 
     override suspend fun getCafes(
@@ -49,7 +46,7 @@ class DataRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getInterestCafes(userId: Long): Flow<Resource<InterestCafesResponse>> {
-        return flow<Resource<InterestCafesResponse>> {
+        return flow {
             emit(remoteData.getInterestCafes(userId))
         }.flowOn(ioDispatcher)
     }
@@ -61,6 +58,16 @@ class DataRepositoryImpl @Inject constructor(
     ): Flow<Resource<ReviewEditResponse>> {
         return flow {
             emit(infoRemoteData.postReview(userId, cafeId, body))
+
+    override suspend fun postInterestCafe(userId: Long, cafeId: Long): Flow<Resource<PostInterestCafeResponse>> {
+        return flow {
+            emit(remoteData.postInterestCafe(userId = userId, cafeId = cafeId))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun deleteInterestCafe(favoritesId: Long): Flow<Resource<DeleteInterestCafeResponse>> {
+        return flow {
+            emit(remoteData.deleteInterestCafe(favoritesId))
         }.flowOn(ioDispatcher)
     }
 }
