@@ -58,8 +58,13 @@ class DataRepositoryImpl @Inject constructor(
     ): Flow<Resource<ReviewEditResponse>> {
         return flow {
             emit(infoRemoteData.postReview(userId, cafeId, body))
+        }
+    }
 
-    override suspend fun postInterestCafe(userId: Long, cafeId: Long): Flow<Resource<PostInterestCafeResponse>> {
+    override suspend fun postInterestCafe(
+        userId: Long,
+        cafeId: Long
+    ): Flow<Resource<PostInterestCafeResponse>> {
         return flow {
             emit(remoteData.postInterestCafe(userId = userId, cafeId = cafeId))
         }.flowOn(ioDispatcher)
