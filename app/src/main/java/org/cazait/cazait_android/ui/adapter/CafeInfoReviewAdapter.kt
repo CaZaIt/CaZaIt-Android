@@ -21,6 +21,8 @@ class CafeInfoReviewAdapter(
     }
 
     override fun onBindViewHolder(holder: ReviewsViewHolder, position: Int) {
+        holder.binding.itemRatingBar.rating = reviews[position].score.toFloat()
+        holder.binding.tvNickname.text = reviews[position].nickName
         holder.bind(reviews[position])
     }
 

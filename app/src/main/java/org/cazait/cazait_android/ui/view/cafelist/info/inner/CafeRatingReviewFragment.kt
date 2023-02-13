@@ -111,6 +111,7 @@ class CafeRatingReviewFragment :
                 "3시간 전",
                 it.content
             )
+
         }.toList()
         return ReviewDatas(ArrayList(reviewList))
     }
