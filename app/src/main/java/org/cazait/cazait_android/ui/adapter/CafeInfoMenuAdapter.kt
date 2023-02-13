@@ -3,12 +3,15 @@ package org.cazait.cazait_android.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.cazait.cazait_android.data.model.CafeMenu
 import org.cazait.cazait_android.databinding.ItemCafeInfoMenuBinding
 import org.cazait.cazait_android.ui.adapter.holder.MenusViewHolder
+import org.cazait.cazait_android.ui.view.cafelist.info.inner.CafeMenuFragment
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoMenuViewModel
 
 class CafeInfoMenuAdapter(
+    private val context: CafeMenuFragment,
     private val cafeInfoMenuViewModel: CafeInfoMenuViewModel,
     private val menus: List<CafeMenu>
 ) : RecyclerView.Adapter<MenusViewHolder>() {
@@ -22,6 +25,8 @@ class CafeInfoMenuAdapter(
 
     // ViewHolder의 bind 메소드를 호출한다.
     override fun onBindViewHolder(holder: MenusViewHolder, position: Int) {
+        val imgUrl = menus[position].image
+        Glide.with(context).load(imgUrl).into(holder.binding.ivCafeMenu)
         holder.bind(menus[position])
     }
 

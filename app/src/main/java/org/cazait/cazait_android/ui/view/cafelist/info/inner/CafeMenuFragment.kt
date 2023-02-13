@@ -89,7 +89,7 @@ class CafeMenuFragment : BaseFragment<FragmentCafeMenuBinding, CafeInfoMenuViewM
             resources.getDimension(R.dimen.cafe_info_menu_bottom_space).roundToInt()
         )
         if (menus.menus.isNotEmpty()) {
-            adapter = CafeInfoMenuAdapter(viewModel, menus.menus)
+            adapter = CafeInfoMenuAdapter(this, viewModel, menus.menus)
             binding.rvCafeInfoMenus.adapter = adapter
             binding.rvCafeInfoMenus.addItemDecoration(spaceDecoration)
             showDataView(true)
