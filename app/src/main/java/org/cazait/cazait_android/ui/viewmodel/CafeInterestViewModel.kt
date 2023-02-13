@@ -69,7 +69,8 @@ open class CafeInterestViewModel @Inject constructor(
 
     fun dislikeCafe(favoritesId: Long) {
         viewModelScope.launch {
-            dataRepository.deleteInterestCafe(favoritesId)
+            dataRepository.deleteInterestCafe(favoritesId).collect()
+            refreshInterestCafeList()
         }
     }
 

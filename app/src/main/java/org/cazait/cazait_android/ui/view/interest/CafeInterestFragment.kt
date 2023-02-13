@@ -15,6 +15,7 @@ import org.cazait.cazait_android.data.model.Cafes
 import org.cazait.cazait_android.data.model.remote.response.InterestCafesResponse
 import org.cazait.cazait_android.databinding.FragmentCafeInterestBinding
 import org.cazait.cazait_android.ui.adapter.CafeInterestAdapter
+import org.cazait.cazait_android.ui.adapter.GridSpacingItemDecoration
 import org.cazait.cazait_android.ui.base.BaseFragment
 import org.cazait.cazait_android.ui.util.SingleEvent
 import org.cazait.cazait_android.ui.util.extension.observe
@@ -34,12 +35,11 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
     private lateinit var adapter: CafeInterestAdapter
 
     override fun initView() {
-
+        setUpRVInterestCafes()
     }
 
     override fun initAfterBinding() {
         observeViewModel()
-        viewModel.refreshInterestCafeList()
     }
 
     override fun initBeforeBinding() {
@@ -63,7 +63,11 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
                 when (status.data.result) {
                     "SUCCESS" -> {
                         val cafes = convertInterestCafesToCafes(it)
-                        bindRVInterestCafesData(cafes = cafes)
+                        if (binding.rvInterestCafes.adapter == null)
+                            bindRVInterestCafesData(cafes = cafes)
+                        else {
+                            updateRVInterestCafesData(cafes = cafes)
+                        }
                     }
                     "FAIL" -> {
                         viewModel.refreshInterestCafeList()
@@ -120,19 +124,32 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
         return Cafes(ArrayList(cafes))
     }
 
-    private fun bindRVInterestCafesData(cafes: Cafes) {
-        binding.rvInterestCafes.layoutManager = GridLayoutManager(activity, 2)
-
+    private fun setUpRVInterestCafes() {
         val spaceDecoration =
             MarginItemDecoration(resources.getDimension(R.dimen.cafe_interest_space).roundToInt())
+        val gridSpacingDecoration =
+            GridSpacingItemDecoration(resources.getDimension(R.dimen.cafe_interest_grid_space).roundToInt())
+        binding.rvInterestCafes.addItemDecoration(spaceDecoration)
+        binding.rvInterestCafes.addItemDecoration(gridSpacingDecoration)
+        val layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvInterestCafes.layoutManager = layoutManager
+    }
 
+
+    private fun bindRVInterestCafesData(cafes: Cafes) {
         if (cafes.cafesList.isNotEmpty()) {
             adapter = CafeInterestAdapter(viewModel, cafes.cafesList)
             binding.rvInterestCafes.adapter = adapter
-            binding.rvInterestCafes.addItemDecoration(spaceDecoration)
             showDataView(true)
         } else {
             showDataView(false)
         }
+    }
+
+    private fun updateRVInterestCafesData(cafes: Cafes) {
+        (binding.rvInterestCafes.adapter as CafeInterestAdapter).updateData(
+            cafes.cafesList
+        )
+        showDataView(true)
     }
 }

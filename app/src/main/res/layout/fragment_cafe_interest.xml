@@ -10,20 +10,6 @@
         android:background="@color/cazait_foam_white"
         tools:context=".ui.view.interest.CafeInterestFragment">
 
-        <TextView
-            android:id="@+id/tv_no_data3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/no_data"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="32sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <View
             android:id="@+id/view_cafe_interest_divide"
             android:layout_width="match_parent"
@@ -48,7 +34,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_interest_cafes"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
