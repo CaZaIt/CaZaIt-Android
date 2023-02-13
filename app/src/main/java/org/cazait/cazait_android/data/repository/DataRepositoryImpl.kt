@@ -7,6 +7,7 @@ import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.remote.datasource.CafeInfoRemoteData
 import org.cazait.cazait_android.data.model.remote.datasource.CafeRemoteData
 import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
+import org.cazait.cazait_android.data.model.remote.request.ReviewEditRequest
 import org.cazait.cazait_android.data.model.remote.request.ReviewRequest
 import org.cazait.cazait_android.data.model.remote.response.*
 import javax.inject.Inject
@@ -49,6 +50,14 @@ class DataRepositoryImpl @Inject constructor(
             emit(remoteData.getInterestCafes(userId))
         }.flowOn(ioDispatcher)
     }
+
+    override suspend fun postReview(
+        userId: Long,
+        cafeId: Long,
+        body: ReviewEditRequest
+    ): Flow<Resource<ReviewEditResponse>> {
+        return flow {
+            emit(infoRemoteData.postReview(userId, cafeId, body))
 
     override suspend fun postInterestCafe(userId: Long, cafeId: Long): Flow<Resource<PostInterestCafeResponse>> {
         return flow {

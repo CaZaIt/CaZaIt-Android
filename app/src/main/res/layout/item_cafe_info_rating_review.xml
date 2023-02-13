@@ -20,55 +20,70 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/review_star_1"
-                android:layout_width="25.62dp"
-                android:layout_height="25.62dp"
+<!--            <ImageView-->
+<!--                android:id="@+id/review_star_1"-->
+<!--                android:layout_width="25.62dp"-->
+<!--                android:layout_height="25.62dp"-->
+<!--                android:layout_marginStart="15.81dp"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                android:src="@drawable/cafe_info_rating_review_star_empty"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/review_star_2"-->
+<!--                android:layout_width="25.62dp"-->
+<!--                android:layout_height="25.62dp"-->
+<!--                android:layout_marginStart="2.27dp"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                android:src="@drawable/cafe_info_rating_review_star_empty"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/review_star_1"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/review_star_3"-->
+<!--                android:layout_width="25.62dp"-->
+<!--                android:layout_height="25.62dp"-->
+<!--                android:layout_marginStart="2.27dp"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                android:src="@drawable/cafe_info_rating_review_star_empty"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/review_star_2"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/review_star_4"-->
+<!--                android:layout_width="25.62dp"-->
+<!--                android:layout_height="25.62dp"-->
+<!--                android:layout_marginStart="2.27dp"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                android:src="@drawable/cafe_info_rating_review_star_empty"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/review_star_3"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/review_star_5"-->
+<!--                android:layout_width="25.62dp"-->
+<!--                android:layout_height="25.62dp"-->
+<!--                android:layout_marginStart="2.27dp"-->
+<!--                android:layout_marginTop="11dp"-->
+<!--                android:src="@drawable/cafe_info_rating_review_star_empty"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/review_star_4"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+            <RatingBar
+                android:id="@+id/item_ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:progressTint="@color/rating_review_filter"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5"
                 android:layout_marginStart="15.81dp"
-                android:layout_marginTop="11dp"
-                android:src="@drawable/cafe_info_rating_review_star_empty"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-            <ImageView
-                android:id="@+id/review_star_2"
-                android:layout_width="25.62dp"
-                android:layout_height="25.62dp"
-                android:layout_marginStart="2.27dp"
-                android:layout_marginTop="11dp"
-                android:src="@drawable/cafe_info_rating_review_star_empty"
-                app:layout_constraintStart_toEndOf="@+id/review_star_1"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/review_star_3"
-                android:layout_width="25.62dp"
-                android:layout_height="25.62dp"
-                android:layout_marginStart="2.27dp"
-                android:layout_marginTop="11dp"
-                android:src="@drawable/cafe_info_rating_review_star_empty"
-                app:layout_constraintStart_toEndOf="@+id/review_star_2"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/review_star_4"
-                android:layout_width="25.62dp"
-                android:layout_height="25.62dp"
-                android:layout_marginStart="2.27dp"
-                android:layout_marginTop="11dp"
-                android:src="@drawable/cafe_info_rating_review_star_empty"
-                app:layout_constraintStart_toEndOf="@+id/review_star_3"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/review_star_5"
-                android:layout_width="25.62dp"
-                android:layout_height="25.62dp"
-                android:layout_marginStart="2.27dp"
-                android:layout_marginTop="11dp"
-                android:src="@drawable/cafe_info_rating_review_star_empty"
-                app:layout_constraintStart_toEndOf="@+id/review_star_4"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_town"

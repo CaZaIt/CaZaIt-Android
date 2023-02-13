@@ -1,6 +1,7 @@
 package org.cazait.cazait_android.data.api
 
 import org.cazait.cazait_android.data.model.remote.request.CafeListRequest
+import org.cazait.cazait_android.data.model.remote.request.ReviewEditRequest
 import org.cazait.cazait_android.data.model.remote.response.*
 
 import retrofit2.Call
@@ -34,6 +35,13 @@ interface CafeService {
     fun getInterestCafes(
         @Path("userId") userId: Long
     ): Call<InterestCafesResponse>
+
+    @POST("/api/reviews/user/{userId}/cafe/{cafeId}")
+    fun postReview(
+        @Path("userId") userId: Long,
+        @Path("cafeId") cafeId: Long,
+        @Body reviewEditRequest: ReviewEditRequest
+    ):Call<ReviewEditResponse>
 
     @POST("/api/favorites/user/{userId}/cafe/{cafeId}")
     fun postInterestCafe(

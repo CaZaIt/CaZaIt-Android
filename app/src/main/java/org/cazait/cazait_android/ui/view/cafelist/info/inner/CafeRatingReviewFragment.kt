@@ -41,7 +41,7 @@ class CafeRatingReviewFragment :
     override fun initView() {
         val cafeId = arguments?.getLong("cafeId")
         Log.d("Clicked CafeId Check", "$cafeId")
-        if(cafeId != null){
+        if (cafeId != null) {
             viewModel.getReviews(cafeId)
         }
         binding.apply {
@@ -56,7 +56,7 @@ class CafeRatingReviewFragment :
     }
 
     private fun handleReviewResult(status: Resource<ReviewResponse>) {
-        Log.d("ResponseData - Review", "$status")
+        Log.d("ResponseData - Review - status", "$status")
         when (status) {
             is Resource.Loading -> binding.pbReviewLoaderView.toVisible()
             is Resource.Success -> status.data.let {
@@ -66,7 +66,10 @@ class CafeRatingReviewFragment :
                         Log.d("handleReviewResult", "성공!")
                         Log.d("ResponseData - Review", "${status.data.data}")
                         val reviews = convertReviewResponseToReviewData(it)
+                        Log.d("convert complete?", "넘어왔나?")
                         bindRVReviewDataListData(reviews = reviews)
+                        Log.d("convert complete?", "그럼 여기는?")
+
                     }
                     else -> {
                         Log.d("handleReviewResult", "실패!")
@@ -81,13 +84,13 @@ class CafeRatingReviewFragment :
     }
 
     private fun bindRVReviewDataListData(reviews: ReviewDatas) {
-        val spaveDecoration = MarginItemDecoration(
+        val spaceDecoration = MarginItemDecoration(
             resources.getDimension(R.dimen.cafe_info_menu_bottom_space).roundToInt()
         )
         if (reviews.reviews.isNotEmpty()) {
             adapter = CafeInfoReviewAdapter(viewModel, reviews.reviews)
             binding.cafeInfoReviewListView.adapter = adapter
-            binding.cafeInfoReviewListView.addItemDecoration(spaveDecoration)
+            binding.cafeInfoReviewListView.addItemDecoration(spaceDecoration)
             showDataView(true)
         } else {
             showDataView(false)
@@ -101,21 +104,15 @@ class CafeRatingReviewFragment :
 
     private fun convertReviewResponseToReviewData(reviewResponse: ReviewResponse): ReviewDatas {
         val reviewList = reviewResponse.data.map {
-            ReviewData(it.score,"화양동", it.userId, "3시간 전", it.content)
+            ReviewData(
+                it.score,
+                "화양동",
+                it.userId.toString(),
+                "3시간 전",
+                it.content
+            )
+
         }.toList()
         return ReviewDatas(ArrayList(reviewList))
     }
-
-//    private fun initRecyclerView() {
-//        reviewAdapter = CafeInfoReviewAdapter()
-//        binding.cafeInfoReviewListView.layoutManager =
-//            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-//        binding.cafeInfoReviewListView.adapter = reviewAdapter
-//    }
-//
-//    private fun observeReviewListData() {
-//        viewModel.reviewList.observe(this) {
-//            reviewAdapter.data = it
-//        }
-//    }
 }
