@@ -106,25 +106,12 @@ class CafeRatingReviewFragment :
         val reviewList = reviewResponse.data.map {
             ReviewData(
                 it.score,
-                "${R.string.view_more_title}",
+                "화양동",
                 it.userId.toString(),
-                "${R.string.view_more_notification}",
+                "뚜벅초",
                 it.content
             )
         }.toList()
         return ReviewDatas(ArrayList(reviewList))
     }
-
-//    private fun initRecyclerView() {
-//        reviewAdapter = CafeInfoReviewAdapter()
-//        binding.cafeInfoReviewListView.layoutManager =
-//            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-//        binding.cafeInfoReviewListView.adapter = reviewAdapter
-//    }
-//
-//    private fun observeReviewListData() {
-//        viewModel.reviewList.observe(this) {
-//            reviewAdapter.data = it
-//        }
-//    }
 }

@@ -40,7 +40,7 @@ class CafeRatingReviewEditActivity :
             val reviewScore = binding.ratingBar.rating.toInt()
             val reviewText = binding.etReviewEdit.text.toString()
             Log.d("ReviewEdit - score","$reviewScore")
-            Log.d("ReviewEdit - text","$reviewText")
+            Log.d("ReviewEdit - text", reviewText)
 
             viewModel.editReview(cafeId,reviewText,reviewScore)
             finish()
