@@ -13,7 +13,7 @@ import org.cazait.cazait_android.ui.viewmodel.CafeInterestViewModel
 
 class CafeInterestAdapter(
     private val cafeInterestViewModel: CafeInterestViewModel,
-    private val cafes: List<Cafe>
+    private var cafes: List<Cafe>
 ) : RecyclerView.Adapter<CafesViewHolder>() {
 
     private val onItemClickListener: RecyclerItemListener = object : RecyclerItemListener {
@@ -22,11 +22,16 @@ class CafeInterestAdapter(
         }
     }
 
+    fun updateData(newCafes: List<Cafe>) {
+        cafes = newCafes
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CafesViewHolder {
         val listItemBinding =
             ItemCafeInterestBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return CafesViewHolder(listItemBinding)
+        return CafesViewHolder(listItemBinding, cafeInterestViewModel)
     }
 
     override fun getItemCount() = cafes.size
