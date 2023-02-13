@@ -108,7 +108,7 @@ class CafeRatingReviewFragment :
                 it.score,
                 "화양동",
                 it.userId.toString(),
-                "뚜벅초",
+                "3시간 전",
                 it.content
             )
         }.toList()
