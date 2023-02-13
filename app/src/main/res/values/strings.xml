@@ -84,7 +84,7 @@
     <string name="view_more_terms_polices">약관 및 정책</string>
 
     <!--Cafe-->
-    <string name="no_data">no_data</string>
+    <string name="no_data">데이터가 없어요</string>
     <string name="cafe_state_free">여유</string>
     <string name="cafe_state_normal">보통</string>
     <string name="cafe_state_crowded">혼잡</string>
