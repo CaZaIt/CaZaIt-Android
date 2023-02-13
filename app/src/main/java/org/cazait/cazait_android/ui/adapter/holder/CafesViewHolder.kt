@@ -1,5 +1,6 @@
 package org.cazait.cazait_android.ui.adapter.holder
 
+import android.util.Log
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
@@ -21,12 +22,17 @@ class CafesViewHolder(
         val imgUrl = item.cafeImageRes[0].imageUrl
         Glide.with(itemView).load(imgUrl).into(binding.ivCafeLandscape)
 
+        var isInitialLoad = true
         binding.btnCafeMainFavorite.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                (viewModel as CafeListViewModel).likeCafe(
-                    userId = viewModel.userIdLiveData.value!!,
-                    cafeId = item.id
-                )
+            if (!isInitialLoad) {
+                if (isChecked) {
+                    (viewModel as CafeListViewModel).likeCafe(
+                        userId = viewModel.userIdLiveData.value!!,
+                        cafeId = item.id
+                    )
+                }
+            } else {
+                isInitialLoad = false
             }
         }
         binding.root.setOnClickListener { recyclerItemListener.onItemSelected(item) }
