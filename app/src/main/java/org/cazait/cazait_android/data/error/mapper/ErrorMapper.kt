@@ -16,6 +16,7 @@ class ErrorMapper @Inject constructor(@ApplicationContext val context: Context) 
             EMAIL_ERROR to getErrorString(R.string.invalid_email),
             EMAIL_OR_PASSWORD_ERROR to getErrorString(R.string.invalid_email_or_password),
             EXPIRED_ACCESS_TOKEN to getErrorString(R.string.expired_access_token),
+            INVALID_ACCESS_TOKEN to getErrorString(R.string.invalid_access_token),
             EXPIRED_REFRESH_TOKEN to getErrorString(R.string.expired_refresh_token)
         ).withDefault { getErrorString(R.string.network_error) }
 
