@@ -28,7 +28,7 @@ import org.cazait.cazait_android.ui.util.extension.toGone
 import org.cazait.cazait_android.ui.util.extension.toVisible
 import org.cazait.cazait_android.ui.view.cafelist.info.CafeInformationActivity
 import org.cazait.cazait_android.ui.viewmodel.CafeListViewModel
-import kotlin.math.roundToInt
+import kotlin.math.*
 
 @AndroidEntryPoint
 class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel>() {
@@ -154,11 +154,12 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
 
     private fun convertCafeListResponseToCafes(cafeListResponse: CafeListResponse): Cafes {
         // data[0]인 이유는 0번째 페이지이기 때문임 만일 페이지 수가 넘어가면 1씩 증가시켜서 추가해줘야 함
+
         val cafeList = cafeListResponse.data[0].map {
             Cafe(
                 id = it.cafeId,
                 name = it.name,
-                distance = it.distance,
+                distance = 147,
                 address = it.address,
                 state = it.congestionStatus,
                 favorite = it.favorite,
@@ -168,5 +169,13 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
             )
         }.toList()
         return Cafes(ArrayList(cafeList))
+    }
+
+    private fun getDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Int {
+        val dLat = Math.toRadians(lat2 - lat1)
+        val dLon = Math.toRadians(lon2 - lon1)
+        val a = sin(dLat / 2).pow(2.0) + sin(dLon / 2).pow(2.0) * cos(Math.toRadians(lat1)) * cos(Math.toRadians(lat2))
+        val c = 2 * asin(sqrt(a))
+        return (a * c).toInt()
     }
 }

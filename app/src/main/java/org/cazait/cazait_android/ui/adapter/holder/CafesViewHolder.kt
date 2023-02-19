@@ -1,6 +1,5 @@
 package org.cazait.cazait_android.ui.adapter.holder
 
-import android.util.Log
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView

@@ -1,5 +1,6 @@
 package org.cazait.cazait_android.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -36,6 +37,7 @@ open class CafeInterestViewModel @Inject constructor(
         get() = _openCafeDetails
 
     fun refreshInterestCafeList() {
+        Log.d("CafeInterestViewModel", "refreshInterestCafeList")
         viewModelScope.launch {
             val userId = userRepository.fetchUserIdInDataStore().first()
 
