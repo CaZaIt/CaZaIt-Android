@@ -48,6 +48,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         CoroutineScope(Dispatchers.IO).launch {
             val hasLoggedIn = viewModel.isLoggedIn().first()
             if (hasLoggedIn) {
+                Log.d("LoginActivity", "DO_AUTO_LOGIN")
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
