@@ -14,10 +14,10 @@ interface CafeService {
     @GET("/api/cafes/all/user/{userId}")
     fun getCafes(
         @Path("userId") userId: Long,
-        @Query("latitude") latitude: String,
-        @Query("limit") limit: String,
         @Query("longitude") longitude: String,
-        @Query("sort") sort: String
+        @Query("latitude") latitude: String,
+        @Query("sort") sort: String,
+        @Query("limit") limit: String
     ): Call<CafeListResponse>
 
     @GET("/api/menus/cafe/{cafeId}")

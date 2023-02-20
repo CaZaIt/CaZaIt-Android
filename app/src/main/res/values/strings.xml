@@ -43,6 +43,7 @@
     <string name="invalid_email_or_password">메일 또는 암호를 다시 확인해 주세요</string>
     <string name="invalid_email">적절하지 않은 메일입니다</string>
     <string name="expired_access_token">만료된 JWT입니다.</string>
+    <string name="invalid_access_token">유효하지 않은 JWT입니다.</string>
     <string name="expired_refresh_token">접근 권한 재발급 실패</string>
 
     <!--Cafe Information Page-->

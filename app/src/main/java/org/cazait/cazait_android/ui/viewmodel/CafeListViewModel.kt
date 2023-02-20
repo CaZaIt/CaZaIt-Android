@@ -8,10 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.error.EXPIRED_ACCESS_TOKEN
 import org.cazait.cazait_android.data.model.Cafe
@@ -143,15 +141,14 @@ open class CafeListViewModel @Inject constructor(
     }
 
     private suspend fun refreshTokens() {
-        val refreshToken = userRepository.fetchTokenInDataStore().first()
-
-        val tokenResponse =
-            userRepository.postToken(mapOf("REFRESH-TOKEN" to refreshToken.last())).first()
-        if (tokenResponse is Resource.Success) userRepository.saveToken(
-            listOf(
-                tokenResponse.data.data.jwtToken,
-                tokenResponse.data.data.refreshToken
+        val tokenResponse = userRepository.postToken().first()
+        if (tokenResponse is Resource.Success) {
+            userRepository.saveToken(
+                listOf(
+                    tokenResponse.data.data.jwtToken,
+                    tokenResponse.data.data.refreshToken
+                )
             )
-        )
+        }
     }
 }

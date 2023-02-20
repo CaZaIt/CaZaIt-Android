@@ -59,10 +59,20 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun clearDataStore() {
         localData.clearDataStore()
     }
+
     // `postToken`으로 인해 앞 단계에 UseCase 추가 하면 더 좋을 것 같음
-    override suspend fun postToken(refreshTokenHeader: Map<String, String>): Flow<Resource<TokenResponse>> {
+    override suspend fun postToken(): Flow<Resource<TokenResponse>> {
+        val tokens = fetchTokenInDataStore().first()
+        val userId = fetchUserIdInDataStore().first()
+
         return flow {
-            emit(remoteData.postToken(refreshTokenHeader))
+            emit(
+                remoteData.postToken(
+                    userId = userId,
+                    accessTokenHeader = mapOf("X-ACCESS-TOKEN" to tokens.first()),
+                    refreshTokenHeader = mapOf("REFRESH-TOKEN" to tokens.last())
+                )
+            )
         }.flowOn(ioDispatcher)
     }
 }

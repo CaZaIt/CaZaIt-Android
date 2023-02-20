@@ -18,5 +18,5 @@ interface UserRepository {
     suspend fun fetchTokenInDataStore(): Flow<List<String>>
     suspend fun fetchUserIdInDataStore(): Flow<Long>
     suspend fun clearDataStore()
-    suspend fun postToken(refreshTokenHeader: Map<String, String>): Flow<Resource<TokenResponse>>
+    suspend fun postToken(): Flow<Resource<TokenResponse>>
 }

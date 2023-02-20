@@ -21,9 +21,9 @@
             android:id="@+id/iv_login_logo"
             android:layout_width="200dp"
             android:layout_height="110dp"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="73dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginEnd="70dp"
             android:contentDescription="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,20 +92,20 @@
             android:id="@+id/tv_login_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="50dp"
             android:text="@string/login_signup"
             android:textColor="@color/cazait_choco"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_doing" />
 
-        <TextView
+        <Button
             android:id="@+id/tv_login_doing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/round_coffee_rectangle"
             android:paddingLeft="78dp"
             android:paddingTop="11dp"
@@ -118,7 +118,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login_sign_up" />
+            app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
         <FrameLayout
             android:id="@+id/pb_login_loader_view"
