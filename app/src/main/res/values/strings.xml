@@ -72,6 +72,7 @@
 
     <!--My Page-->
     <string name="my_page_do_login">로그인 하세요</string>
+    <string name="my_page_do_logout">로그아웃</string>
     <string name="my_page_cazait_pay">카자잇 페이</string>
     <string name="my_page_payment_details">결제 내역</string>
     <string name="my_page_recent_view">최근 본 매장</string>

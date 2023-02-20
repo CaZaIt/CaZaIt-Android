@@ -78,6 +78,12 @@ class LocalData @Inject constructor(val context: Context) {
         context.tokenDataStore.edit { prefs ->
             prefs.clear()
         }
+        context.userDataStore.edit { prefs ->
+            prefs.clear()
+        }
+        context.loginCheckDataStore.edit { prefs ->
+            prefs[LOGIN_CHECK] = false
+        }
     }
 }
 
