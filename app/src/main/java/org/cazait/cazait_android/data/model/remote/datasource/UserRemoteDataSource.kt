@@ -12,5 +12,5 @@ import retrofit2.Call
 interface UserRemoteDataSource {
     fun postSignUp(body: SignUpRequest): Resource<SignUpResponse>
     fun postLogin(body: LoginRequest): Resource<LoginResponse>
-    fun postToken(refreshTokenHeader: Map<String, String>): Resource<TokenResponse>
+    fun postToken(userId: Long, accessTokenHeader: Map<String, String>, refreshTokenHeader: Map<String, String>): Resource<TokenResponse>
 }

@@ -1,6 +1,5 @@
 package org.cazait.cazait_android.data.api
 
-import com.google.gson.annotations.SerializedName
 import org.cazait.cazait_android.data.model.remote.request.LoginRequest
 import org.cazait.cazait_android.data.model.remote.request.SignUpRequest
 import org.cazait.cazait_android.data.model.remote.response.IsDuplicateEmailResponse
@@ -14,17 +13,19 @@ interface UserService {
     /**
      * auths
      */
-    
+
     @POST("/api/auths/log-in")
     fun postLogin(
         @Query("role") role: String = "user",
         @Body loginRequest: LoginRequest,
     ): Call<LoginResponse>
 
-    @POST("/api/auths/refresh")
+    @POST("/api/auths/refresh/{userId}")
     fun postRefreshToken(
+        @Path("userId") userId: Long,
         @Query("role") role: String = "user",
-        @HeaderMap headers: Map<String, String>,
+        @HeaderMap accessToken: Map<String, String>,
+        @HeaderMap refreshToken: Map<String, String>
     ): Call<TokenResponse>
 
     /**

@@ -83,10 +83,8 @@ open class CafeInterestViewModel @Inject constructor(
     }
 
     private suspend fun refreshTokens() {
-        val refreshToken = userRepository.fetchTokenInDataStore().first()
-
         val tokenResponse =
-            userRepository.postToken(mapOf("REFRESH-TOKEN" to refreshToken.last())).first()
+            userRepository.postToken().first()
         if (tokenResponse is Resource.Success) userRepository.saveToken(
             listOf(
                 tokenResponse.data.data.jwtToken,

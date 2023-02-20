@@ -38,12 +38,12 @@ class UserRemoteData @Inject constructor(
         }
     }
 
-    override fun postToken(refreshTokenHeader: Map<String, String>): Resource<TokenResponse> {
+    override fun postToken(userId: Long, accessTokenHeader: Map<String, String>, refreshTokenHeader: Map<String, String>): Resource<TokenResponse> {
         if(!networkConnectivity.isConnected())
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
 
         return try {
-            val response = userService.postRefreshToken(headers = refreshTokenHeader).execute()
+            val response = userService.postRefreshToken(userId = userId, accessToken = accessTokenHeader, refreshToken = refreshTokenHeader).execute()
             if(response.isSuccessful)
                 Resource.Success(response.body()!!)
             else {
