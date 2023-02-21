@@ -27,10 +27,6 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     override val viewModel: CafeInfoViewModel by viewModels()
 
-//    private lateinit var name:String
-//    private lateinit var address:String
-//    private lateinit var bundle: Bundle
-
     override fun onTouch() {
         binding.cafeInfoFragCon.requestDisallowInterceptTouchEvent(true)
     }
@@ -47,7 +43,7 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
     }
 
     override fun initBeforeBinding() {
-//        binding.lifecycleOwner = this
+
     }
     override fun initAfterBinding() {
 
