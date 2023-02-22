@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.location.Geocoder
 import com.google.android.gms.common.GoogleApiAvailability
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides
@@ -40,11 +41,11 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideGoogleApiAvailability() = GoogleApiAvailability.getInstance()
+    fun provideGoogleApiAvailability(): GoogleApiAvailability = GoogleApiAvailability.getInstance()
 
     @Provides
     @Singleton
-    fun provideLocationProviderClient(application: Application) =
+    fun provideLocationProviderClient(application: Application): FusedLocationProviderClient =
         LocationServices.getFusedLocationProviderClient(application)
 
     @Provides

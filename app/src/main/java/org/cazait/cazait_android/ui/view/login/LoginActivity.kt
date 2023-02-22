@@ -48,8 +48,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         CoroutineScope(Dispatchers.IO).launch {
             val hasLoggedIn = viewModel.isLoggedIn().first()
             if (hasLoggedIn) {
-                Log.d("LoginActivity", "DO_AUTO_LOGIN")
-                val intent = Intent(applicationContext, MainActivity::class.java)
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -68,7 +67,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 binding.pbLoginLoaderView.toGone()
                 when (status.data.result) {
                     "SUCCESS" -> {
-                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
