@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -9,31 +9,31 @@
         android:background="@color/cazait_base_color_f5"
         tools:context=".ui.view.mypage.MyPageFragment">
 
-        <TextView
-            android:id="@+id/tv_guid_login"
+        <Button
+            android:id="@+id/btn_my_page_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
             android:layout_marginTop="60dp"
+            android:background="@null"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/my_page_do_login"
+            android:text="@string/my_page_do_logout"
             android:textColor="@color/cazait_choco"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_my_page_logout"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="6dp"
             android:layout_marginBottom="3dp"
-            android:contentDescription="@null"
-            app:layout_constraintBottom_toBottomOf="@id/tv_guid_login"
-            app:layout_constraintStart_toEndOf="@id/tv_guid_login"
-            app:layout_constraintTop_toTopOf="@id/tv_guid_login"
-            app:srcCompat="@drawable/arrow_circle_right" />
+            android:background="@drawable/ic_arrow_circle_right"
+            app:layout_constraintBottom_toBottomOf="@id/btn_my_page_logout"
+            app:layout_constraintStart_toEndOf="@id/btn_my_page_logout"
+            app:layout_constraintTop_toTopOf="@id/btn_my_page_logout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_pay"
@@ -45,7 +45,7 @@
             android:background="@drawable/round_latte_beige_rectangle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_guid_login">
+            app:layout_constraintTop_toBottomOf="@id/btn_my_page_logout">
 
             <TextView
                 android:id="@+id/tv_cazait_pay"
@@ -133,18 +133,18 @@
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/arrow_front" />
 
-        <ImageView
-            android:id="@+id/my_page_arrow_front2"
+        <Button
+            android:id="@+id/btn_my_page_go_recent"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="11dp"
             android:layout_marginBottom="11dp"
+            android:background="@drawable/arrow_front"
             android:contentDescription="@null"
             app:layout_constraintBottom_toTopOf="@+id/my_page_divider3"
             app:layout_constraintEnd_toEndOf="@+id/my_page_divider2"
-            app:layout_constraintTop_toBottomOf="@+id/my_page_divider2"
-            app:srcCompat="@drawable/arrow_front" />
+            app:layout_constraintTop_toBottomOf="@+id/my_page_divider2" />
 
         <TextView
             android:id="@+id/tv_recent_view_store"

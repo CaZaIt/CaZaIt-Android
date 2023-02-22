@@ -1,13 +1,10 @@
 package org.cazait.cazait_android.ui.viewmodel
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 import org.cazait.cazait_android.data.Resource
 import org.cazait.cazait_android.data.model.remote.request.LoginRequest
@@ -40,6 +37,7 @@ class LoginViewModel @Inject constructor(
                     saveLoginEmail(email)
                 }
                 _loginProcess.value = it
+                Log.d("LoginViewModel", _loginProcess.value.toString())
             }
         }
     }
@@ -55,12 +53,6 @@ class LoginViewModel @Inject constructor(
     }
 
     suspend fun isLoggedIn() = userRepository.isLoggedIn()
-
-    private fun clearUserPreferences() {
-        viewModelScope.launch {
-            userRepository.clearDataStore()
-        }
-    }
 
     private fun saveLoginToken(jwtToken: String, refreshToken: String) {
         viewModelScope.launch {
