@@ -1,5 +1,6 @@
 package org.cazait.cazait_android.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -33,6 +34,7 @@ class CafeInfoReviewViewModel @Inject constructor(private val dataRepository: Da
 
     fun getReviews(cafeId: Long) {
         val request: ReviewRequest = ReviewRequest("newest")
+        Log.d("request 데이터", "$request")
         viewModelScope.launch {
             _reviewList.value = Resource.Loading()
             dataRepository.getReviews(cafeId, query = request).collect {
