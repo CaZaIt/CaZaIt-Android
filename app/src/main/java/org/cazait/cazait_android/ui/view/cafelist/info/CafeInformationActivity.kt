@@ -13,10 +13,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
 import org.cazait.cazait_android.data.model.Cafe
-import org.cazait.cazait_android.data.model.CafeImageRes
 import org.cazait.cazait_android.databinding.ActivityCafeInformationBinding
 import org.cazait.cazait_android.ui.adapter.CafeImgAdapter
 import org.cazait.cazait_android.ui.base.BaseActivity
+import org.cazait.cazait_android.ui.util.extension.observe
 import org.cazait.cazait_android.ui.view.cafelist.info.inner.*
 import org.cazait.cazait_android.ui.view.cafelist.info.util.OnMapTouchListener
 import org.cazait.cazait_android.ui.viewmodel.CafeInfoViewModel
@@ -29,8 +29,6 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
     override val viewModel: CafeInfoViewModel by viewModels()
 
-    private lateinit var name:String
-    private lateinit var address:String
     private lateinit var bundle: Bundle
 
     override fun onTouch() {
@@ -48,11 +46,16 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         }
     }
 
-    override fun initAfterBinding() {
+    override fun initBeforeBinding() {
 
     }
+    override fun initAfterBinding() {
+        observeViewModel()
+    }
 
-    override fun initBeforeBinding() {
+    private fun observeViewModel(){
+        observe(viewModel.cafeIdData, ::handleCafeId)
+        observe(viewModel.locationData,::handleLocation)
     }
 
     override fun initView() {
@@ -61,32 +64,25 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
         } else {
             intent.getParcelableExtra(CAFE_ITEM_KEY)
         }
-        bundle = Bundle()
-        if (cafe != null) {
-            bundle.putLong("cafeId", cafe.id)
-            bundle.putString("cafeLat", cafe.latitude)
-            bundle.putString("cafeLong",cafe.longitude)
-            name = cafe.name
-            address = cafe.address
-        }
+
+        require(cafe!=null)
+        viewModel.setCafe(cafe)
+
+        viewModel.makeCafeImgList(cafe)
         val menuFrag = CafeMenuFragment()
+        makeBundleData()
         menuFrag.arguments = bundle
         //-----------------
 
         val dotsIndicator = binding.dotsIndicator
         val viewPager = binding.vpImg
-        viewPager.adapter = CafeImgAdapter(this, viewModel.makeCafeImgList(cafe!!))
+        viewPager.adapter = CafeImgAdapter(this, viewModel.cafeImgList)
         dotsIndicator.attachTo(viewPager)
 
-        binding.tvCafeInfoName.text = name
-        binding.tvCafeInfoAdd.text = address
+        binding.tvCafeInfoName.text = viewModel.name
+        binding.tvCafeInfoAdd.text = viewModel.address
 
-        binding.fabReviewWrite.hide()
-        binding.btnCafeMenu.isSelected = true
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.cafe_info_frag_con, menuFrag)
-            .commit()
+        initDefaultFrag(menuFrag)
 
         showFragment(
             binding.btnCafeMenu,
@@ -112,29 +108,32 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
 
         binding.fabReviewWrite.setOnClickListener {
             val intent = Intent(this, CafeRatingReviewEditActivity::class.java)
-            intent.putExtra("cafeId", cafe!!.id)
+            intent.putExtra("cafeId", viewModel.cafeId)
             startActivity(intent)
         }
-
     }
 
-    private fun showFragment(
-        btn1: Button,
-        btn2: Button,
-        btn3: Button,
-        frag: Fragment,
-        fab: FloatingActionButton
-    ) {
+    private fun initDefaultFrag(menuFrag: Fragment){
+        binding.fabReviewWrite.hide()
+        binding.btnCafeMenu.isSelected = true
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.cafe_info_frag_con, menuFrag)
+            .commit()
+    }
+
+    private fun showFragment(btn1: Button, btn2: Button, btn3: Button, fragment: Fragment, fab: FloatingActionButton) {
+        var frag: Fragment
         btn1.setOnClickListener {
             btn1.isSelected = true
             btn2.isSelected = false
             btn3.isSelected = false
-            if(binding.btnCafeMenu.isSelected || binding.btnCafeLocTrans.isSelected){
-                val frag = frag
+            if (binding.btnCafeMenu.isSelected || binding.btnCafeLocTrans.isSelected) {
+                frag = fragment
                 frag.arguments = bundle
                 fab.hide()
-            }else{
-                val frag = frag
+            } else {
+                frag = fragment
                 frag.arguments = bundle
                 fab.show()
             }
@@ -143,5 +142,23 @@ class CafeInformationActivity : BaseActivity<ActivityCafeInformationBinding, Caf
                 .replace(R.id.cafe_info_frag_con, frag)
                 .commit()
         }
+    }
+
+    private fun makeBundleData(){
+        bundle = Bundle()
+        Log.d("cafeId", "${viewModel.cafeIdData.value!!}")
+        Log.d("cafeLat", viewModel.locationData.value!![0])
+        Log.d("cafeLong", viewModel.locationData.value!![1])
+        bundle.putLong("cafeId", viewModel.cafeIdData.value!!)
+        bundle.putString("cafeLat", viewModel.locationData.value!![0])
+        bundle.putString("cafeLong", viewModel.locationData.value!![1])
+    }
+
+    private fun handleCafeId(status: Long){
+        return
+    }
+
+    private fun handleLocation(status: List<String>){
+        return
     }
 }

@@ -65,7 +65,7 @@ class CafeRatingReviewFragment :
                     "SUCCESS" -> {
                         Log.d("handleReviewResult", "성공!")
                         Log.d("ResponseData - Review", "${status.data.data}")
-                        val reviews = convertReviewResponseToReviewData(it)
+                        val reviews = convertReviewResponseToReviewData(it.data.reviewResponses)
                         Log.d("convert complete?", "넘어왔나?")
                         bindRVReviewDataListData(reviews = reviews)
                         Log.d("convert complete?", "그럼 여기는?")
@@ -102,8 +102,8 @@ class CafeRatingReviewFragment :
         binding.pbReviewLoaderView.toGone()
     }
 
-    private fun convertReviewResponseToReviewData(reviewResponse: ReviewResponse): ReviewDatas {
-        val reviewList = reviewResponse.data.map {
+    private fun convertReviewResponseToReviewData(reviewResponse: List<ReviewResponse.Data.ReviewItem>): ReviewDatas {
+        val reviewList = reviewResponse.map {
             ReviewData(
                 it.score,
                 "화양동",
@@ -111,7 +111,6 @@ class CafeRatingReviewFragment :
                 "3시간 전",
                 it.content
             )
-
         }.toList()
         return ReviewDatas(ArrayList(reviewList))
     }
