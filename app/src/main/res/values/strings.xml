@@ -92,6 +92,10 @@
     <string name="cafe_state_crowded">혼잡</string>
     <string name="cafe_state_very_crowded">매우 혼잡</string>
 
+    <!--Non Review-->
+    <string name="no_review_message">요청에 대한 정보가 없습니다.</string>
+    <string name="no_review">등록된 리뷰가 없습니다😢</string>
+
 
     <!--Sort Filter-->
 </resources>
