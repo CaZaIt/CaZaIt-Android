@@ -65,7 +65,7 @@ class CafeRatingReviewFragment :
                     "SUCCESS" -> {
                         Log.d("handleReviewResult", "성공!")
                         Log.d("ResponseData - Review", "${status.data.data}")
-                        if ("${status.data.data}" != null) {
+                        if (status.data.code == 200) {
                             Log.d("Review","Yes Review")
                             binding.noReview.toGone()
                             val reviews = convertReviewResponseToReviewData(it.data.reviewResponses)
