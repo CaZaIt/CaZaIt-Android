@@ -65,11 +65,17 @@ class CafeRatingReviewFragment :
                     "SUCCESS" -> {
                         Log.d("handleReviewResult", "성공!")
                         Log.d("ResponseData - Review", "${status.data.data}")
-                        val reviews = convertReviewResponseToReviewData(it.data.reviewResponses)
-                        Log.d("convert complete?", "넘어왔나?")
-                        bindRVReviewDataListData(reviews = reviews)
-                        Log.d("convert complete?", "그럼 여기는?")
-
+                        if (status.data.code == 200) {
+                            Log.d("Review","Yes Review")
+                            binding.noReview.toGone()
+                            val reviews = convertReviewResponseToReviewData(it.data.reviewResponses)
+                            Log.d("convert complete?", "넘어왔나?")
+                            bindRVReviewDataListData(reviews = reviews)
+                            Log.d("convert complete?", "그럼 여기는?")
+                        } else {
+                            Log.d("Review","No Review")
+                            binding.noReview.toVisible()
+                        }
                     }
                     else -> {
                         Log.d("handleReviewResult", "실패!")
