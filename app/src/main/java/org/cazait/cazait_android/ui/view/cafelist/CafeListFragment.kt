@@ -11,6 +11,7 @@ import android.view.View.VISIBLE
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.CAFE_ITEM_KEY
 import org.cazait.cazait_android.R
@@ -33,7 +34,7 @@ import kotlin.math.*
 @AndroidEntryPoint
 class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel>() {
 
-    override val viewModel: CafeListViewModel by viewModels()
+    override lateinit var viewModel: CafeListViewModel
 
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_list
@@ -50,6 +51,7 @@ class CafeListFragment : BaseFragment<FragmentCafeListBinding, CafeListViewModel
     }
 
     override fun initView() {
+        viewModel = ViewModelProvider(this)[CafeListViewModel::class.java]
         getUserLocation()
     }
 

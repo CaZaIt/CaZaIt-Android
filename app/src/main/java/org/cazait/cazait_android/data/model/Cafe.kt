@@ -11,8 +11,8 @@ data class Cafe(
     val distance: Int,
     val address: String,
     val state: String,
-    val favorite: Boolean? = null,
-    val favoritesId: Long? = null,
+    var favorite: Boolean = false,  // 좋아요 버튼을 위해 var로 설정
+    val favoritesId: Long = -1,
     @SerializedName("getCafeImageRes") val cafeImageRes: List<CafeImageRes>,
     val latitude: String,
     val longitude: String,

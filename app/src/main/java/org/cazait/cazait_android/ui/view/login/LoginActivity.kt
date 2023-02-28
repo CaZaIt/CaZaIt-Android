@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -27,20 +28,21 @@ import org.cazait.cazait_android.ui.viewmodel.LoginViewModel
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_login
-    override val viewModel: LoginViewModel by viewModels()
+    override lateinit var viewModel: LoginViewModel
 
     override fun initBeforeBinding() {
         installSplashScreen()
     }
 
     override fun initView() {
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
         initSignUpBtn()
         initLoginBtn()
         doLoginIfLoggedIn()
     }
 
     override fun initAfterBinding() {
-        binding.lifecycleOwner = this
         observeViewModel()
     }
 
