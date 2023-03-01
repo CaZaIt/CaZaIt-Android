@@ -1,10 +1,10 @@
 package org.cazait.cazait_android.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -16,6 +16,7 @@ import org.cazait.cazait_android.data.repository.DataRepository
 import org.cazait.cazait_android.data.repository.UserRepository
 import org.cazait.cazait_android.ui.base.BaseViewModel
 import org.cazait.cazait_android.ui.util.SingleEvent
+import org.cazait.cazait_android.ui.viewmodel.ext.onMain
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,9 +37,10 @@ open class CafeInterestViewModel @Inject constructor(
     val openCafeDetails: LiveData<SingleEvent<Cafe>>
         get() = _openCafeDetails
 
+    private lateinit var job: Job
+
     fun refreshInterestCafeList() {
-        Log.d("CafeInterestViewModel", "refreshInterestCafeList")
-        viewModelScope.launch {
+        job = onMain {
             val userId = userRepository.fetchUserIdInDataStore().first()
 
             _interestCafes.value = Resource.Loading()

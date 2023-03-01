@@ -1,7 +1,6 @@
 package org.cazait.cazait_android.ui.base
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +31,6 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     abstract fun initAfterBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("bmsk", "onViewCreated")
         super.onViewCreated(view, savedInstanceState)
         initBeforeBinding()
         initView()
@@ -40,9 +38,7 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Log.d("bmsk", "onCreateView")
         binding = DataBindingUtil.inflate(inflater,layoutResourceId, container, false)
-        Log.d("bmsk", "바인딩 완료")
         return binding.root
     }
 }

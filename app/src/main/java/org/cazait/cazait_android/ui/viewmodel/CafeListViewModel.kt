@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.cazait.cazait_android.data.Resource
@@ -64,7 +65,7 @@ open class CafeListViewModel @Inject constructor(
                 CafeListRequest(
                     userLocation.value!!.peekContent().latitude.toString(),
                     userLocation.value!!.peekContent().longitude.toString(),
-                    testLimit,
+                    "0",
                     testSort
                 )
             } else
@@ -115,22 +116,17 @@ open class CafeListViewModel @Inject constructor(
     fun likeCafe(userId: Long, cafeId: Long) {
         viewModelScope.launch {
             dataRepository.postInterestCafe(userId = userId, cafeId = cafeId).collect {
-                Log.d("CafeListViewModel", "likeCafe")
             }
         }
     }
 
-    /**
-     * 미구현
-     */
     fun dislikeCafe(favoritesId: Long) {
         viewModelScope.launch {
-            dataRepository.deleteInterestCafe(favoritesId)
+            dataRepository.deleteInterestCafe(favoritesId).collect()
         }
     }
 
     private fun isExpiredToken(response: Resource<CafeListResponse>): Boolean {
-        Log.d("CafeListViewModel", "isExpiredToken?")
         if (response is Resource.Success
             && response.data.result == "FAIL"
             && response.data.message == errorManager.getError(EXPIRED_ACCESS_TOKEN).description

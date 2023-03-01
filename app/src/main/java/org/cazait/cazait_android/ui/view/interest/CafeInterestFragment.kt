@@ -4,7 +4,7 @@ import MarginItemDecoration
 import android.content.Intent
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import org.cazait.cazait_android.CAFE_ITEM_KEY
@@ -32,10 +32,12 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
     override val layoutResourceId: Int
         get() = R.layout.fragment_cafe_interest
 
-    override val viewModel: CafeInterestViewModel by viewModels()
+    override lateinit var viewModel: CafeInterestViewModel
+
     private lateinit var adapter: CafeInterestAdapter
 
     override fun initView() {
+        viewModel = ViewModelProvider(this)[CafeInterestViewModel::class.java]
         setUpRVInterestCafes()
     }
 
@@ -43,12 +45,11 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
         observeViewModel()
     }
 
-    override fun initBeforeBinding() {
-        binding.lifecycleOwner = this
-    }
+    override fun initBeforeBinding() {}
 
     override fun onResume() {
         super.onResume()
+        binding.lifecycleOwner = this
         viewModel.refreshInterestCafeList()
     }
 
@@ -117,7 +118,12 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
                 state = it.congestion,
                 favorite = true,
                 favoritesId = it.favoritesId,
-                cafeImageRes = listOf(CafeImageRes(0, it.imageUrl[0])),
+                cafeImageRes = if (it.imageUrl.isNotEmpty()) listOf(
+                    CafeImageRes(
+                        0,
+                        it.imageUrl[0]
+                    )
+                ) else listOf(),
                 latitude = it.latitude,
                 longitude = it.longitude
             )
@@ -129,7 +135,9 @@ class CafeInterestFragment : BaseFragment<FragmentCafeInterestBinding, CafeInter
         val spaceDecoration =
             MarginItemDecoration(resources.getDimension(R.dimen.cafe_interest_space).roundToInt())
         val gridSpacingDecoration =
-            GridSpacingItemDecoration(resources.getDimension(R.dimen.cafe_interest_grid_space).roundToInt())
+            GridSpacingItemDecoration(
+                resources.getDimension(R.dimen.cafe_interest_grid_space).roundToInt()
+            )
         binding.rvInterestCafes.addItemDecoration(spaceDecoration)
         binding.rvInterestCafes.addItemDecoration(gridSpacingDecoration)
         val layoutManager = GridLayoutManager(requireContext(), 2)
