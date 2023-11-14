@@ -1,9 +1,9 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven("https://naver.jfrog.io/artifactory/maven/")
     }
 }
 dependencyResolutionManagement {
@@ -18,3 +18,5 @@ rootProject.name = "CaZaIt-Android"
 include(
     ":app",
 )
+include(":core:data")
+include(":core:domain")

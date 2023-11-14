@@ -52,7 +52,6 @@ dependencies {
     // Add Coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.core.common)
     implementation(libs.kotlinx.coroutines.play.services)
 
     // okHttp
@@ -115,7 +114,6 @@ dependencies {
 
     implementation(libs.material)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
