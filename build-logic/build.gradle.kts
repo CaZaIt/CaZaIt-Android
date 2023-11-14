@@ -11,11 +11,11 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidHilt") {
-            id = "aidoc.android.hilt"
+            id = "cazait.android.hilt"
             implementationClass = "org.cazait.HiltAndroidPlugin"
         }
         register("kotlinHilt") {
-            id = "aidoc.kotlin.hilt"
+            id = "cazait.kotlin.hilt"
             implementationClass = "org.cazait.HiltKotlinPlugin"
         }
     }

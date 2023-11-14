@@ -1,4 +1,4 @@
-package cazait
+package org.cazait
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension

@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-package cazait
+package org.cazait
 
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project

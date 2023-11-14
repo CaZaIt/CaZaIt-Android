@@ -1,5 +1,5 @@
-import cazait.configureHiltAndroid
-import cazait.libs
+import org.cazait.configureHiltAndroid
+import org.cazait.libs
 
 plugins {
     id("cazait.android.library")

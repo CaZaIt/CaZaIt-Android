@@ -1,7 +1,7 @@
-import cazait.configureCoroutineAndroid
-import cazait.configureHiltAndroid
-import cazait.configureKotest
-import cazait.configureKotlinAndroid
+import org.cazait.configureCoroutineAndroid
+import org.cazait.configureHiltAndroid
+import org.cazait.configureKotest
+import org.cazait.configureKotlinAndroid
 
 plugins {
     id("com.android.library")

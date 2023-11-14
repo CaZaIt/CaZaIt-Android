@@ -1,3 +1,3 @@
-import cazait.configureComposeAndroid
+import org.cazait.configureComposeAndroid
 
 configureComposeAndroid()

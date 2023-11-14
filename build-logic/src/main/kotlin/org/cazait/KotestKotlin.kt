@@ -1,4 +1,4 @@
-package cazait
+package org.cazait
 
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
