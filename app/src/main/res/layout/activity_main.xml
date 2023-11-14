@@ -10,7 +10,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_main"
-            android:name="org.cazait.cazait_android.ui.view.cafelist.CafeListFragment"
+            android:name="org.cazait.ui.view.cafelist.CafeListFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/bnv_main"

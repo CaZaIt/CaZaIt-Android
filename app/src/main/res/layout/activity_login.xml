@@ -8,7 +8,7 @@
 
         <variable
             name="user"
-            type="org.cazait.cazait_android.data.model.User" />
+            type="org.cazait.data.model.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

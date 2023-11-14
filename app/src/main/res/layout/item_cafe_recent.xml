@@ -6,7 +6,7 @@
     <data>
         <variable
             name="cafe"
-            type="org.cazait.cazait_android.data.model.Cafe" />
+            type="org.cazait.data.model.Cafe" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

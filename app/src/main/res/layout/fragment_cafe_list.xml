@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="org.cazait.cazait_android.ui.viewmodel.CafeListViewModel" />
+            type="org.cazait.ui.viewmodel.CafeListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

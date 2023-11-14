@@ -6,7 +6,7 @@
 
         <variable
             name="menu"
-            type="org.cazait.cazait_android.data.model.CafeMenu" />
+            type="org.cazait.data.model.CafeMenu" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
